@@ -26,8 +26,9 @@
 </script>
 
 <form:form action="forestList.do" commandName="location" method="get" id="selectLocForm">
+	<div class="selectBox">
 	<select name="location" id="selectLoc">
-		<option selected>==지역==</option>
+		<option selected>==지역선택==</option>
 		<option value="서울">서울</option>
 		<option value="경기도">경기도</option>
 		<option value="울산">울산</option>
@@ -47,6 +48,7 @@
     	<option value="제주">제주</option>
 	</select>
 	<input type="submit" value="검색">
+	</div>
 </form:form>
 
 <!-- 선택지역 또는 전국 휴양림 리스트 출력 -->
@@ -59,7 +61,7 @@
 		<h3>[${location}] 지역의 검색결과 [${count}] 개의 휴양림 존재 </h3>
 	</c:if>
 	
-	<table>
+	<table border="1" id="forest-list">
 		<tr>
 			<th>휴양림명</th>
 			<th>소재지도로명주소</th>
