@@ -1,8 +1,6 @@
 package kr.spring.board.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.domain.BoardVO;
 import kr.spring.board.service.BoardService;
-import kr.spring.util.PagingUtil;
 
 @Controller
 public class BoardController {
