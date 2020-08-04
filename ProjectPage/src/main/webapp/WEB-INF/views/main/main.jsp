@@ -6,17 +6,91 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.Map.Entry"%>
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/main.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/layout.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/mapResource/domestic.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/mapResource/raphael_min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 
-<div>
-	<script type="text/javascript">
-		window.onload = function() {
-	<%
-	String urlPath = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
+<script type="text/javascript">
+
+	<!-- 헤더 숨기고 드러내는 기능 -->
+	$("#main_header").hide();
+	$(window).on("scroll", function() { 
+		if($(window).scrollTop() > window.innerHeight-200) {
+			$("#main_header").show();
+		} else {
+			$("#main_header").hide();
+		}
+	});	
+	$(".headerArea").on("mouseover", function() { 
+		$("#main_header").show();
+	});	
+
+	<!-- 메인비주얼 전체보기 -->
+	function funcThisSize() {
+	   $(".main_visual").css( "height",window.innerHeight);   
+	}	
+	$(function(){
+	    $(window).resize( funcThisSize );
+	    funcThisSize();
+	    
+	    <!--메인비주얼 하단 버튼 누르면 아래로 이동하게-->
+	    $(".main_bottomBtn").on("click", function() {	
+	        $('html, body').animate({scrollTop :window.innerHeight-85}, 250);
+	    });    
+	});
+	
+</script>
+
+
+
+
+<!-- 메인 배경 (숲) -->
+<div class="main_visual">
+	<div class="main_visual_shadow">
+		<c:if test="${empty user_id}">
+			<div class="main_btn">
+				<ul>
+					<li><a
+						href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/member/register.do">회원가입</a></li>
+				</ul>
+			</div>
+		</c:if>
+		<div class="title">
+			<p class="tit">
+				<b>코로나</b>로_상처받은<br> 사람은_<b>휴양림</b>으로_가자<span>코상휴가</span>
+			</p>
+			<hr style="border: solid 2px #fff;">
+			<p class="txt">
+				코상휴가란? 실시간으로 전국의 코로나 확진자 수를 알려드리고,<br> 가장 확진자 수가 적은 지역의 휴양림을
+				추천해드리는 사이트입니다.
+			</p>
+		</div>
+		<a class="main_bottomBtn"> <img
+			src="${pageContext.request.contextPath}/resources/images/main_bottomBtn.png"
+			alt="아래로 이동" />
+		</a>
+	</div>
+</div>
+<!-- //메인 배경 (숲) -->
+
+
+
+
+
+<!-- 메인 컨텐츠(지도랑, 확진자적은 지역 순위)-->
+<div class="main_content">
+	<div>
+		<script type="text/javascript">
+			window.onload = function() {
+			<%String urlPath = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
 			String pageContents = "";
 			StringBuilder contents = new StringBuilder();
 
@@ -24,7 +98,6 @@
 			String str = null;
 			Map<String, Integer> myMap = null;
 			String[] pairs;
-
 
 			try {
 				URL url = new URL(urlPath);
@@ -146,8 +219,8 @@
 
 			//결과 출력
 			for (Entry<String, Integer> tmp : covMapCntList) {
-				if(tmp.getKey().equals(""))
-				System.out.print(tmp.getKey() + "=" + tmp.getValue() + ", ");
+				if (tmp.getKey().equals(""))
+					System.out.print(tmp.getKey() + "=" + tmp.getValue() + ", ");
 			}
 
 			//순위(1-10), 지역명
@@ -160,9 +233,7 @@
 			request.setAttribute("loc7", covMapCntList.get(6).toString().split("=")[0]);
 			request.setAttribute("loc8", covMapCntList.get(7).toString().split("=")[0]);
 			request.setAttribute("loc9", covMapCntList.get(8).toString().split("=")[0]);
-			request.setAttribute("loc10", covMapCntList.get(9).toString().split("=")[0]);
-			
-			%>
+			request.setAttribute("loc10", covMapCntList.get(9).toString().split("=")[0]);%>
 			//위치텍스트 색상 (색깔명 또는 색상코드 입력, 검정색의 색상코드는 #000000)
 			//최초의 로드시 지역의 배경색
 			var defaultLocColor = "white";
@@ -542,201 +613,280 @@
 						default:
 							location.href = "#";
 							break;
-						}
-					};
+							}
+						};
 
-				})(locArray[state], state);
-			}
-		};
-	</script>
+					})(locArray[state], state);
+				}
+			};
+		</script>
+
 	
-	<div class="sub_img_Layer" style="border:2px solid white; float:left;">
-		<!--content: s -->
-		<div id="canvas">
-			<div id="location_map"></div>
-			<div id="domestic">
-				<!-- 특정 지역 마우스 오버시 h2 태그안의 내용(지역명) 출력 -->
-				<div id="seoul">
-					<h2>서울</h2>
-				</div>
-				<div id="gygg">
-					<h2>경기</h2>
-				</div>
-				<div id="incheon">
-					<h2>인천</h2>
-				</div>
-				<div id="gangwon">
-					<h2>강원</h2>
-				</div>
-				<div id="chungbuk">
-					<h2>충청북도</h2>
-				</div>
-				<div id="chungnam">
-					<h2>충청남도</h2>
-				</div>
-				<div id="daejeon">
-					<h2>대전</h2>
-				</div>
-				<div id="sejong">
-					<h2>세종</h2>
-				</div>
-				<div id="gwangju">
-					<h2>광주</h2>
-				</div>
-				<div id="jeonbuk">
-					<h2>전라북도</h2>
-				</div>
-				<div id="jeonnam">
-					<h2>전라남도</h2>
-				</div>
-				<div id="gyeongbuk">
-					<h2>경상북도</h2>
-				</div>
-				<div id="gyeongnam">
-					<h2>경상남도</h2>
-				</div>
-				<div id="daegu">
-					<h2>대구</h2>
-				</div>
-				<div id="busan">
-					<h2>부산</h2>
-				</div>
-				<div id="ulsan">
-					<h2>울산</h2>
-				</div>
-				<div id="jeju">
-					<h2>제주</h2>
+	
+		<!-- 지도 부분 -->
+		<div id="main_map">
+			<div id="canvas">
+				<div id="location_map"></div>
+				<div id="domestic">
+					<!-- 특정 지역 마우스 오버시 h2 태그안의 내용(지역명) 출력 -->
+					<div id="seoul">
+						<h2>서울</h2>
+					</div>
+					<div id="gygg">
+						<h2>경기</h2>
+					</div>
+					<div id="incheon">
+						<h2>인천</h2>
+					</div>
+					<div id="gangwon">
+						<h2>강원</h2>
+					</div>
+					<div id="chungbuk">
+						<h2>충청북도</h2>
+					</div>
+					<div id="chungnam">
+						<h2>충청남도</h2>
+					</div>
+					<div id="daejeon">
+						<h2>대전</h2>
+					</div>
+					<div id="sejong">
+						<h2>세종</h2>
+					</div>
+					<div id="gwangju">
+						<h2>광주</h2>
+					</div>
+					<div id="jeonbuk">
+						<h2>전라북도</h2>
+					</div>
+					<div id="jeonnam">
+						<h2>전라남도</h2>
+					</div>
+					<div id="gyeongbuk">
+						<h2>경상북도</h2>
+					</div>
+					<div id="gyeongnam">
+						<h2>경상남도</h2>
+					</div>
+					<div id="daegu">
+						<h2>대구</h2>
+					</div>
+					<div id="busan">
+						<h2>부산</h2>
+					</div>
+					<div id="ulsan">
+						<h2>울산</h2>
+					</div>
+					<div id="jeju">
+						<h2>제주</h2>
+					</div>
 				</div>
 			</div>
+			<script>
+				var selecLoc = '';
+			</script>
 		</div>
-		<script>
-			var selecLoc = '';
-		</script>
-	</div>
+		<!-- //지도 부분 -->
 
-	<br>
-	
-	<div style="border: white 2px solid; width:33%; float:left;">
-		<h1>확진자 적은 지역 TOP 10</h1>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc1}">1. ${loc1}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc2}">2. ${loc2}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc3}">3. ${loc3}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc4}">4. ${loc4}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc5}">5. ${loc5}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc6}">6. ${loc6}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc7}">7. ${loc7}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc8}">8. ${loc8}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc9}">9. ${loc9}</a></h3>
-		<h3><a href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc10}">10. ${loc10}</a></h3>
+		
+
+
+
+		<!-- 확진자 지역 순위 부분 -->
+		<div id="main_topArea">
+			<h2>확진자 적은 지역 TOP 10</h2>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc1}">1.
+					${loc1}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc2}">2.
+					${loc2}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc3}">3.
+					${loc3}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc4}">4.
+					${loc4}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc5}">5.
+					${loc5}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc6}">6.
+					${loc6}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc7}">7.
+					${loc7}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc8}">8.
+					${loc8}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc9}">9.
+					${loc9}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc10}">10.
+					${loc10}</a>
+			</h3>
+		</div>
 	</div>
+	<!-- //확진자 지역 순위 부분 -->
+	
+	
+	
+	
+	
+	<!-- 인기휴양림 -->
+	<div class="popularityForest">
+		<h2 style="clear: both;">인기 휴양림</h2>
+		<c:if test="${!empty pickRankList}">
+			<table>
+				<tr>
+					<c:forEach var="rank" items="${pickRankList}" begin="0" end="3">
+						<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
+						<c:if test="${empty rank.p_img}">
+							<td><img
+								src="${pageContext.request.contextPath}/upload/sample.PNG"
+								style="max-width: 200px"></td>
+						</c:if>
+						<!-- 해당 휴양림의 이미지 존재, 출력 -->
+						<c:if test="${!empty rank.p_img}">
+							<td><img
+								src="${pageContext.request.contextPath}/upload/${rank.p_img}"
+								style="max-width: 200px"></td>
+						</c:if>
+					</c:forEach>
+				</tr>
+				<tr>
+					<c:forEach var="rank" items="${pickRankList}" begin="0" end="3">
+						<td><a
+							href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">${rank.p_name}</a></td>
+					</c:forEach>
+				</tr>
+				<tr>
+					<c:forEach var="rank" items="${pickRankList}" begin="4">
+						<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
+						<c:if test="${rank.p_img == null}">
+							<td><img
+								src="${pageContext.request.contextPath}/upload/sample.PNG"
+								style="max-width: 200px"></td>
+						</c:if>
+						<!-- 해당 휴양림의 이미지 존재, 출력 -->
+						<c:if test="${rank.p_img != null}">
+							<td><img
+								src="${pageContext.request.contextPath}/upload/${forest.p_img}"
+								style="max-width: 200px"></td>
+						</c:if>
+					</c:forEach>
+				</tr>
+				<tr>
+					<c:forEach var="rank" items="${pickRankList}" begin="4">
+						<td><a
+							href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">${rank.p_name}</a></td>
+					</c:forEach>
+				</tr>
+			</table>
+		</c:if>
+		<c:if test="${empty pickRankList}">아직 인기휴양림이 존재하지 않습니다.</c:if>
+	</div>
+	<!-- //인기휴양림 -->
+
+
+
+	<!-- Q&A -->
+	<div class="qnaArea">
+		<h2>Q&amp;A</h2>
+		<c:if test="${!empty qnaList}">
+			<table border="1">
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>답변여부</th>
+					<th>작성일</th>
+				</tr>
+				<c:forEach var="qna" items="${qnaList}">
+					<tr>
+						<td>${qna.q_num}</td>
+						<td><a
+							href="${pageContext.request.contextPath}/qna/questAnswerDetail.do?num=${qna.q_num}">${qna.q_title}</a></td>
+						<td>${qna.id}</td>
+						<c:choose>
+							<c:when test="${qna.answer eq 'no answer'}">
+								<td>처리중</td>
+							</c:when>
+							<c:otherwise>
+								<td>처리완료</td>
+							</c:otherwise>
+						</c:choose>
+						<td>${qna.q_reg_date}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+		<c:if test="${empty qnaList}">현재 QnA게시판에 글이 존재하지 않습니다.</c:if>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do">더보기</a>
+	</div>
+	<!-- //Q&A -->
+	
+	
+	
+	
+	
+	<!-- 공지사항 -->
+	<div class="noticeArea">
+		<h2>공지사항</h2>
+		<c:if test="${!empty boarList}">
+			<table border="1">
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>작성일</th>
+				</tr>
+				<c:forEach var="board" items="${boarList}" begin="0" end="5">
+					<tr>
+						<td>${board.n_num}</td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/boardView.do?n_num=${board.n_num}">${board.n_title}</a></td>
+						<td>${board.id}</td>
+						<td>${board.n_hit}</td>
+						<td>${board.reg_date}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+		<c:if test="${empty boarList}">현재 공지사항에 글이 존재하지 않습니다.</c:if>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do">더보기</a>
+	</div>
+	<!-- //공지사항 -->
+
+
+
+
+	
+
 </div>
 
-<h2 style="clear:both;">인기 휴양림</h2>
-
-<c:if test="${!empty pickRankList}">
-	<table>
-		<tr>
-			<c:forEach var="rank" items="${pickRankList}" begin="0" end="3">
-				<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
-				<c:if test="${empty rank.p_img}">
-					<td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:200px"></td>
-				</c:if>
-				<!-- 해당 휴양림의 이미지 존재, 출력 -->
-				<c:if test="${!empty rank.p_img}">
-					<td><img src="${pageContext.request.contextPath}/upload/${rank.p_img}" style="max-width:200px"></td>
-				</c:if>
-			</c:forEach>
-		</tr>
-		<tr>
-			<c:forEach var="rank" items="${pickRankList}" begin="0" end="3">
-				<td><a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">${rank.p_name}</a></td>
-			</c:forEach>
-		</tr>
-		
-		<tr>
-			<c:forEach var="rank" items="${pickRankList}" begin="4">
-				<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
-				<c:if test="${rank.p_img == null}">
-					<td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:200px"></td>
-				</c:if>
-				<!-- 해당 휴양림의 이미지 존재, 출력 -->
-				<c:if test="${rank.p_img != null}">
-					<td><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:200px"></td>
-				</c:if>
-			</c:forEach>
-		</tr>
-		<tr>
-			<c:forEach var="rank" items="${pickRankList}" begin="4">
-				<td><a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">${rank.p_name}</a></td>
-			</c:forEach>
-		</tr>
-	</table>
-</c:if>
-
-<c:if test="${empty pickRankList}">
-	아직 인기휴양림이 존재하지 않습니다.
-</c:if>
-
-
-<h2><a href="${pageContext.request.contextPath}/qna/questAnswerList.do">Q&A</a></h2>
-
-<c:if test="${!empty qnaList}">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>답변여부</th>
-			<th>작성일</th>
-		</tr>
-		<c:forEach var="qna" items="${qnaList}">
-			<tr>
-				<td>${qna.q_num}</td>
-				<td><a href="${pageContext.request.contextPath}/qna/questAnswerDetail.do?num=${qna.q_num}">${qna.q_title}</a></td>
-				<td>${qna.id}</td>
-				<c:choose>
-						<c:when test="${qna.answer eq 'no answer'}">
-							<td>처리중</td>
-						</c:when>
-						<c:otherwise>
-							<td>처리완료</td>
-						</c:otherwise>
-					</c:choose>
-				<td>${qna.q_reg_date}</td>
-			</tr>			
-		</c:forEach>
-	</table>
-</c:if>
-
-<c:if test="${empty qnaList}">
-	현재 QnA게시판에 글이 존재하지 않습니다.
-</c:if>
 
 
 
-<h2><a href="${pageContext.request.contextPath}/board/boardList.do">공지사항</a></h2>
 
-<c:if test="${!empty boarList}">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회수</th>
-			<th>작성일</th>
-		</tr>
-		<c:forEach var="board" items="${boarList}" begin="0" end="5">
-			<tr>
-			  	<td>${board.n_num}</td>
-				<td><a href="${pageContext.request.contextPath}/board/boardView.do?n_num=${board.n_num}">${board.n_title}</a></td>
-				<td>${board.id}</td>
-				<td>${board.n_hit}</td>
-				<td>${board.reg_date}</td>
-			</tr>			
-		</c:forEach>
-	</table>
-</c:if>
-
-<c:if test="${empty boarList}">
-	현재 공지사항에 글이 존재하지 않습니다.
-</c:if>
