@@ -4,6 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 
+<div class="page-main-style">
+
 <!-- 선택지역명 출력 -->
 <c:if test="${location != null}">
 	<h2>[${location}] 휴양림 리스트</h2>
@@ -82,3 +84,5 @@
 <c:if test="${location != null && count==0 }">
 	<h3>[${location}] 지역의 휴양림이 존재하지 않습니다.</h3>
 </c:if>
+
+</div>

@@ -99,7 +99,7 @@
 
 	});
 </script> 
-<div class="page-main-stlye">
+<div class="page-main-style">
 	<h2>회원가입</h2>
 	<form:form action="register.do" commandName="memberVO" id="register_form">
 		<ul>

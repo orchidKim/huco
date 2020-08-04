@@ -59,11 +59,11 @@
 				<p id="memberId">${memberVO.getId()}</p>
 			</li>
 			<li>
-				<label for="passwd_q">비밀번호 분실시 질문</label>
+				<label for="passwd_q">비밀번호 찾기 질문</label>
 				<p>${member.passwd_q}</p>
 			</li>
 			<li>
-				<label for="passwd_a">비밀번호 분실시 답변</label>
+				<label for="passwd_a">비밀번호 찾기 답변</label>
 				<form:input path="passwd_a" placeholder="답변을 입력하세요"/>
 				<input type="button" id="confirmAnswer" value="비밀번호 찾기">
 				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" id="loading" width="16" height="16" style="display:none;">

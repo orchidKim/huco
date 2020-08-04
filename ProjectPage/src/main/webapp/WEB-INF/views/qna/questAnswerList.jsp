@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="page_main-style">
+<div class="page-main-style">
 	<h2>Q&A</h2>
 	<c:if test="${count == 0}">
 		<div class="result-display">등록된 문의글이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-			<table>
+			<table border="1" class="qna-table">
 			<tr>
 				<th>번호</th>
-				<th width="200">제목</th>
+				<th width="500">제목</th>
 				<th>작성자</th>
 				<th>답변여부</th>
 				<th>작성일</th>

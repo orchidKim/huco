@@ -4,16 +4,36 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="page-main-style">
-	<h2>${questAnswerVO.q_title}</h2>
-	<ul>
-		<li>번호 : ${questAnswerVO.q_num}</li>
-		<li>작성자 : ${questAnswerVO.id}</li>
-		<li>작성일 : ${questAnswerVO.q_reg_date}</li>
-		<li>최근 수정일 : ${questAnswerVO.q_modify_date}</li>
-	</ul>
+	<table border="1" class="qna-detail-mainTable">
+				<colgroup>
+       		   	  <col width="15%" class=""/>
+           	      <col width="85%" />
+				</colgroup>
+				<tr>
+					<th>제목</th>
+					<td>${questAnswerVO.q_title}</td>
+				</tr>
+				<tr>
+					<th>번호</th>
+					<td>${questAnswerVO.q_num}</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td>${questAnswerVO.id}</td>
+				</tr>
+				<tr>
+					<th>작성일</th>
+					<td>${questAnswerVO.q_reg_date}</td>
+				</tr>
+				<tr>
+					<th>최근 수정일</th>
+					<td>${questAnswerVO.q_modify_date}</td>
+				</tr>
+	</table>
+	
 	<!-- size=두께 -->
 	<hr size="1" width="100%">
-	<p>
+	<p id="qna-question">
 		${questAnswerVO.question}
 	</p>
 	<hr size="1" width="100%">
@@ -31,7 +51,13 @@
 	<br>
 	<br>
 	<h2>Q&A관리자 답변</h2>	
-		<table border="1">
+		<table border="1" class="qna-detail-subTable">
+			<tr>
+				<th>작성자</th>
+				<th>답변 내용</th>
+				<th>작성일</th>
+				<th>수정일</th>
+			</tr>
 			<tr>
 			<td>관리자</td>
 			<c:choose>

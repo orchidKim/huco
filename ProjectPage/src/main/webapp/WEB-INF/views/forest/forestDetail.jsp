@@ -8,7 +8,8 @@
 <h1>[${forest.p_name}]휴양림 상세</h1>
 
 <!-- 카카오맵 연동 코드 시작, z-index:2; 상단 헤더보다 아래에 배치-->
-<div id="map" style="width:500px;height:400px;z-index:1;"></div>
+<div>
+<div id="map" style="width:300px;height:250px;z-index:1;margin-left:10px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=47a7869db724abdfda255cdf75e41b7d"></script>
 <script>
 	var lat = ${forest.p_latitude};
@@ -23,6 +24,59 @@
 	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 </script>
 <!-- 카카오맵 연동 코드 끝 -->
+
+
+<table class="forestDetail-table">
+	
+	<colgroup>
+      <col width="40%" class=""/>
+      <col width="30%" />
+      <col width="40%" />
+	</colgroup>
+	
+	<tr>
+		<th colspan="3"><h3>${forest.p_name}</h3><th>
+	</tr>
+	<tr>
+		<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
+		<c:if test="${empty forest.p_img}">
+			<td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:150px"></td>
+		</c:if>
+
+		<!-- 해당 휴양림의 이미지 존재, 출력 -->
+		<c:if test="${!empty forest.p_img}">
+			<td><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:150px"></td>
+		</c:if>
+
+		<th>
+			시도명<br>
+			구분<br>
+			면적<br>
+			수용가능인원<br>
+			입장료<br>
+			숙박가능여부<br>
+			주요시설<br>
+			소재지 도로명주소<br>
+			관리기관명<br>
+			전화번호<br>
+			홈페이지 주소<br>		
+		</th>
+		<td>
+			${forest.p_city}<br>
+			${forest.p_div}<br>
+			${forest.p_size}<br>
+			${forest.p_count}<br>
+			${forest.p_cost}<br>
+			${forest.p_stay}<br>
+			${forest.p_load}<br>
+			${forest.p_pubnum}<br>
+			${forest.p_phone}<br>
+			<a href="${forest.p_web}">${forest.p_web}</a>
+		</td>
+	</tr>
+	
+</table>
+</div>
 
 <!-- 폼에서 날짜(년,월) 선택 없이 예약버튼을 눌렀을 때 -->
 <script type="text/javascript">
@@ -59,51 +113,8 @@
 </c:if>
 <br>
 
-<table>
-	<tr>
-		<th>이미지</th>
-		<th>휴양림명</th>
-		<th>시도명</th>
-		<th>구분</th>
-		<th>면적</th>
-		<th>수용가능인원</th>
-		<th>입장료</th>
-		<th>숙박가능여부</th>
-		<th>주요시설</th>
-		<th>소재지도로명주소</th>
-		<th>관리기관명</th>
-		<th>전화번호</th>
-		<th>홈페이지 주소</th>
-	</tr>
-	<tr>
-		<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
-		<c:if test="${empty forest.p_img}">
-			<th><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:200px"></th>
-		</c:if>
 
-		<!-- 해당 휴양림의 이미지 존재, 출력 -->
-		<c:if test="${!empty forest.p_img}">
-			<th><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:200px"></th>
-		</c:if>
-		
-		<th>${forest.p_name}</th>
-		<th>${forest.p_city}</th>
-		<th>${forest.p_div}</th>
-		<th>${forest.p_size}</th>
-		<th>${forest.p_count}</th>
-		<th>${forest.p_cost}</th>
-		<th>${forest.p_stay}</th>
-		<th>${forest.p_facility}</th>
-		<th>${forest.p_load}</th>
-		<th>${forest.p_pubnum}</th>
-		<th>${forest.p_phone}</th>
-		<th><a href="${forest.p_web}">${forest.p_web}</a></th>
-	</tr>
-</table>
-
-
-
-<script type="text/javascript">
+<script type="text/javascridpt">
    function delete_check(c_num,p_num){
       if(confirm('해당 댓글을 삭제하시겠습니까?') == true){
          location.href='${pageContext.request.contextPath}/comment/commentDeleteUser.do?c_num='+c_num+'&p_num='+p_num;

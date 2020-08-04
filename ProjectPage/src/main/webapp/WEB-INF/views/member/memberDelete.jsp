@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<div class="page-main-stlye">
+<div class="page-main-style">
 	<h2>회원 탈퇴</h2>
 	<form:form action="delete.do" commandName="memberVO">
 		<form:hidden path="mem_num"/>
