@@ -1,0 +1,107 @@
+
+#canvas {
+	position: relative;
+}
+#domestic {
+	
+}
+
+#domestic>div {
+	position: absolute;
+	padding: 0 5px;
+	font-size: 12px;
+	/* 지역명 글자색 */
+	color: black;
+	text-align: center;
+	/*  지역명 배경색 */
+	background: lightgray;
+	display: none;
+}
+
+/* 마우스 오버시 선택된 지역명 문자열 속성 */
+#domestic>div h2 {
+	margin: 0;
+	font-size: 12px;
+}
+
+/* 마우스 오버시 선택된 지역명  문자열위치 */
+#seoul {
+	top: 80px;
+	left: 75px;
+}
+
+#gygg {
+	top: 80px;
+	left: 45px;
+}
+
+#incheon {
+	top: 80px;
+	left: 75px;
+}
+
+#gangwon {
+	top: 45px;
+	left: 150px;
+}
+
+#chungbuk {
+	top: 120px;
+	left: 145px;
+}
+
+#chungnam {
+	top: 165px;
+	left: 60px;
+}
+
+#daejeon {
+	top: 165px;
+	left: 80px;
+}
+
+#sejong {
+	top: 145px;
+	left: 70px;
+}
+
+#gwangju {
+	top: 260px;
+	left: 60px;
+}
+
+#jeonbuk {
+	top: 205px;
+	left: 60px;
+}
+
+#jeonnam {
+	top: 260px;
+	left: 60px;
+}
+
+#gyeongbuk {
+	top: 160px;
+	left: 180px;
+}
+
+#gyeongnam {
+	top: 240px;
+	left: 130px;
+}
+
+#daegu {
+	top: 210px;
+	left: 170px;
+}
+
+#busan {
+	top: 250px;
+	left: 190px;
+}
+
+#ulsan {
+	top: 225px;
+	left: 200px;
+}
+#jeju {top:330px; left:80px;}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.board.dao.BoardMapper">  
+	<!-- 
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT COUNT (*) FROM notice b JOIN member m ON b.mem_num=m.mem_num
+		<where>다이나믹 기능 목록작업 할때 사용됨
+			<if test="keyword != '' and keyfield == 'n_title'">
+				b.title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'id'">
+				m.id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'notice'">
+				b.content LIKE '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+	<select id="selectList" parameterType="map" resultType="NoticeVO">
+		SELECT * FROM (SELECT a.*, rownum rnum FROM 
+		(SELECT * FROM notice b JOIN member m ON b.mem_num=m.mem_num
+			<where>다이나믹 기능 목록작업 할때 사용됨
+			<if test="keyword != '' and keyfield == 'n_title'">
+				b.title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'id'">
+				m.id LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'notice'">
+				b.content LIKE '%' || #{keyword} || '%'
+			</if>
+			</where>
+		ORDER BY n_num DESC)a)
+		<![CDATA[ 
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="NoticeVO">
+	UPDATE notice SET n_title=#{n_title},notice=#{notice},modify_date=SYSDATE
+	WHERE n_num=#{n_num}	
+	</update>
+	 -->
+</mapper>
