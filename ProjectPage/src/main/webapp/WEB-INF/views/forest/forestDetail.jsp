@@ -7,36 +7,14 @@
 
 <h1>[${forest.p_name}]휴양림 상세</h1>
 
-<!-- 카카오맵 연동 코드 시작, z-index:2; 상단 헤더보다 아래에 배치-->
 <div>
-<div id="map" style="width:300px;height:250px;z-index:1;margin-left:10px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=47a7869db724abdfda255cdf75e41b7d"></script>
-<script>
-	var lat = ${forest.p_latitude};
-	var lon = ${forest.p_longitude};
-	
-	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
-		level: 5 //지도의 레벨(확대, 축소 정도)
-	};
-	
-	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-</script>
-<!-- 카카오맵 연동 코드 끝 -->
-
-
 <table class="forestDetail-table">
 	
 	<colgroup>
-      <col width="40%" class=""/>
-      <col width="30%" />
-      <col width="40%" />
+      <col width="30%" class=""/>
+      <col width="25%" />
+      <col width="45%" />
 	</colgroup>
-	
-	<tr>
-		<th colspan="3"><h3>${forest.p_name}</h3><th>
-	</tr>
 	<tr>
 		<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
 		<c:if test="${empty forest.p_img}">
@@ -48,35 +26,36 @@
 			<td><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:150px"></td>
 		</c:if>
 
-		<th>
-			시도명<br>
-			구분<br>
-			면적<br>
-			수용가능인원<br>
-			입장료<br>
-			숙박가능여부<br>
-			주요시설<br>
-			소재지 도로명주소<br>
-			관리기관명<br>
-			전화번호<br>
-			홈페이지 주소<br>		
+		<th id="forestDetail-table-th">
+			시도명<hr>
+			구분<hr>
+			면적<hr>
+			수용가능인원<hr>
+			입장료<hr>
+			숙박가능여부<hr>
+			주요시설<hr>
+			소재지 도로명주소<hr>
+			관리기관명<hr>
+			전화번호<hr>
+			홈페이지	
 		</th>
 		<td>
-			${forest.p_city}<br>
-			${forest.p_div}<br>
-			${forest.p_size}<br>
-			${forest.p_count}<br>
-			${forest.p_cost}<br>
-			${forest.p_stay}<br>
-			${forest.p_load}<br>
-			${forest.p_pubnum}<br>
-			${forest.p_phone}<br>
-			<a href="${forest.p_web}">${forest.p_web}</a>
+			${forest.p_city}<hr>
+			${forest.p_div}<hr>
+			${forest.p_size}<hr>
+			${forest.p_count}<hr>
+			${forest.p_cost}<hr>
+			${forest.p_stay}<hr>
+			${forest.p_facility}<hr>
+			${forest.p_load}<hr>
+			${forest.p_pubnum}<hr>
+			${forest.p_phone}<hr>
+			<input type="image" src="../resources/images/home.png" style="height:20px; width:20px;" onClick="location.href='${forest.p_web}'">
 		</td>
 	</tr>
 	
 </table>
-</div>
+<p/>
 
 <!-- 폼에서 날짜(년,월) 선택 없이 예약버튼을 눌렀을 때 -->
 <script type="text/javascript">
@@ -94,25 +73,40 @@
 	});
 </script>
 
-<c:if test="${!empty mem_num}">
-	<input type="button" value="찜" style="margin-left: 50%;"
-	onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'">
-</c:if>
-
-<br>
+<div class="forestDetail-sub">
+<div class="forestDetail-book">
  <c:if test="${!empty mem_num}">
 	<form action="${pageContext.request.contextPath}/visit/bookVisitDay.do" method="post" id="selectMonthDayForm">
-		<a style="color:red;">선택한 날짜의 [${forest.p_name}] 방문예정 현황을 볼 수 있습니다.</a><br>
+		<a style="color:blue;font-size:16px;font-weight:bold;">선택한 날짜의 [${forest.p_name}] 방문예정 현황을 볼 수 있습니다.</a><br><br>
 		<!-- 회원고유번호 프로젝트 통합시 수정 -->
 		<input type="hidden" name="mem_num" value="${mem_num}">
 		<input type="hidden" name="p_num" value="${forest.p_num}">
 		<input type="hidden" name="p_name" value="${forest.p_name}">
-		<input type="month" name="v_day" id="v_day">
-		<input type="submit" value="예약">
+		<p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;"></p>
+		<p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
+		<p><input type="button" value="찜하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"
+	onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p>
 	</form>
 </c:if>
-<br>
+</div>
 
+<!-- 카카오맵 연동 코드 시작, z-index:2; 상단 헤더보다 아래에 배치-->
+<div id="map" style="width:350px;height:250px;z-index:1;margin-left:10px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=47a7869db724abdfda255cdf75e41b7d"></script>
+<script>
+	var lat = ${forest.p_latitude};
+	var lon = ${forest.p_longitude};
+	
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
+		level: 5 //지도의 레벨(확대, 축소 정도)
+	};
+	
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+</script>
+</div>
+<!-- 카카오맵 연동 코드 끝 -->
 
 <script type="text/javascridpt">
    function delete_check(c_num,p_num){
@@ -124,50 +118,52 @@
    }
 </script>
 
+<!-- 댓글 작성 폼 시작 -->
+<c:if test="${!empty mem_num}">
+	<form action="${pageContext.request.contextPath}/comment/writeComment.do" method="post" id="forestDetail-myComments">
+		<!-- 회원고유번호 프로젝트 통합시 수정 -->
+		<input type="hidden" name="mem_num" value="${mem_num}">
+		<input type="hidden" name="p_num" value="${forest.p_num}">
+		<input type="hidden" name="p_name" value="${forest.p_name}">
+		<input type="text" name="comments" placeholder="이용후기를 남겨주세요!" style="width:700px;height:50px;">
+		<input type="submit" value="등록" style="width:110px;height:40px;margin-left:30px">
+	</form>
+</c:if>
+</div>
+<!-- 댓글 작성 폼 끝 -->
+<p/><p/>
+
+<div>
 <!-- 기존 댓글 출력 처리 시작 -->
 <c:if test="${commentCnt > 0}">
-	<table>
+	<table class="forestDetail-comments-table">
 		<tr>
 			<th>아이디</th>
-			<th>댓글내용</th>
+			<th width="500">이용후기</th>
 			<th>작성일</th>
-			<th></th>
 		</tr>
 		<c:forEach var="comment" items="${commentList}">
 			<tr>
-				<td>${comment.id}</td>
-				<td>${comment.comments}</td>
-				<td>${comment.reg_date}</td>
-				
-				<!-- 프로젝트 통합시, 실제 로그인중인 회원의 고유번호(mem_num) 출력하도록 수정 -->
-				<!-- 로그인한 회원과 작성자가 일치하는 경우만 삭제 버튼 출력 -->
-				<c:if test="${comment.mem_num == mem_num}">
-					<td><input type="button" value="삭제" onclick="delete_check(${comment.c_num},${forest.p_num});"></td>
-				</c:if>
-				
-				<c:if test="${comment.mem_num != mem_num}">
-					<td></td>
-				</c:if>
+				<td style="font-weight:bold;font-size:16px;">${comment.id}</td>
+				<td style="text-align:left;">
+					${comment.comments}
+					<!-- 프로젝트 통합시, 실제 로그인중인 회원의 고유번호(mem_num) 출력하도록 수정 -->
+					<!-- 로그인한 회원과 작성자가 일치하는 경우만 삭제 버튼 출력 -->
+					<c:if test="${comment.mem_num == mem_num}">
+						<input type="button" value="삭제" onclick="delete_check(${comment.c_num},${forest.p_num});" style="float:right;">
+					</c:if>
+					<c:if test="${comment.mem_num != mem_num}">
+					</c:if>
+				</td>
+				<td>
+				${comment.reg_date}
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
 </c:if>
 <!-- 기존 댓글 출력 처리 끝 -->
-
-<br>
-
-<!-- 댓글 작성 폼 시작 -->
-<c:if test="${!empty mem_num}">
-	<form action="${pageContext.request.contextPath}/comment/writeComment.do" method="post">
-		<!-- 회원고유번호 프로젝트 통합시 수정 -->
-		<input type="hidden" name="mem_num" value="${mem_num}">
-		<input type="hidden" name="p_num" value="${forest.p_num}">
-		<input type="hidden" name="p_name" value="${forest.p_name}">
-		<textarea rows="10" cols="50" name="comments"></textarea>
-		<input type="submit" value="등록">
-	</form>
-</c:if>	
-<!-- 댓글 작성 폼 끝 -->
+</div>
 
 
 

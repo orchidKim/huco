@@ -22,7 +22,7 @@ public interface QuestAnswerMapper {
 	@Delete("DELETE FROM qna WHERE q_num=#{num}")
 	public void delete(Integer num);
 	
-	@Select("SELECT * FROM qna WHERE rownum<=5 ORDER BY q_reg_date desc")
+	@Select("SELECT * FROM (SELECT * FROM  QNA ORDER BY q_num desc)  WHERE rownum <= 5")
 	public List<QuestAnswerVO> QnA_list();
 	
 }
