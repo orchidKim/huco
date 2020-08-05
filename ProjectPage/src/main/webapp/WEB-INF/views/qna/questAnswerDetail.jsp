@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="page-main-style">
+	<h2>Q&amp;A</h2>
 	<table border="1" class="qna-detail-mainTable">
 				<colgroup>
        		   	  <col width="15%" class=""/>
@@ -50,7 +51,7 @@
 	<br>
 	<br>
 	<br>
-	<h2>Q&A관리자 답변</h2>	
+	<h2>관리자 답변</h2>	
 		<table border="1" class="qna-detail-subTable">
 			<tr>
 				<th>작성자</th>

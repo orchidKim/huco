@@ -18,32 +18,54 @@
 
 <script type="text/javascript">
 
-	<!-- 헤더 숨기고 드러내는 기능 -->
-	$("#main_header").hide();
-	$(window).on("scroll", function() { 
-		if($(window).scrollTop() > window.innerHeight-200) {
-			$("#main_header").show();
-		} else {
-			$("#main_header").hide();
-		}
-	});	
-	$(".headerArea").on("mouseover", function() { 
-		$("#main_header").show();
-	});	
-
-	<!-- 메인비주얼 전체보기 -->
-	function funcThisSize() {
-	   $(".main_visual").css( "height",window.innerHeight);   
-	}	
 	$(function(){
+
+	<!-- 헤더 숨기고 드러내는 기능 -->
+		$("#main_header").hide();
+		$(window).on("scroll", function() { 
+			if($(window).scrollTop() > window.innerHeight-200) {
+				$("#main_header").show();
+			} else {
+				$("#main_header").hide();
+			}
+		});	
+		$(".headerArea").on("mouseover", function() { 
+			$("#main_header").show();
+		});	
+	
+		<!-- 메인비주얼 전체보기 -->
+		function funcThisSize() {
+		   $(".main_visual").css( "height",window.innerHeight);   
+		}	
+	
 	    $(window).resize( funcThisSize );
 	    funcThisSize();
 	    
 	    <!--메인비주얼 하단 버튼 누르면 아래로 이동하게-->
 	    $(".main_bottomBtn").on("click", function() {	
 	        $('html, body').animate({scrollTop :window.innerHeight-85}, 250);
-	    });    
+	    });  
+	    
+	    <!--헤더 유저정보-->
+	   /*  $(".user_info .infoList").hide(); 
+	    
+		$(".user_info").hover(function () { 
+			$(".infoList").slideDown("fast"); 
+		});
+		
+		$(".user_info .infoList").mouseout(function () { 
+			$(".infoList").slideUp("fast");  
+		}); */
+		
+		
+		
 	});
+	
+	
+	 			
+	
+	
+	
 	
 </script>
 
@@ -86,8 +108,9 @@
 
 
 <!-- 메인 컨텐츠(지도랑, 확진자적은 지역 순위)-->
+<div class="main_body_bg">
 <div class="main_content">
-	<div>
+	<div class="mapRankArea">
 		<script type="text/javascript">
 			window.onload = function() {
 			<%String urlPath = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
@@ -694,57 +717,61 @@
 
 		<!-- 확진자 지역 순위 부분 -->
 		<div id="main_topArea">
-			<h2>확진자 적은 지역 TOP 10</h2>
-			<h3>
+			<h2>확진자 적은 지역 <span>TOP 10</span></h2>
+			<h3 class="top">
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc1}">1.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc1}"><span class="num">1</span>
 					${loc1}</a>
 			</h3>
-			<h3>
+			<h3 class="top">
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc2}">2.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc2}"><span class="num">2</span>
 					${loc2}</a>
 			</h3>
-			<h3>
+			<h3 class="top">
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc3}">3.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc3}"><span class="num">3</span>
 					${loc3}</a>
 			</h3>
-			<h3>
+			<h3 class="second">
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc4}">4.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc4}"><span class="num">4</span>
 					${loc4}</a>
 			</h3>
-			<h3>
+			<h3 class="second">
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc5}">5.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc5}"><span class="num">5</span>
 					${loc5}</a>
 			</h3>
-			<h3>
+			<h3 class="second">
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc6}">6.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc6}"><span class="num">6</span>
 					${loc6}</a>
 			</h3>
+			<span class="others">
 			<h3>
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc7}">7.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc7}"><span class="num">7</span>
 					${loc7}</a>
 			</h3>
 			<h3>
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc8}">8.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc8}"><span class="num">8</span>
 					${loc8}</a>
 			</h3>
+			</span>
+			<span class="others">
 			<h3>
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc9}">9.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc9}"><span class="num">9</span>
 					${loc9}</a>
 			</h3>
 			<h3>
 				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc10}">10.
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc10}"><span class="num">10</span>
 					${loc10}</a>
 			</h3>
+			</span>
 		</div>
 	</div>
 	<!-- //확진자 지역 순위 부분 -->
@@ -814,7 +841,7 @@
 	<div class="qnaArea">
 		<h2>Q&amp;A</h2>
 		<c:if test="${!empty qnaList}">
-			<table border="1">
+			<table class="qnaAreaTable">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -854,7 +881,7 @@
 	<div class="noticeArea">
 		<h2>공지사항</h2>
 		<c:if test="${!empty boarList}">
-			<table border="1">
+			<table>
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -880,12 +907,10 @@
 	<!-- //공지사항 -->
 
 
-
-
 	
 
 </div>
-
+</div>
 
 
 

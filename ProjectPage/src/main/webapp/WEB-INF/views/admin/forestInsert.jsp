@@ -64,7 +64,7 @@
 	 });// $('#insertForestForm').submit
  });//$(document).ready
 </script>
-
+<div class="page-main-style">
 
 <h2>새 휴양림 등록</h2>
 	<form:form action="forestInsert.do" enctype="multipart/form-data" commandName="forestVO" method="post" id="insertForestForm">
@@ -126,3 +126,5 @@
 		</ul>
 			<input type="submit" value="등록">
 	</form:form>
+	
+	</div>

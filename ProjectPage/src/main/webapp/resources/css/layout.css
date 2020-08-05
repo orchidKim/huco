@@ -185,13 +185,29 @@ table td {
 
 /*---------------------- Q&A start---------------------*/
 
-.qna-table th{
+/* .qna-table th{
     border-bottom: 1.5px solid #036;
 }
-
 .qna-table td{
     border-bottom: 1px solid #ccc;
+} */
+div#main_body .qna-table{
+   width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
 }
+div#main_body .qna-table th,div#main_body .qna-table th td{
+   border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+div#main_body .qna-table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+
+
+
 
 /*---------------------- Q&A end---------------------*/
 
@@ -211,13 +227,29 @@ table td {
 	height: 10px;
 }
 
-/*---------------------- Q&A detail end---------------------*/
+/*---------------------- Q&A detail end ---------------------*/
+
+/*---------------------- Q&A write ---------------------*/
+#qna-write-question{
+   width:100%;
+   height: 300px;
+   overflow-y:scroll;
+}
+#q_title{
+   width:100%;
+} 
+.qna-write-mainTable{
+	border:1px solid lightgray
+}
+
+
+/*---------------------- Q&A write end---------------------*/
 
 /*---------------------- forestList start ---------------------*/
 
-#selectLoc{
+/* #selectLoc{
 	width: 150px;
-}
+} */
 
 /*---------------------- forestList end---------------------*/
 
@@ -262,46 +294,211 @@ table td {
 	background: lightgray;
 }
 
-/*---------------------- forestView end---------------------*/
+/*---------------------- forestDetail start ---------------------*/
 
-/*---------------------- memberView start---------------------*/
-/* 
-.memberView-table{
+#selectMonthDayForm{
+	width: 630px;
+}
+
+.forestDetail-table{
+	width: 100%;
+	font-size: 14px;
+}
+
+#forestDetail-table-th{
+	height: 500px;
+	background: #f3f6f7;
+}
+
+.forestDetail-table tr th h3{
 	text-align: center;
 }
 
-.memberView-table tr{
+.forestDetail-sub .forestDetail-book{
+	float: left;
+}
+
+#forestDetail-myComments{
+	width: 100%;
+}
+
+.forestDetail-sub #map{
+	float: right;
+	margin-right: 30px;
+}
+
+.forestDetail-comments-table tr{
+	height: 20px;
+}
+
+.forestDetail-comments-table th{
+	background: #e8eaed;
+}
+
+.forestDetail-comments-table td{
+	font-size: 14px;
+}
+
+/*---------------------- forestList start---------------------*/
+
+#selectLocForm{
+	float: right;
+}
+
+.selectBox{
+	float: right;
+}
+
+#forest-list tr{
+	height: 50px;
+	border-left: none;
+}
+
+#forest-list th{
+	background: lightgray;
+}
+
+/*---------------------- forestView end ---------------------*/
+
+/*---------------------- bookVisitDay start---------------------*/
+
+#insertVisitForm{
+	width: 800px;
+	height: 100px;
+	padding: 20px;
+	text-align: center;
+}
+
+#insertVisitForm span{
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 30px;
+}
+
+.bookVisitDay-table{
+	width: 840px;
+	margin: 10px auto 0 auto;
+}
+.bookVisitDay-table td{
+	width:50%;
+}
+
+.bookVisitDay-table tr{
+	height: 50px;
+}
+
+#v_cnt, #date{
+	height: 40px;
+}
+
+#submit-btn{
+	width:60%;
+	font-size:16px;
+	color:white;
+	font-weight:bold;
+	height:50px;
+	background:#4d540e;
+}
+
+/*---------------------- bookVisitDay end ---------------------*/
+
+/*---------------------- myBookList start ---------------------*/
+
+.myBookList-table th{
+    border-bottom: 1.5px solid #036;
+}
+
+.myBookList-table td{
+    border-bottom: 1px solid #ccc;
+}
+
+
+/*---------------------- memberView start---------------------*/
+
+.memberView-title{
 	height: 70px;
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 100px;
+	text-align: center;
+}
+
+.memberView-table{
+	width: 80%;
+	margin: 0 auto;
+	border: 2px solid gray;
+	border-left: none;
+	border-right: none;
+}
+
+.memberView-table tr{
+	height: 50px;
 }
 
 .memberView-table th{
-	background: lightgray;
-} */
+	background: #f3f6f7;
+}
+
+.memberView-table td{
+	background: white;
+}
+
+.memberView-btn{
+	text-align: center;
+
+}
+
+.memberView-btn input{
+	padding: 10 20 10 20;
+	color: white;
+	font-weight: bold;
+	background: #4d540e;
+}
+
+#memberView-btn1{
+	margin-right: 40px;
+}
 
 /*---------------------- memberView end---------------------*/
 
 /*---------------------- myPickList start---------------------*/
-/* 
-.myPick-table tr{
+
+#myPickList-title{
 	height: 70px;
 }
 
-.myPick-table th{
-	background: lightgray;
+.myPickList-table{
+	width: 840px;
+	margin: 0 auto;
 }
 
-#table-pickName{
-	text-align: center;
+.myPickList-table tr{
+	height:50px;
 }
 
-#pick-btn{
-	margin-left: 50px;
-} */
+#myPick-btn{
+	width:100px;
+	/* height:30px; */
+	margin-left:100px;
+	background:#4d540e;
+	color:white;
+	font-weight:bold;
+}
+
 
 /*---------------------- myPickList end---------------------*/
 
 /*---------------------- myBookList start---------------------*/
-/* 
+
+#myBookList-title{
+	height: 70px;
+}
+
+.myBookList-table{
+	width: 80%;
+	margin: 0 auto;
+}
+
 .myBookList-table tr{
 	height: 70px;
 }
@@ -314,12 +511,13 @@ table td {
 	text-align: center;
 }
 
-
-
- */
-
-
-
+#myBook-btn{
+	width:100px;
+	/* height:30px; */
+	background:#4d540e;
+	color:white;
+	font-weight:bold;
+}
 
 
 

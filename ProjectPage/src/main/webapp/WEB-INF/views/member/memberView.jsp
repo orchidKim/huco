@@ -1,17 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="page-main-style">
-	<h2>회원상세정보</h2>
-	<ul>
-		<li>ID : ${member.id}</li>
-		<li>이름 : ${member.name}</li>
-		<li>전화번호 : ${member.phone}</li>
-		<li>이메일 : ${member.email}</li>
-		<li>주소 : ${member.address}</li>
-	</ul>
-	<hr size="1" width="100%">
-	<p class="align-right">
-		<input type="button" value="회원정보수정" onclick="location.href='update.do'">
+	<h2 class="memberView-title">회원상세정보</h2>
+	
+	<table border="1" class="memberView-table">
+		<colgroup>
+       	  <col width="20%" />
+          <col width="30%" />
+          <col width="20%" />
+          <col width="30%" />
+		</colgroup>
+		<tr>
+			<th>ID</th>
+			<td>${member.id}</td>
+			<th>이름</th>
+			<td>${member.name}</td>
+		</tr>
+		<tr>
+			<th>연락처</th>
+			<td>${member.phone}</td>
+			<th>이메일</th>
+			<td>${member.email}</td>
+		</tr>
+		<tr>
+			<th>주소</th>
+			<td colspan="3">${member.address}</td>
+		</tr>
+	</table>
+	<p class="memberView-btn">
+		<input type="button" value="회원정보수정" id="memberView-btn1" onclick="location.href='update.do'">
 		<input type="button" value="회원탈퇴" onclick="location.href='delete.do'"> 
 	</p>
 </div>

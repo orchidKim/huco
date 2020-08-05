@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>     
-<h3>공지사항 상세</h3>
-     
+
+  
 <div class="page-main-style">
+<h2>공지사항</h2>
 	<table border="1" class="boardView-table">
 				<colgroup>
        		   	  <col width="15%" class=""/>
@@ -31,4 +32,7 @@
 					<td id="table-notice">${board.notice}</td>
 				</tr>
 	</table>
+	<div class="align-right">
+		 <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/boardList.do">
+	</div>
 </div>

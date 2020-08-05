@@ -12,30 +12,30 @@
       }
    }//function delete_check
 </script>
+<div class="page-main-style">
+<h2 id="myPickList-title">나의 찜 리스트</h2>
 
-<h2>나의 찜 리스트</h2>
-
-<table>
+<table border="1" class="myPickList-table">
 	<tr>
 		<th>휴양림명</th>
-		<th>처리</th>
 	</tr>
 
 	<c:if test="${!empty list}">	
 		<c:forEach var="myPick" items="${list}">
 			<tr>
-				<td><a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${myPick.p_num}">${myPick.p_name}</a></td>
-				<td><input type="button" value="삭제" onclick="delete_check(${myPick.p_num})"></td>
+				<td><a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${myPick.p_num}">${myPick.p_name}</a>
+					<input type="button" value="찜 삭제" id="myPick-btn" onclick="delete_check(${myPick.p_num})"></td>
+				
 			</tr>
 		</c:forEach>
 	</c:if>
 	<c:if test="${empty list}">
 		<tr>
-			<td colspan="2">찜 내역이 존재하지 않습니다.</td>
+			<td>찜 내역이 존재하지 않습니다.</td>
 		<tr>
 	</c:if>
 </table>	
 
-
+</div>
 
 

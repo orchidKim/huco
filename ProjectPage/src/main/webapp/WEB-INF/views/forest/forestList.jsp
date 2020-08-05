@@ -8,18 +8,18 @@
 
 <!-- 선택지역명 출력 -->
 <c:if test="${location != null}">
-	<h2>[${location}] 휴양림 리스트</h2>
+	<h2>${location} 휴양림 리스트</h2>
 </c:if>
 
 <!-- 선택 지역x -> 전국 휴양림으로 처리, 상단바 '전국휴양림' 버튼을 누른 경우 -->
 <c:if test="${location == null}">
-	<h2>[전국] 휴양림 리스트</h2>
+	<h2>전국 휴양림 리스트</h2>
 </c:if>
 	
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#selectLocForm').submit(function() {
-			if($('#selectLoc option:selected').text()=='==지역=='){
+			if($('#selectLoc option:selected').text()=='지역을 선택하세요'){
 				alert('지역을 선택하세요');
 				return false;
 			}//else if
@@ -30,7 +30,7 @@
 <form:form action="forestList.do" commandName="location" method="get" id="selectLocForm">
 	<div class="selectBox">
 	<select name="location" id="selectLoc">
-		<option selected>==지역선택==</option>
+		<option selected>지역을 선택하세요</option>
 		<option value="서울">서울</option>
 		<option value="경기도">경기도</option>
 		<option value="울산">울산</option>
@@ -56,11 +56,11 @@
 <!-- 선택지역 또는 전국 휴양림 리스트 출력 -->
 <c:if test="${count>0}">
 	<c:if test="${location == null}">
-		<h3>[전국] 검색결과 [${count}] 개의 휴양림 존재</h3>
+		<h3>전체 <!-- 전국 검색결과  --><span style="color:#4d540e">${count}</span>개의 휴양림이 있습니다.<!--  존재 --></h3>
 	</c:if>
 	
 	<c:if test="${location != null}">
-		<h3>[${location}] 지역의 검색결과 [${count}] 개의 휴양림 존재 </h3>
+		<h3><span style="color:#4d540e">${location} 지역</span>에 <span style="color:#4d540e">${count}</span>개의 휴양림이 있습니다.<!--  존재 --> </h3>
 	</c:if>
 	
 	<table border="1" id="forest-list">

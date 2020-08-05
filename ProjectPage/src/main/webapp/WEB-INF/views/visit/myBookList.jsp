@@ -14,10 +14,10 @@
 	}
 </script>
 
+<div class="page-main-style">
+<h2 id="myBookList-title">나의 방문예약 리스트</h2>
 
-<h2>나의 방문예약 리스트</h2>
-
-<table>
+<table border="1" class="myBookList-table">
 	<tr>
 		<th>방문날짜</th>
 		<th>휴양림명</th>
@@ -30,7 +30,7 @@
 				<td>${visit.v_day}</td>
 				<td><a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${visit.p_num}">${visit.p_name}</a></td>
 				<td>${visit.v_cnt}</td>
-				<td><input type="button" value="삭제" onclick="delete_check(${visit.v_num});"></td>
+				<td><input type="button" value="예약취소" id="myBook-btn" onclick="delete_check(${visit.v_num});"></td>
 			</tr>
 		</c:forEach>
 	</c:if>
@@ -41,3 +41,6 @@
 		<tr>
 	</c:if>
 </table>
+
+</div>
+

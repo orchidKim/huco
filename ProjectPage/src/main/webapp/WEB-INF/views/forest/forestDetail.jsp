@@ -5,17 +5,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 
-<h1>[${forest.p_name}]휴양림 상세</h1>
+<div class="page-main-style">
+
+<h2>[${forest.p_name}]휴양림 상세</h2>
 
 <div>
-<table class="forestDetail-table">
+<table class="forestDetail-table" >
 	
 	<colgroup>
-      <col width="30%" class=""/>
+      <col width="30%" />
       <col width="25%" />
       <col width="45%" />
 	</colgroup>
-	<tr>
+	<tr style="background:none;">
 		<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
 		<c:if test="${empty forest.p_img}">
 			<td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:150px"></td>
@@ -50,7 +52,7 @@
 			${forest.p_load}<hr>
 			${forest.p_pubnum}<hr>
 			${forest.p_phone}<hr>
-			<input type="image" src="../resources/images/home.png" style="height:20px; width:20px;" onClick="location.href='${forest.p_web}'">
+			<input type="image" src="../resources/images/home.png" style="height:20px; width:20px;border:none;" onClick="location.href='${forest.p_web}'">
 		</td>
 	</tr>
 	
@@ -82,7 +84,7 @@
 		<input type="hidden" name="mem_num" value="${mem_num}">
 		<input type="hidden" name="p_num" value="${forest.p_num}">
 		<input type="hidden" name="p_name" value="${forest.p_name}">
-		<p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;"></p>
+		<p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
 		<p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
 		<p><input type="button" value="찜하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"
 	onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p>
@@ -91,12 +93,11 @@
 </div>
 
 <!-- 카카오맵 연동 코드 시작, z-index:2; 상단 헤더보다 아래에 배치-->
-<div id="map" style="width:350px;height:250px;z-index:1;margin-left:10px;"></div>
+<div id="map" style="width:460px;height:300px;z-index:1;margin-left:10px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=47a7869db724abdfda255cdf75e41b7d"></script>
 <script>
 	var lat = ${forest.p_latitude};
 	var lon = ${forest.p_longitude};
-	
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
 		center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
@@ -125,8 +126,8 @@
 		<input type="hidden" name="mem_num" value="${mem_num}">
 		<input type="hidden" name="p_num" value="${forest.p_num}">
 		<input type="hidden" name="p_name" value="${forest.p_name}">
-		<input type="text" name="comments" placeholder="이용후기를 남겨주세요!" style="width:700px;height:50px;">
-		<input type="submit" value="등록" style="width:110px;height:40px;margin-left:30px">
+		<input type="text" name="comments" placeholder="이용후기를 남겨주세요!" style="width:1040px;height:50px;">
+		<input type="submit" value="등록" style="width:115px;height:50px;margin-left:5px">
 	</form>
 </c:if>
 </div>
@@ -165,6 +166,6 @@
 <!-- 기존 댓글 출력 처리 끝 -->
 </div>
 
-
+</div>
 
 

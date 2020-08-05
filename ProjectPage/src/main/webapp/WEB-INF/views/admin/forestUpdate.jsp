@@ -64,7 +64,7 @@
 	 });// $('#insertForestForm').submit
  });//$(document).ready
 </script>
-
+<div class="page-main-style">
 <h2>[${forest.p_name}] 휴양림 정보 수정</h2>
 
 	<form:form action="forestUpdate.do" enctype="multipart/form-data" commandName="forestVO" method="post" id="updateForestForm">
@@ -129,3 +129,4 @@
 		</ul>
 			<input type="submit" value="수정">
 	</form:form> 
+</div>

@@ -7,7 +7,7 @@
 		<div class="result-display">등록된 문의글이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-			<table border="1" class="qna-table">
+			<table class="qna-table">
 			<tr>
 				<th>번호</th>
 				<th width="500">제목</th>
