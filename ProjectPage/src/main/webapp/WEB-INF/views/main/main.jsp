@@ -842,7 +842,7 @@
 			</table>
 		</c:if>
 		<c:if test="${empty qnaList}">현재 QnA게시판에 글이 존재하지 않습니다.</c:if>
-		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do">더보기</a>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/qna/questAnswerList.do">더보기</a>
 	</div>
 	<!-- //Q&A -->
 	

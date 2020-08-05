@@ -93,7 +93,6 @@ public class QuestAnswerController {
 		System.out.println((Integer)session.getAttribute("mem_num"));
 		}
 		questAnswerVO.setMem_num((Integer)session.getAttribute("mem_num"));
-		
 		//글 등록
 		questAnswerService.insert(questAnswerVO);
 		
