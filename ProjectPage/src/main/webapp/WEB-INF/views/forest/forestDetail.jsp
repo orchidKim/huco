@@ -109,7 +109,7 @@
 </div>
 <!-- 카카오맵 연동 코드 끝 -->
 
-<script type="text/javascridpt">
+<script type="text/javascript">
    function delete_check(c_num,p_num){
       if(confirm('해당 댓글을 삭제하시겠습니까?') == true){
          location.href='${pageContext.request.contextPath}/comment/commentDeleteUser.do?c_num='+c_num+'&p_num='+p_num;

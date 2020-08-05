@@ -33,6 +33,6 @@
 				</tr>
 	</table>
 	<div class="align-right">
-		 <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/boardList.do">
+		 <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">
 	</div>
 </div>
