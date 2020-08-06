@@ -163,15 +163,6 @@ table td {
 
 
 /*---------------------- boardList start---------------------*/
-
-/* .boardList-table th{
-    border-bottom: 1.5px solid #036;
-}
-
-.boardList-table td{
-    border-bottom: 1px solid #ccc;
-}
- */
 div#main_body .boardList-table{
    width: 100%;
     border-top: 1px solid #444444;
@@ -198,67 +189,7 @@ div#main_body .boardList-table tr:nth-child(even) {
 
 /*---------------------- boardView end---------------------*/
 
-/*---------------------- Q&A start---------------------*/
 
-/* .qna-table th{
-    border-bottom: 1.5px solid #036;
-}
-.qna-table td{
-    border-bottom: 1px solid #ccc;
-} */
-div#main_body .qna-table{
-   width: 100%;
-    border-top: 1px solid #444444;
-    border-collapse: collapse;
-}
-div#main_body .qna-table th,div#main_body .qna-table th td{
-   border-bottom: 1px solid #444444;
-    padding: 10px;
-}
-div#main_body .qna-table tr:nth-child(even) {
-  background-color: #ffffff;
-}
-
-
-
-
-
-
-/*---------------------- Q&A end---------------------*/
-
-/*---------------------- Q&A detail start ---------------------*/
-
-.qna-detail-mainTable tr{
-	height: 20px;
-}
-
-#qna-question{
-	height: 300px;
-	font-size: 14px;
-	overflow-y:scroll;
-}
-
-.qna-detail-subTable tr{
-	height: 10px;
-}
-
-/*---------------------- Q&A detail end ---------------------*/
-
-/*---------------------- Q&A write ---------------------*/
-#qna-write-question{
-   width:100%;
-   height: 300px;
-   overflow-y:scroll;
-}
-#q_title{
-   width:100%;
-} 
-.qna-write-mainTable{
-	border:1px solid lightgray
-}
-
-
-/*---------------------- Q&A write end---------------------*/
 
 /*---------------------- forestList start ---------------------*/
 
@@ -531,6 +462,97 @@ div#main_body .qna-table tr:nth-child(even) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------------- Q&A start---------------------*/
+
+/* .qna-table th{
+    border-bottom: 1.5px solid #036;
+}
+.qna-table td{
+    border-bottom: 1px solid #ccc;
+} */
+div#main_body .qna-table{
+   width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+div#main_body .qna-table th,div#main_body .qna-table th td{
+   border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+div#main_body .qna-table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/*---------------------- Q&A detail start ---------------------*/
+
+.qna-detail-mainTable tr{
+   height: 20px;
+
+}
+.qna-detail-mainTable td{
+   text-align: left;
+}
+#qna-question{
+   height: 300px;
+   font-size: 14px;
+   overflow-y:scroll;
+}
+
+.qna-detail-subTable tr{
+   height: 10px;
+}
+
+/*---------------------- Q&A detail end ---------------------*/
+
+/*---------------------- Q&A write ---------------------*/
+#qna-write-question{
+   width:100%;
+   height: 300px;
+   overflow-y:scroll;
+}
+#q_title{
+   width:100%;
+} 
+.qna-write-mainTable{
+   border:1px solid lightgray
+}
+/*---------------------- Q&A write end---------------------*/
+
+/* Q&A modify start */
+
+div.page-main-style #modify_form{
+   width:90%; margin:0 auto;
+   font-size:15px;padding:50px 20px;
+   border-radius:10px;
+}
+div.page-main-style p.qna-p{
+   margin:0 auto;
+}
+div.page-main-style p #qna-write-question{
+   margin:0 auto;
+}
+div.page-main-style p.qna-p label{
+   height:10px;
+}
+
+/*---------------------- Q&A modify end ----------------------*/
+
+/*---------------------- Q&A end---------------------*/
 
 
 
