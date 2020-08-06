@@ -28,6 +28,7 @@
 			<select onchange="location.href=this.value">
 			    <option selected >[${user_id}]님</option> 
 			    <option value="${pageContext.request.contextPath}/member/detail.do">회원정보</option>
+			    <option value="${pageContext.request.contextPath}/qna/questAnswerMemberList.do">나의 문의내역</option>
 			    <option value="${pageContext.request.contextPath}/pickPlace/myPickList.do">나의 찜</option>
 			    <option value="${pageContext.request.contextPath}/visit/myBookList.do">나의 예약</option>
 			</select> 

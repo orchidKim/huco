@@ -9,12 +9,18 @@ import kr.spring.questAnswer.domain.QuestAnswerVO;
 
 public interface QuestAnswerService {
 	public String findId(int mem_num);
-	public List<QuestAnswerVO> selectList(Map<String,Object> map);
+	public List<QuestAnswerVO> QnA_list();
+	
 	public int selectRowCount(Map<String,Object> map);
+	public List<QuestAnswerVO> selectList(Map<String,Object> map);
+	
+	public int selectRowCountMember(int mem_num);
+	public List<QuestAnswerVO> selectListMember(Map<String,Object> map);
+	
 	public void insert(QuestAnswerVO questAnswerVO);
 	public QuestAnswerVO selectQuest(Integer num);
 	public void update(QuestAnswerVO questAnswerVO);
 	public void delete(Integer num);
-	public List<QuestAnswerVO> QnA_list();
+	
 
 }

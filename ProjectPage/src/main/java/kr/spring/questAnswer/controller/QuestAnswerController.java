@@ -155,5 +155,42 @@ public class QuestAnswerController {
 			
 			return "redirect:/qna/questAnswerList.do";
 		}
+	
+	//나의 QnA리스트	
+		@RequestMapping("/qna/questAnswerMemberList.do")
+		public ModelAndView q_memberProcess(@RequestParam(value="pageNum",defaultValue="1")int currentpage,
+															HttpSession session) {
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			
+			//회원의 총 레코드수  반환
+			int count = questAnswerService.selectRowCountMember((Integer)session.getAttribute("mem_num"));
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>>" + count);
+			}
+			
+			//페이징처리
+			PagingUtil page = new PagingUtil(currentpage, count, rowCount, pageCount, "questAnswerMemberList.do");
+			map.put("mem_num", (Integer)session.getAttribute("mem_num"));
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			
+			List<QuestAnswerVO> list = null;
+				if(count > 0) {
+					list = questAnswerService.selectListMember(map);
+				}
+				if(log.isDebugEnabled()) {
+					log.debug("<<QuestAnswerVO>>" + list);
+				}
+				
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("questAnswerMemberList");
+			mav.addObject("count",count);
+			mav.addObject("list",list);
+			mav.addObject("pagingHtml",page.getPagingHtml());
+		
+			return mav;
+		}
 
 }		

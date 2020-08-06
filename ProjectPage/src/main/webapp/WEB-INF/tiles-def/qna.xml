@@ -20,4 +20,10 @@
        <put-attribute name="title" value="QnA 게시판 글 수정"/> 
        <put-attribute name="body" value="/WEB-INF/views/qna/questAnswerModify.jsp"/>
     </definition> 
+    <definition name="questAnswerMemberList" extends="main">
+       <put-attribute name="title" value="QnA My List"/> 
+       <put-attribute name="body" value="/WEB-INF/views/qna/questAnswerMemberList.jsp"/>
+    </definition> 
+    
+    
 </tiles-definitions>       

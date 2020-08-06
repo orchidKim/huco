@@ -12,56 +12,56 @@ import kr.spring.questAnswer.domain.QuestAnswerVO;
 
 @Service("questAnswerService")
 public class QuestAnswerServiceImpl implements QuestAnswerService{
-
 	@Resource
 	private QuestAnswerMapper questAnswerMapper;
-	
 	@Override
 	public List<QuestAnswerVO> selectList(Map<String, Object> map) {
 		
 		return questAnswerMapper.selectList(map);
 	}
-
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return questAnswerMapper.selectRowCount(map);
 	}
-	
 	@Override
 	public void insert(QuestAnswerVO questAnswerVO) {
 		questAnswerMapper.insert(questAnswerVO);
 	}
-	
 	@Override
 	public QuestAnswerVO selectQuest(Integer num) {
 		// TODO Auto-generated method stub
 		return questAnswerMapper.selectQuest(num);
 	}
-
 	@Override
 	public void update(QuestAnswerVO questAnswerVO) {
 		questAnswerMapper.update(questAnswerVO);
 		
 	}
-
 	@Override
 	public void delete(Integer num) {
 		questAnswerMapper.delete(num);
 		
 	}
-
 	@Override
 	public String findId(int mem_num) {
-		// TODO Auto-generated method stub
+		
 		return questAnswerMapper.findId(mem_num);
 	}
-
 	@Override
 	public List<QuestAnswerVO> QnA_list() {
-		// TODO Auto-generated method stub
+		
 		return questAnswerMapper.QnA_list();
 	}
-
+	@Override
+	public List<QuestAnswerVO> selectListMember(Map<String, Object> map) {
+		
+		return questAnswerMapper.selectListMember(map);
+	}
+	@Override
+	public int selectRowCountMember(int mem_num) {
+		// TODO Auto-generated method stub
+		return questAnswerMapper.selectRowCountMember(mem_num);
+	}
 	
 }
