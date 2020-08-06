@@ -126,7 +126,7 @@
 </div>
 
 <!-- 카카오맵 연동 코드 시작, z-index:2; 상단 헤더보다 아래에 배치-->
-<div id="map" style="width:460px;height:300px;z-index:1;margin-left:10px;"></div>
+<div id="map"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=47a7869db724abdfda255cdf75e41b7d"></script>
 <script>
 	var lat = ${forest.p_latitude};
