@@ -26,7 +26,7 @@ import kr.spring.util.PagingUtil;
 @Controller
 public class BoardController {
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 5;
+	private int rowCount = 10;
 	private int pageCount = 10;
 
 	@Resource
@@ -100,7 +100,7 @@ public class BoardController {
 		int count = noticeService.selectRowCount();
 
 		//페이징 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list_admin.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"adminBoardList.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 

@@ -59,6 +59,6 @@
 		<div class="align-center">
 		<input type="button" value="공지사항 등록" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardWrite.do'">
 	</div><br>
-		<%-- <div class="align-center">${pagingHtml}</div> --%>
+		<div class="align-center">${pagingHtml}</div>
 	</div>
 </div>
