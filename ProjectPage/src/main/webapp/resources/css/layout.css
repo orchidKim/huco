@@ -314,42 +314,36 @@ div#main_body .qna-table tr:nth-child(even) {
 #selectMonthDayForm{
 	width: 630px;
 }
-
-.forestDetail-table{
+.page-main-style .forestDetail-sub form{
+	width:560px; padding:20px; background:none;
+}
+#main_body .forestDetail-table{
 	width: 100%;
 	font-size: 14px;
 }
-
 #forestDetail-table-th{
 	height: 500px;
 	background: #f3f6f7;
 }
-
 .forestDetail-table tr th h3{
 	text-align: center;
 }
-
 .forestDetail-sub .forestDetail-book{
 	float: left;
 }
-
 #forestDetail-myComments{
 	width: 100%;
 }
-
 .forestDetail-sub #map{
 	float: right;
-	margin-right: 30px;
+	/* margin-right: 30px; */
 }
-
 .forestDetail-comments-table tr{
 	height: 20px;
 }
-
 .forestDetail-comments-table th{
 	background: #e8eaed;
 }
-
 .forestDetail-comments-table td{
 	font-size: 14px;
 }
