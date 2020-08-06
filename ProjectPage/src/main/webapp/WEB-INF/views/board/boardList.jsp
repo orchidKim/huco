@@ -27,7 +27,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<div class="align-center">${pagingHtml}</div>
+	<div class="align-center pagenum">${pagingHtml}</div>
 </c:if>
 
 </div>

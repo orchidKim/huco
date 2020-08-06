@@ -60,30 +60,30 @@ public class PagingUtil {
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
-		pagingHtml.append("&nbsp;|&nbsp;");
+		/*pagingHtml.append("&nbsp;|&nbsp;");*/
 		//페이지 번호.현재 페이지는 빨간색으로 강조하고 링크를 제거.
 		for (int i = startPage; i <= endPage; i++) {
 			if (i > totalPage) {
 				break;
 			}
 			if (i == currentPage) {
-				pagingHtml.append("&nbsp;<b> <font color='red'>");
+				pagingHtml.append("<b>");
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
 				if(keyword==null){//검색 미사용시
-					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?pageNum=");
+					pagingHtml.append("<a href='"+pageUrl+"?pageNum=");
 				}else{
-					pagingHtml.append("&nbsp;<a href='"+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum=");
+					pagingHtml.append("<a href='"+pageUrl+"?keyfield="+keyfield+"&keyword="+keyword+"&pageNum=");
 				}
 				pagingHtml.append(i);
 				pagingHtml.append(addKey+"'>");
 				pagingHtml.append(i);
 				pagingHtml.append("</a>");
 			}
-			pagingHtml.append("&nbsp;");
+			pagingHtml.append("");
 		}
-		pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
+		/*pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");*/
 		// 다음 block 페이지
 		if (totalPage - startPage >= pageCount) {
 			if(keyword==null){//검색 미사용시

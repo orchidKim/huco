@@ -32,7 +32,7 @@
 				</tr>
 			</c:forEach>
 			</table>
-			<div class="align-center">${pagingHtml}</div>
+			<div class="align-center pagenum">${pagingHtml}</div>
 		</c:if>
 		<div class="align-right">	
 		<c:if test="${!empty user_id}">

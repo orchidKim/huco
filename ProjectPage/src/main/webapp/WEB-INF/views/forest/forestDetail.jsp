@@ -100,9 +100,8 @@
 		<input type="hidden" name="p_num" value="${forest.p_num}">
 		<input type="hidden" name="p_name" value="${forest.p_name}">
 		<p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
-		<p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
-		<p><input type="button" value="찜하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"
-	onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p>
+		<p><input type="submit" value="예약하기" style="width:100%;height:50px;"></p>
+		<p><input type="button" value="찜하기" style="width:100%;height:50px;" onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p>
 	</form>
 </c:if>
 </div>
@@ -172,9 +171,9 @@
 <c:if test="${commentCnt > 0}">
 	<table class="forestDetail-comments-table">
 		<tr>
-			<th>아이디</th>
-			<th width="500">이용후기</th>
-			<th>작성일</th>
+			<th width="170">아이디</th>
+			<th>이용후기</th>
+			<th width="170">작성일</th>
 		</tr>
 		<c:forEach var="comment" items="${commentList}">
 			<tr>
@@ -184,14 +183,12 @@
 					<!-- 프로젝트 통합시, 실제 로그인중인 회원의 고유번호(mem_num) 출력하도록 수정 -->
 					<!-- 로그인한 회원과 작성자가 일치하는 경우만 삭제 버튼 출력 -->
 					<c:if test="${comment.mem_num == mem_num}">
-						<input type="button" value="삭제" onclick="delete_check(${comment.c_num},${forest.p_num});" style="float:right;">
+						<input type="button" id="comment_delete" value="댓글삭제" onclick="delete_check(${comment.c_num},${forest.p_num});">
 					</c:if>
 					<c:if test="${comment.mem_num != mem_num}">
 					</c:if>
 				</td>
-				<td>
-				${comment.reg_date}
-				</td>
+				<td>${comment.reg_date}</td>
 			</tr>
 		</c:forEach>
 	</table>

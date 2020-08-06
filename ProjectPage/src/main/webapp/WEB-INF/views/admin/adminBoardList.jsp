@@ -57,8 +57,9 @@
 		</table>
 		</c:if>
 		<div class="align-center">
-		<input type="button" value="공지사항 등록" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardWrite.do'">
-	</div><br>
-		<div class="align-center">${pagingHtml}</div>
+			<input type="button" value="공지사항 등록" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardWrite.do'">
+		</div>
+		<br>
+		<div class="align-center pagenum">${pagingHtml}</div>
 	</div>
 </div>

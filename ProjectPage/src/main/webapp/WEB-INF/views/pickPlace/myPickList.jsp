@@ -13,6 +13,7 @@
    }//function delete_check
 </script>
 <div class="page-main-style">
+
 <h2 id="myPickList-title">나의 찜 리스트</h2>
 
 <table border="1" class="myPickList-table">
@@ -21,13 +22,22 @@
 	</tr>
 
 	<c:if test="${!empty list}">	
+	
 		<c:forEach var="myPick" items="${list}">
+		
 			<tr>
-				<td><a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${myPick.p_num}">${myPick.p_name}</a>
-					<input type="button" value="찜 삭제" id="myPick-btn" onclick="delete_check(${myPick.p_num})"></td>
+				<td>
+				
+					<a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${myPick.p_num}">${myPick.p_name}</a>
+					
+					<input type="button" value="찜 삭제" id="myPick-btn" onclick="delete_check(${myPick.p_num})">
+					
+				</td>
 				
 			</tr>
+			
 		</c:forEach>
+		
 	</c:if>
 	<c:if test="${empty list}">
 		<tr>
