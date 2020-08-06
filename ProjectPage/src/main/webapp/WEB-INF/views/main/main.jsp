@@ -889,7 +889,7 @@
 					<th>조회수</th>
 					<th>작성일</th>
 				</tr>
-				<c:forEach var="board" items="${boarList}" begin="0" end="5">
+				<c:forEach var="board" items="${boarList}" begin="0" end="4">
 					<tr>
 						<td>${board.n_num}</td>
 						<td><a
