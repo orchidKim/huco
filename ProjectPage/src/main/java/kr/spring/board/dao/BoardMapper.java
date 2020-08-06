@@ -11,10 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.board.domain.BoardVO;
 
 public interface BoardMapper {
-	@Select("select * from notice")
-	public List<BoardVO> selectList();
-	
-	@Select("SELECT COUNT(*) FROM notice")
+	public List<BoardVO> selectList(Map<String,Object> map);
 	public int selectRowCount();
 	
 	@Insert("INSERT INTO notice (n_num,n_title,notice,mem_num) "

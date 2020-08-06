@@ -27,7 +27,7 @@ import kr.spring.util.PagingUtil;
 public class BoardController {
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 5;
-	private int pageCount = 4;
+	private int pageCount = 10;
 
 	@Resource
 	private BoardService noticeService;
@@ -41,36 +41,32 @@ public class BoardController {
 	//=========================사용자==========================//
 	//사용자 목록
 	@RequestMapping("/board/boardList.do")
-	public ModelAndView process(){
-									//int currentPage,@RequestParam(value="keyfield",defaultValue="")
-									//String keyfield, @RequestParam(value="keyword",defaultValue="")
-									//String keyword	) {
-		//Map<String,Object>map = new HashMap<String,Object>();
-		//map.put("keyfield", keyfield);
-		//map.put("keyword", keyword);
+	public ModelAndView process (@RequestParam(value="pageNum",defaultValue="1") int currentPage,@RequestParam(value="keyfield",defaultValue="")
+									String keyfield, @RequestParam(value="keyword",defaultValue="")
+									String keyword) {
+
+		Map<String,Object>map = new HashMap<String,Object>();
+
 
 		//게시판의 총 레코드 수 또는 레코드 수 반환
 		int count = noticeService.selectRowCount();
 
+
 		//페이징 처리
-		//PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list.do");
-		//map.put("start", page.getStartCount());
-		//map.put("end", page.getEndCount());
-		
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"boardList.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
 		List<BoardVO> list = null;
 		if(count > 0) {
-			list = noticeService.selectList();
-			//아이디 세팅
-			for(BoardVO tmp : list) {
-				tmp.setId(noticeService.findId(tmp.getMem_num()));
-			}
+			list = noticeService.selectList(map);
 		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("boardList");
 		mav.addObject("count",count);
 		mav.addObject("list",list);
-		//mav.addObject("pagingHtml",page.getPagingHtml());
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		return mav;
 	}
@@ -86,53 +82,49 @@ public class BoardController {
 
 		return new ModelAndView("boardView","board",boardVO);
 	}
-	
-	
-	
+
+
+
 	//=========================관리자==========================//
-	
+
 	@RequestMapping("/admin/adminBoardList.do")
-	public ModelAndView processAdmin() {//@RequestParam(value="pageNum",defaultValue="1")
-										//int currentPage,@RequestParam(value="keyfield",defaultValue="")
-										//String keyfield, @RequestParam(value="keyword",defaultValue="")
-										//String keyword	) {
-		//Map<String,Object>map = new HashMap<String,Object>();
-		//map.put("keyfield", keyfield);
-		//map.put("keyword", keyword);
+	public ModelAndView processAdmin(@RequestParam(value="pageNum",defaultValue="1")
+	int currentPage,@RequestParam(value="keyfield",defaultValue="")
+	String keyfield, @RequestParam(value="keyword",defaultValue="")
+	String keyword) {
+		Map<String,Object>map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 
 		//게시판의 총 레코드 수 또는 레코드 수 반환
 		int count = noticeService.selectRowCount();
 
 		//페이징 처리
-		//PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list_admin.do");
-		//map.put("start", page.getStartCount());
-		//map.put("end", page.getEndCount());
-		
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"list_admin.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
 		List<BoardVO> list = null;
 		if(count > 0) {
-			list = noticeService.selectList();
-			//아이디 세팅
-			for(BoardVO tmp : list) {
-				tmp.setId(noticeService.findId(tmp.getMem_num()));
-			}
+			list = noticeService.selectList(map);
 		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminBoardList");
 		mav.addObject("count",count);
 		mav.addObject("list",list);
-		//mav.addObject("pagingHtml",page.getPagingHtml());
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		return mav;
 	}
-	
+
 	//관리자 글쓰기
 	@RequestMapping(value="/admin/adminBoardWrite.do", method=RequestMethod.GET)
 	public String form() {
 		return "adminBoardWrite";
 	}
 
-	
+
 	//관리자 글쓰기 처리
 	@RequestMapping(value="/admin/adminBoardWrite.do",method=RequestMethod.POST)
 	public String submit(@Valid BoardVO noticeVO, BindingResult result, HttpServletRequest request, HttpSession session) {
@@ -141,10 +133,10 @@ public class BoardController {
 		if(result.hasErrors()) {
 			return "adminBoardWrite";
 		}
-		
+
 		//mem_num 반환
 		noticeVO.setMem_num((Integer)session.getAttribute("mem_num"));
-		
+
 		//id 등록
 		String id = noticeService.findId((Integer)session.getAttribute("mem_num"));
 
@@ -153,7 +145,7 @@ public class BoardController {
 
 		return "redirect:/admin/adminBoardList.do";
 	}
-	
+
 	//글상세
 	@RequestMapping("/admin/adminBoardView.do")
 	public ModelAndView processAdmin (@RequestParam("num") int num) {
@@ -171,14 +163,14 @@ public class BoardController {
 	@RequestMapping(value="/admin/adminBoardModify.do",method=RequestMethod.GET)
 	public ModelAndView form(@RequestParam("n_num")int n_num, Model model) {
 		BoardVO boardVO = noticeService.selectBoard(n_num);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminBoardModify");
 		mav.addObject("boardVO",boardVO);
 
 		return mav;
 	}
-	
+
 	//글 수정 처리
 	@RequestMapping(value="/admin/adminBoardModify.do",method=RequestMethod.POST)
 	public String submitUpdate(@Valid BoardVO boardVO,BindingResult result,HttpServletRequest request) {
@@ -186,7 +178,7 @@ public class BoardController {
 		if(result.hasErrors()) {
 			return "adminBoardModify";
 		}
-		
+
 		noticeService.update(boardVO);
 
 		return "redirect:/admin/adminBoardList.do";

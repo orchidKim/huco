@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.board.domain.BoardVO;
 
 public interface BoardService {
-	public List<BoardVO> selectList();
+	public List<BoardVO> selectList(Map<String,Object> map);
 	
 	public int selectRowCount();
 	

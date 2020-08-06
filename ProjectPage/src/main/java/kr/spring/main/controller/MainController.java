@@ -1,6 +1,8 @@
 package kr.spring.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -41,12 +43,13 @@ public class MainController {
 			tmp.setId(questAnswerService.findId(tmp.getMem_num()));
 		}
 
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("start", 1);
+		map.put("end", 5);
 
 		List<BoardVO> boarList = null;
-		boarList = noticeService.selectList();
-		for(BoardVO tmp : boarList) {
-			tmp.setId(noticeService.findId(tmp.getMem_num()));
-		}
+		boarList = noticeService.selectList(map);
 
 		mav.setViewName("main");
 		mav.addObject("pickRankList",pickRankList);

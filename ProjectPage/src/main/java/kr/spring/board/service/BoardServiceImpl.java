@@ -18,8 +18,8 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	@Override
-	public List<BoardVO> selectList() {
-		return noticeMapper.selectList();
+	public List<BoardVO> selectList(Map<String,Object> map) {
+		return noticeMapper.selectList(map);
 	}
 
 	@Override
