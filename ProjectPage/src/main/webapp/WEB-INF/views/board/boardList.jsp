@@ -9,7 +9,7 @@
 </c:if>
 
 <c:if test="${count > 0 }">
-	<table border="1" class="boardList-table">
+	<table class="boardList-table">
 		<tr>
 			<th>번호</th>
 			<th width="500">제목</th>

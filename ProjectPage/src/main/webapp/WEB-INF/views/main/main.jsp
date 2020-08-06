@@ -881,7 +881,7 @@
 	<div class="noticeArea">
 		<h2>공지사항</h2>
 		<c:if test="${!empty boarList}">
-			<table>
+			<table class="noticeAreaTable">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>

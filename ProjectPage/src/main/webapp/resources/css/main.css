@@ -381,6 +381,18 @@ div#main_body .noticeArea{
 	position:relative;display:block;
 	margin:170px 0 200px 0;clear:both;
 }
+div#main_body .noticeArea .noticeAreaTable{
+   width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+}
+div#main_body .noticeArea .noticeAreaTable th, div#main_body .noticeArea .noticeAreaTable th td{
+   border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+div#main_body .noticeArea .noticeAreaTable tr:nth-child(even) {
+  background-color: #ffffff;
+}
 
 
 

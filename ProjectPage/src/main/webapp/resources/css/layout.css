@@ -164,14 +164,29 @@ table td {
 
 /*---------------------- boardList start---------------------*/
 
-.boardList-table th{
+/* .boardList-table th{
     border-bottom: 1.5px solid #036;
 }
 
 .boardList-table td{
     border-bottom: 1px solid #ccc;
 }
+ */
+div#main_body .boardList-table{
+   width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+div#main_body .boardList-table th,div#main_body .boardList-table th td{
+   border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+div#main_body .boardList-table tr:nth-child(even) {
+  background-color: #ffffff;
+}
 
+
+ 
 
 /*---------------------- boardList end---------------------*/
 
