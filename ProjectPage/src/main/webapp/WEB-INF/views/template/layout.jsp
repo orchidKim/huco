@@ -10,6 +10,8 @@
    href="${pageContext.request.contextPath}/resources/css/main.css">
 <link rel="stylesheet" 
    href="${pageContext.request.contextPath}/resources/css/layout.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 </head>
 <body>
 <div id="main">
