@@ -8,34 +8,7 @@
    <input type="button" value="Q&A관리" onclick="location.href='${pageContext.request.contextPath}/adminQna/adminQuestAnswerList.do'">
    <input type="button" value="댓글관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminCommentList.do'">
    <input type="button" value="휴양림 관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminForestList.do'"> --%>
-<script type="text/javascript">
-   $('#delete').hide();
-   $('#allchecked').focus();
-   
-   /* 선택되면 삭제버튼 나오게 하기  */
-   $('.checkbox').click(function(){
-      if($(this).prop("checked")){
-         $('#delete').show();
-      }
-   });
-   /* 전체선택  */
-   $('#allchecked').click(function(){
-       if($(this).prop('checked')){
-          $('.checkbox').prop('checked',true);
-          $('#delete').show();
-      }else{
-          $('.checkbox').prop('checked',false); 
-          $('#delete').hide();
-      } 
-   });
-   /*유효성 체크*/
-      $('#delete_form').submit(function() {
-         if (!$('.checkbox').is(":checked")) {
-            alert("최소한 1개는 선택해야합니다.");
-            return false;
-         }
-      });
-</script>
+
 
 <div class="page-main-style">
    <h2>Q&amp;A</h2>
@@ -80,3 +53,33 @@
       </div>
       </form:form>
 </div>
+
+
+<script type="text/javascript">
+   $('#delete').hide();
+   $('#allchecked').focus();
+   
+   /* 선택되면 삭제버튼 나오게 하기  */
+   $('.checkbox').click(function(){
+      if($(this).prop("checked")){
+         $('#delete').show();
+      }
+   });
+   /* 전체선택  */
+   $('#allchecked').click(function(){
+       if($(this).prop('checked')){
+          $('.checkbox').prop('checked',true);
+          $('#delete').show();
+      }else{
+          $('.checkbox').prop('checked',false); 
+          $('#delete').hide();
+      } 
+   });
+   /*유효성 체크*/
+      $('#delete_form').submit(function() {
+         if (!$('.checkbox').is(":checked")) {
+            alert("최소한 1개는 선택해야합니다.");
+            return false;
+         }
+      });
+</script>
