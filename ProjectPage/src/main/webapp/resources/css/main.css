@@ -384,6 +384,7 @@ div#main_body .noticeArea{
 div#main_body .noticeArea .noticeAreaTable{
    width: 100%;
     border: 1px solid #444444;
+    
     border-collapse: collapse;
 }
 div#main_body .noticeArea .noticeAreaTable th, div#main_body .noticeArea .noticeAreaTable th td{
