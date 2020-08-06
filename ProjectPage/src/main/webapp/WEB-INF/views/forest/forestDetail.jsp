@@ -72,9 +72,24 @@
 			alert(result);
 			//return false;
 		});
+		
+		$('#showAlert').submit(function() {
+			/* if($('#v_day').val()==''){
+				alert('날짜를 선택하세요');
+				return false;
+			}
+			result = '['+$('#v_day').val()+'] 날짜의 예약 현황을 확인합니다.'; */
+			alert('회원제 서비스입니다.');
+			return false;
+		});
+		
+		$('#buttonShowAlert').click(function() {
+			alert('회원제 서비스입니다');
+		});
 	});
 </script>
 
+<!-- 로그인시 보이는 예약,찜 버튼 -->
 <div class="forestDetail-sub">
 <div class="forestDetail-book">
  <c:if test="${!empty mem_num}">
@@ -88,6 +103,24 @@
 		<p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
 		<p><input type="button" value="찜하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"
 	onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p>
+	</form>
+</c:if>
+</div>
+
+<!-- 비로그인시 보이는 예약,찜 버튼 -->
+<div class="forestDetail-sub">
+<div class="forestDetail-book">
+ <c:if test="${empty mem_num}">
+	<form action="${pageContext.request.contextPath}/visit/bookVisitDay.do" method="post" id="showAlert">
+		<a style="color:blue;font-size:16px;font-weight:bold;">선택한 날짜의 [${forest.p_name}] 방문예정 현황을 볼 수 있습니다.</a><br><br>
+		<!-- 회원고유번호 프로젝트 통합시 수정 -->
+		<input type="hidden" name="mem_num" value="${mem_num}">
+		<input type="hidden" name="p_num" value="${forest.p_num}">
+		<input type="hidden" name="p_name" value="${forest.p_name}">
+		<p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
+		<p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
+		<p><input type="button" value="찜하기" id="buttonShowAlert" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
+
 	</form>
 </c:if>
 </div>
@@ -161,6 +194,19 @@
 				</td>
 			</tr>
 		</c:forEach>
+	</table>
+</c:if>
+
+<c:if test="${commentCnt == 0}">
+	<table class="forestDetail-comments-table">
+		<tr>
+			<th>아이디</th>
+			<th width="500">이용후기</th>
+			<th>작성일</th>
+		</tr>
+		<tr>
+			<td colspan="3">해당 휴양림에 작성된 댓글이 존재하지 않습니다.</td>
+		</tr>
 	</table>
 </c:if>
 <!-- 기존 댓글 출력 처리 끝 -->
