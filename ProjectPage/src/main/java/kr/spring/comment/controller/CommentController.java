@@ -15,12 +15,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.comment.domain.CommentVO;
 import kr.spring.comment.service.CommentService;
+import kr.spring.member.domain.MemberVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.util.PagingUtil;
 
 @Controller
 public class CommentController {
 	@Resource
 	private CommentService commentService;
+	
+	@Resource
+	MemberService memberService;
 	
 	private int rowCount = 10;
 	private int pageCount = 10;
@@ -47,8 +52,29 @@ public class CommentController {
 			@RequestParam(value="keyword",defaultValue="") String keyword) {
 		
 		Map<String,Object>map = new HashMap<String,Object>();
+		
+		System.out.println("검색필드 : "+keyfield+", 검색단어 : "+keyword);
+		
+		//아이디 필드로 검색한 경우 해당 아이디를 회원고유번호로 변경 후 검색처리
+		if(keyfield.equals("mem_num")) {
+			System.out.println("검색단어(아이디) : "+keyword);
+			//검색 아이디에 해당하는 객체 출력
+			MemberVO memberVO = memberService.selectCheckMember(keyword); 
+			
+			//검색한 아이디의 객체가 존재하면 해당 아이디의 고유번호를 출력
+			if(memberVO != null) {
+				keyword = Integer.toString(memberVO.getMem_num());
+				System.out.println("검색단어(회원고유번호) : "+keyword);
+			}else {
+				keyword ="";
+			}
+			
+		}
+		
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
+		
+		
 		
 		int count = commentService.selectRowCount(map);
 				

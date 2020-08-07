@@ -16,7 +16,7 @@ public interface CommentMapper {
 	//회원 고유번호를통한 아이디 검색
 	@Select("select id from member where mem_num=#{mem_num}")
 	public String findId(int mem_num);
-
+	
 	//휴양림별 댓글 리스트
 	@Select("SELECT * FROM place_comment WHERE p_num=#{p_num} order by reg_date desc")
 	public List<CommentVO> selectCommentList(int p_num);

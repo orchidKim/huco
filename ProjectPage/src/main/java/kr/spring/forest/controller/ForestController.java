@@ -23,6 +23,7 @@ import kr.spring.comment.domain.CommentVO;
 import kr.spring.comment.service.CommentService;
 import kr.spring.forest.domain.ForestVO;
 import kr.spring.forest.service.ForestService;
+import kr.spring.pickPlace.service.PickPlaceService;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -32,6 +33,7 @@ public class ForestController {
 
 	@Resource
 	private CommentService commentService;
+	
 
 	private int rowCount = 10;
 	private int pageCount = 10;

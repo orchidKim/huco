@@ -10,6 +10,16 @@
 			<if test="keyword!='' and keyfield=='p_num'">
 				p_num = #{keyword}
 			</if>
+			<!-- 관리자 페이지에서 후기를 검색할 때 (아이디->회원고유번호, 후기내용, 작성일) -->
+			<if test="keyword!='' and keyfield=='mem_num'">
+				mem_num LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword!='' and keyfield=='comments'">
+				comments LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword!='' and keyfield=='reg_date'">
+				reg_date LIKE '%' || #{keyword} || '%'
+			</if>
 		</where>
 	</select> 
 	
@@ -25,6 +35,16 @@
  		<where>
 			<if test="keyword!='' and keyfield=='p_num'">
 				p_num = #{keyword}
+			</if>
+			<!-- 관리자 페이지에서 후기를 검색할 때 (아이디->회원고유번호, 후기내용, 작성일) -->
+			<if test="keyword!='' and keyfield=='mem_num'">
+				mem_num LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword!='' and keyfield=='comments'">
+				comments LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword!='' and keyfield=='reg_date'">
+				reg_date LIKE '%' || #{keyword} || '%'
 			</if>
 		</where>
  				 ORDER BY c_num DESC)a)

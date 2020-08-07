@@ -18,7 +18,24 @@
    }//end function delete_check
 </script>
 <div class="page-main-style">
-<h2>휴양림 관리</h2>   
+<h2>휴양림 관리</h2>
+	<form id="search_form" action="adminForestList.do" method="get">
+		<ul class="search">
+			<li>
+				<select name="keyfield">
+						<option selected>==전체==</option>
+						<!-- 아이디를 입력받지만 회원번호를 검색하도록 처리 -->
+						<option value="p_name">휴양림명</option>
+						<option value="p_load">소재지명</option>
+				</select>
+			</li>
+			<li><input type="search" size="16" name="keyword" id="keyword"></li>
+			<li><input type="submit" value="찾기"></li>
+		</ul>
+	</form>  
+	
+	
+	
 <input type="button" value="새 휴양림 등록" onclick="location.href='forestInsert.do'">
 
 <c:if test="${count>0}">
@@ -67,6 +84,10 @@
       </c:forEach>
    </table>
    <div class="align-center pagenum">${pagingHtml}</div>
+</c:if>
+
+<c:if test="${count==0}">
+ 검색한 내용의 휴양림이 존재하지 않습니다.
 </c:if>
 
 

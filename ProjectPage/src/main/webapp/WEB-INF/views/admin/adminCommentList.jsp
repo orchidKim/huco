@@ -15,6 +15,20 @@
 
 <div class="page-main-style">
 <h2>댓글관리</h2>
+	<form id="search_form" action="adminCommentList.do" method="get">
+		<ul class="search">
+			<li><select name="keyfield">
+					<option selected>==전체==</option>
+					<!-- 아이디를 입력받지만 회원번호를 검색하도록 처리 -->
+					<option value="mem_num">아이디</option>
+					<option value="comments">댓글내용</option>
+					<option value="reg_date">작성일</option>
+			</select></li>
+			<li><input type="search" size="16" name="keyword" id="keyword">
+			</li>
+			<li><input type="submit" value="찾기"></li>
+		</ul>
+	</form>
 
 	<!-- 작성된 댓글이 존재하는 경우 -->	
 	<c:if test="${count > 0}">
