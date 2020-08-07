@@ -144,8 +144,9 @@
 				
 			<li>
 				<label for="address">주소</label>
-				<form:input path="address" placeholder="주소를 입력하세요"/>
-				<form:errors path="address" cssClass="error-color"/> 
+				<form:input path="address" id="address" placeholder="주소를 입력하세요"/>
+				<form:errors path="address" cssClass="error-color"/>
+				<input type="button" value="주소검색" id="findAdress">
 			</li>	
 			
 			<li>
@@ -166,3 +167,19 @@
 		</div>
 	</form:form>
 </div>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	var addressText = '';
+	$('#findAdress').click(function(){
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	            document.getElementById('address').value = data.address;
+	        	//$('#address').text('aa'/* data.address */);
+	        }
+	    }).open();
+	});
+ 
+</script>
