@@ -165,8 +165,7 @@
       <input type="hidden" name="p_name" value="${forest.p_name}">
       <p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
       <p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
-      <!-- <p><input type="button" value="찜하기" id="buttonShowAlert" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p> -->
-    	  
+      <!-- <p><input type="button" value="찜하기" id="buttonShowAlert" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p> --> 
    </form>
    
    <!-- 찜버튼 수정 -->
@@ -175,7 +174,12 @@
   	  <span class="oplike">PICK</span>
  	  <span class="opfb">p</span>
  	  <span class="optext">이 휴양림 찜 하기</span>
- 	  <span class="oph-text">이 휴양림 찜 하기</span>
+ 	  <span id="oph-text">이 휴양림 찜 하기</span>
+ 	  
+ 	  <!-- <span class="iplike">PICK</span>
+ 	    <span class="ipfb">P</span>
+     	<span class="iptext">이 휴양림 찜 하기</span>
+     	<span id="iph-text">이 휴양림 찜 하기</span> -->
 	  </a>
 	  </div>
    <!-- 찜버튼 수정 -->
