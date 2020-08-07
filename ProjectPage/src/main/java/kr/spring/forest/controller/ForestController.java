@@ -2,12 +2,15 @@ package kr.spring.forest.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +23,7 @@ import kr.spring.comment.domain.CommentVO;
 import kr.spring.comment.service.CommentService;
 import kr.spring.forest.domain.ForestVO;
 import kr.spring.forest.service.ForestService;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class ForestController {
@@ -28,6 +32,10 @@ public class ForestController {
 
 	@Resource
 	private CommentService commentService;
+
+	private int rowCount = 10;
+	private int pageCount = 10;
+
 
 	//프로젝트 경로 변경시 매번 수정
 	String path = "C:\\Users\\user\\Desktop\\projectPage\\ForestPage\\src\\main\\webapp\\upload";
@@ -39,54 +47,87 @@ public class ForestController {
 
 	//사용자 시점의 휴양림 리스트 출력
 	@RequestMapping(value="/forest/forestList.do",method=RequestMethod.GET)
-	public ModelAndView forestList(@RequestParam(value="location",required=false) String location) {
+	public ModelAndView forestList(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="location",required=false) String location) {
 
-		List<ForestVO> forestList = null;
-		int count = 0;
+		Map<String,Object>map = new HashMap<String,Object>();
 
-		//특정 지역(location) 선택x -> 전국 휴양림 출력 
-		if(location == null) {
-			count = forestService.allForestListCount();
-			forestList = forestService.allForestList();
-		}else {
-			//특정 지역(location) 선택 -> 해당 지역 휴양림만 출력 
-			count = forestService.selectForestListCount(location);
-			//해당 지역의 휴양림이 존재하는 경우
-			if(count>0) {
-				forestList = forestService.selectForestList(location);
-			}
+		if(location!=null) {
+			keyfield = "p_load";
 		}
 
+		map.put("keyfield", keyfield);
+		map.put("keyword", location);
+
+		int count = forestService.selectRowCount(map);
+
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"forestList.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<ForestVO> forestList = null;
+
+		//특정 지역(location) 선택x -> 전국 휴양림 출력 
+		if(count>0) {
+			forestList = forestService.selectList(map);
+		}
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("forestList");
 		mav.addObject("forestList",forestList);
 		mav.addObject("location",location);
 		mav.addObject("count",count);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		return mav;
 	}
 
 	//특정 휴양림 선택 후, 휴양림 상세 페이지
 	@RequestMapping("/forest/forestDetail.do")
-	public ModelAndView forestDetail(@RequestParam(value="p_num", required=true) int p_num, HttpSession session) {
-		//선택 휴양림 고유번호를 통한 휴양림 데이터 추출
-		ForestVO forest = forestService.selectForest(p_num);
+	public ModelAndView forestDetail(@RequestParam(value="p_num", required=true) int p_num,
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			HttpSession session) {
 
-		int commentCnt = commentService.selectCommentListCount(p_num);
-		List<CommentVO> commentList = commentService.selectCommentList(p_num);
+		Map<String,Object>map = new HashMap<String,Object>();
+		
+		//특정 휴양림의 후기만 출력하도록
+		keyfield = "p_num";
+		keyword = Integer.toString(p_num);
+		
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 
-		//회원번호를 통한 아이디 세팅
-		for(CommentVO commentVO : commentList) {
-			commentVO.setId(commentService.findId(commentVO.getMem_num()));
+		int commentCnt = commentService.selectRowCount(map);
+
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,commentCnt,5,pageCount,"forestDetail.do?p_num="+p_num+"&");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<CommentVO> commentList = null;
+
+		if(commentCnt > 0) {
+			commentList = commentService.commentList(map);
 		}
 
+		//회원번호를 통한 아이디 세팅
+		if(commentCnt > 0) {
+			for(CommentVO commentVO : commentList) {
+				commentVO.setId(commentService.findId(commentVO.getMem_num()));
+			}
+		}
 
+		//선택 휴양림 고유번호를 통한 휴양림 데이터 추출
+		ForestVO forest = forestService.selectForest(p_num);
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("forestDetail");
 		mav.addObject("forest",forest);
 		mav.addObject("commentCnt",commentCnt);
 		mav.addObject("commentList",commentList);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		//세션에서 회원고유번호 추출
 		int mem_num = 0;
@@ -94,7 +135,6 @@ public class ForestController {
 			mem_num = (Integer)session.getAttribute("mem_num");
 			mav.addObject("mem_num",mem_num);
 		}
-		
 
 		return mav;
 	}
@@ -110,15 +150,33 @@ public class ForestController {
 
 	//관리자 페이지 진입 후, 전체 휴양림 리스트 추출
 	@RequestMapping("/admin/adminForestList.do")
-	public ModelAndView adminForestList() {
+	public ModelAndView adminForestList(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="") String keyword) {
 
-		int count = forestService.allForestListCount();
-		List<ForestVO> forestList = forestService.allForestList();		
+		Map<String,Object>map = new HashMap<String,Object>();
+
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		int count = forestService.selectRowCount(map);
+
+
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,3,pageCount,"adminForestList.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<ForestVO> forestList = null;
+
+		if(count>0) {
+			forestList = forestService.selectList(map);
+		}	
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminForestList");
 		mav.addObject("forestList",forestList);
 		mav.addObject("count",count);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		return mav;
 	}

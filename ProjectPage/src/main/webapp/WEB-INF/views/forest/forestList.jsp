@@ -19,7 +19,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#selectLocForm').submit(function() {
-			if($('#selectLoc option:selected').text()=='지역을 선택하세요'){
+			if($('#keyword option:selected').text()=='지역을 선택하세요'){
 				alert('지역을 선택하세요');
 				return false;
 			}//else if
@@ -29,7 +29,7 @@
 
 <form:form action="forestList.do" commandName="location" method="get" id="selectLocForm">
 	<div class="selectBox">
-	<select name="location" id="selectLoc">
+	<select name="location" name="keyword" id="keyword">
 		<option selected>지역을 선택하세요</option>
 		<option value="서울">서울</option>
 		<option value="경기도">경기도</option>
@@ -78,6 +78,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div class="align-center pagenum">${pagingHtml}</div>
 </c:if>
 
 <!-- 지역을 선택했지만 해당 지역에 휴양림이 없을 때 -->

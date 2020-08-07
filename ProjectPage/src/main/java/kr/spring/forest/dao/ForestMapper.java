@@ -9,9 +9,14 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.board.domain.BoardVO;
 import kr.spring.forest.domain.ForestVO;
 
 public interface ForestMapper {
+	//페이징 처리를 위한 휴양림 리스트 출력
+	public List<ForestVO> selectList(Map<String,Object> map);
+	public int selectRowCount(Map<String,Object> map);
+	
 	//휴양림 등록
 	@Insert("insert into placedata (P_NUM,P_NAME,P_CITY,P_DIV,P_SIZE,P_COUNT,P_COST,P_STAY,P_FACILITY,P_LOAD,P_PUBNUM,P_PHONE,P_WEB,P_LATITUDE,P_LONGITUDE,P_REGDATE,P_CODE,P_PUBNAME,P_IMG) "
 			+ "values (place_seq.nextval,#{p_name},#{p_city},#{p_div},#{p_size},#{p_count},#{p_cost},#{p_stay},#{p_facility},#{p_load},#{p_pubnum},#{p_phone},#{p_web},#{p_latitude},#{p_longitude},#{p_regdate},#{p_code},#{p_pubname},#{p_img,jdbcType=VARCHAR})")

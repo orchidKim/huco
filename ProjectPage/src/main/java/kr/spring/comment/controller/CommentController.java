@@ -1,6 +1,8 @@
 package kr.spring.comment.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,11 +15,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.comment.domain.CommentVO;
 import kr.spring.comment.service.CommentService;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class CommentController {
 	@Resource
 	private CommentService commentService;
+	
+	private int rowCount = 10;
+	private int pageCount = 10;
 
 	@ModelAttribute
 	public CommentVO initCommand() {
@@ -35,19 +41,40 @@ public class CommentController {
 
 	//관리자 페이지 진입 후, 전체 댓글 리스트 추출
 	@RequestMapping("/admin/adminCommentList.do")
-	public ModelAndView adminForestList() {
-		int count = commentService.allCommentListCount();
-		List<CommentVO> commentList = commentService.allCommentList();
+	public ModelAndView adminForestList(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="keyword",defaultValue="") String keyword) {
+		
+		Map<String,Object>map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		int count = commentService.selectRowCount(map);
+				
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"adminCommentList.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+		
+		List<CommentVO> commentList = null;
+		
+		if(count > 0) {
+			commentList = commentService.commentList(map);
+		}
 
 		//회원번호를 통한 아이디 세팅
-		for(CommentVO commentVO : commentList) {
-			commentVO.setId(commentService.findId(commentVO.getMem_num()));
+		if(count > 0) {
+			for(CommentVO commentVO : commentList) {
+				commentVO.setId(commentService.findId(commentVO.getMem_num()));
+			}
 		}
+		
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("adminCommentList");
 		mav.addObject("count",count);
 		mav.addObject("commentList",commentList);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		return mav;
 	}

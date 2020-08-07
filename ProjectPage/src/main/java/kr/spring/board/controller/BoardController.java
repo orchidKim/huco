@@ -41,9 +41,10 @@ public class BoardController {
 	//=========================사용자==========================//
 	//사용자 목록
 	@RequestMapping("/board/boardList.do")
-	public ModelAndView process (@RequestParam(value="pageNum",defaultValue="1") int currentPage,@RequestParam(value="keyfield",defaultValue="")
-									String keyfield, @RequestParam(value="keyword",defaultValue="")
-									String keyword) {
+	public ModelAndView process (@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+									@RequestParam(value="keyfield",defaultValue="") String keyfield,
+									 @RequestParam(value="keyword",defaultValue="") String keyword) {
+									
 
 		Map<String,Object>map = new HashMap<String,Object>();
 

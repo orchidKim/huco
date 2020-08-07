@@ -192,6 +192,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div class="align-center pagenum">${pagingHtml}</div>
 </c:if>
 
 <c:if test="${commentCnt == 0}">

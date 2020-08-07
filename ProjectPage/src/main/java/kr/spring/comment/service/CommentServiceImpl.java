@@ -52,5 +52,15 @@ public class CommentServiceImpl implements CommentService{
 		return commentMapper.findId(mem_num);
 	}
 
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return commentMapper.selectRowCount(map);
+	}
+
+	@Override
+	public List<CommentVO> commentList(Map<String, Object> map) {
+		return commentMapper.commentList(map);
+	}
+
 	
 }

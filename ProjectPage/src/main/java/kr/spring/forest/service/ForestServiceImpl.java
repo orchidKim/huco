@@ -1,6 +1,7 @@
 package kr.spring.forest.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -59,6 +60,17 @@ public class ForestServiceImpl implements ForestService{
 	public int allForestListCount() {
 		return forestMapper.allForestListCount();
 	}
+
+	@Override
+	public List<ForestVO> selectList(Map<String, Object> map) {
+		return forestMapper.selectList(map);
+	}
+
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return forestMapper.selectRowCount(map);
+	}
+
 
 
 	

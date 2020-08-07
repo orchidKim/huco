@@ -1,6 +1,7 @@
 package kr.spring.forest.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -31,6 +32,10 @@ public interface ForestService {
 
 	//전국 휴양림 총 카운트
 	public int allForestListCount();
+
+	//페이징 처리를 위한 휴양림 리스트 출력
+	public List<ForestVO> selectList(Map<String,Object> map);
+	public int selectRowCount(Map<String,Object> map);
 
 
 }
