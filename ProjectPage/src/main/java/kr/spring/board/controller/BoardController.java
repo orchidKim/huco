@@ -47,6 +47,14 @@ public class BoardController {
 									
 
 		Map<String,Object>map = new HashMap<String,Object>();
+		
+		if(!keyword.equals("")) {
+			//제목에서만 검색하기 때문에 n_title로 기본 셋팅함
+			map.put("keyfield", "n_title");
+		}else{
+			map.put("keyfield", keyfield);
+		}
+		map.put("keyword", keyword);
 
 
 		//게시판의 총 레코드 수 또는 레코드 수 반환
