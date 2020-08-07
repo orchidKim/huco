@@ -427,7 +427,7 @@ form#noticePage_src input{
 	float:left;padding-left:5px;
 	border:1px solid #aaa;
 	height:40px;line-height:40px;
-	color:#fff;width:370px;
+	/* color:#fff; */width:370px;
 	box-sizing:border-box;
 }
 form#noticePage_src #boardList-srcBtn{
