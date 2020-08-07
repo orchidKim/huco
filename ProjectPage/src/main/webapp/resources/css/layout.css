@@ -406,6 +406,178 @@ div.page-main-style  .admin_main p{
 
 
 
+/* ==============로그아웃시  찜태그 스타일================== */
+
+#oaposition{
+	
+	margin: 0 auto;
+}
+
+#logoutPick {
+  /* position: absolute; */
+  margin: 0 auto;
+  display:block;
+  width: 16em;
+  height: 1em;
+  line-height: 1em;
+  transform: translateY(-50%);
+  color: #6495ed;
+  background: #f0f0f0;
+  font-size: 1.5em;
+  padding: .6em;
+  padding-left: 8em;
+  text-decoration: none;
+  border-radius: .7em;
+  overflow: hidden;
+  transition: all .2s cubic-bezier(.41,0,.59,1.44);
+}
+#logoutPick:hover, #logoutPick:focus {
+  width: 17em;
+}
+#logoutPick span {
+  transition: all .2s cubic-bezier(.41,0,.59,1.44);
+}
+.optext {
+  position: absolute;
+  transform: none;
+}
+#logoutPick:hover .optext, #logoutPick:focus .optext {
+  transform: translateY(2em);
+}
+.oph-text {
+  position: absolute;
+  left: 2em;
+  transform: translateY(-2em);
+}
+#logoutPick:hover .oph-text, #logoutPick:focus .oph-text {
+  transform: none;
+}
+
+.oplike {
+  position: absolute;
+  background: #6495ed;
+  color: #f0f0f0;
+  padding: .2em .2em .1em;
+  font-size: .5em;
+  border-radius: .4em;
+  border-top-left-radius: 0;
+  left: 10px;
+  transform: translateY(4em);
+}
+.oplike:after {
+  content: "";
+  width: 25%;
+  height: 30%;
+  background: #6495ed;
+  border-radius: .2em .2em 0 0;
+  position: absolute;
+  left: 0;
+  top: -30%;
+}
+#logoutPick:hover .oplike, #logoutPick:focus .oplike {
+  transform: none;
+}
+.opfb {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5em;
+  left: 20px;
+  transform: none;
+}
+#logoutPick:hover .opfb, #logoutPick:focus .opfb {
+  transform: translateY(-2em);
+}
+
+/* ==============로그아웃시  찜태그 스타일================== */
+
+
+
+/* ==============로그인시  찜태그 스타일================== */
+
+#iaposition{
+/* 	border : 1px solid red;
+	margin: 0 auto; */
+}
+
+#loginPick {
+  /* position: absolute; */
+  margin: 0 auto;
+  display:block;
+  width: 16em;
+  height: 1em;
+  line-height: 1em;
+  transform: translateY(-50%);
+  color: #6495ed;
+  background: #f0f0f0;
+  font-size: 1.5em;
+  padding: .6em;
+  padding-left: 8em;
+  text-decoration: none;
+  border-radius: .7em;
+  overflow: hidden;
+  transition: all .2s cubic-bezier(.41,0,.59,1.44);
+}
+#loginPick:hover, #loginPick:focus {
+  width: 17em;
+}
+#loginPick span {
+  transition: all .2s cubic-bezier(.41,0,.59,1.44);
+}
+.iptext {
+  position: absolute;
+  transform: none;
+}
+#loginPick:hover .iptext, #loginPick:focus .iptext {
+  transform: translateY(2em);
+}
+.iph-text {
+  position: absolute;
+  left: 2em;
+  transform: translateY(-2em);
+}
+#loginPick:hover .iph-text, #loginPick:focus .iph-text {
+  transform: none;
+}
+
+.iplike {
+  position: absolute;
+  background: #6495ed;
+  color: #f0f0f0;
+  padding: .2em .2em .1em;
+  font-size: .5em;
+  border-radius: .4em;
+  border-top-left-radius: 0;
+  left: 10px;
+  transform: translateY(4em);
+}
+.iplike:after {
+  content: "";
+  width: 25%;
+  height: 30%;
+  background: #6495ed;
+  border-radius: .2em .2em 0 0;
+  position: absolute;
+  left: 0;
+  top: -30%;
+}
+#loginPick:hover .iplike, #loginPick:focus .iplike {
+  transform: none;
+}
+.ipfb {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5em;
+  left: 20px;
+  transform: none;
+}
+#loginPick:hover .ipfb, #loginPick:focus .ipfb {
+  transform: translateY(-2em);
+}
+
+/* ==============로그아웃시  찜태그 스타일================== */
+
+
+
 
 
 
