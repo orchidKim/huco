@@ -53,7 +53,7 @@ public class CommentController {
 		
 		Map<String,Object>map = new HashMap<String,Object>();
 		
-		System.out.println("검색필드 : "+keyfield+", 검색단어 : "+keyword);
+		/*System.out.println("검색필드 : "+keyfield+", 검색단어 : "+keyword);*/
 		
 		//아이디 필드로 검색한 경우 해당 아이디를 회원고유번호로 변경 후 검색처리
 		if(keyfield.equals("mem_num")) {
