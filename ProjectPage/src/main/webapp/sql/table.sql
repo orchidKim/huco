@@ -100,7 +100,9 @@ create table notice(
     notice clob not null,--공지내용, clob -> String 변수로 처리
     n_hit number  default 0 not null,   --조회수
     reg_date date default sysdate not null,
-    modify_date date default sysdate not null
+    modify_date date default sysdate not null,
+    mem_num number not null,
+    constraint notice_fk foreign key (mem_num) references member (mem_num)
 );
 
 create table qna(
