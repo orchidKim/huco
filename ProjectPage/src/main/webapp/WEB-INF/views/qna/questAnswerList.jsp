@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-main-style">
 	<h2>Q&A</h2>
+	<div class="align-right" id="qna-list-div">	
+		<c:if test="${!empty user_id}">
+			<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'" >
+		</c:if>
+	</div>
 	<c:if test="${count == 0}">
 		<div class="result-display">등록된 문의글이 없습니다.</div>
 	</c:if>
@@ -34,9 +39,4 @@
 			</table>
 			<div class="align-center pagenum">${pagingHtml}</div>
 		</c:if>
-		<div class="align-right">	
-		<c:if test="${!empty user_id}">
-			<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'">
-		</c:if>
-		</div>
 </div>

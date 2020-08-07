@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.questAnswer.domain.QuestAnswerVO;
 import kr.spring.questAnswer.service.QuestAnswerService;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class QuestAnswerController {
@@ -110,6 +111,7 @@ public class QuestAnswerController {
 		}
 		
 		QuestAnswerVO questAnswerVO = questAnswerService.selectQuest(num);
+		questAnswerVO.setQuestion(StringUtil.useBrNoHtml(questAnswerVO.getQuestion()));
 		
 		return new ModelAndView("questAnswerDetail","questAnswerVO",questAnswerVO);
 	}
@@ -120,6 +122,7 @@ public class QuestAnswerController {
 		public String form(@RequestParam("num") int num, Model model) {
 			
 			QuestAnswerVO questAnswerVO = questAnswerService.selectQuest(num);
+			questAnswerVO.setQuestion(StringUtil.useBrNoHtml(questAnswerVO.getQuestion()));
 			
 			model.addAttribute("questAnswerVO", questAnswerVO);
 			

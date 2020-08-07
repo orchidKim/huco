@@ -352,6 +352,14 @@ div#main_body .qna-table tr:nth-child(even) {
 .qna-write-mainTable{
    border:1px solid lightgray
 }
+.qna-align-right{
+	margin:0px;
+	text-align:right;
+	font-size:12px;
+}
+div.page-main-style #qna-list-div {
+		margin: 0 0 5px 0;
+}
 /*---------------------- Q&A write end---------------------*/
 
 /* Q&A modify start */
