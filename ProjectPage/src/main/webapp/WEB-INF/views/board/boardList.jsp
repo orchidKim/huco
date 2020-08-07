@@ -8,6 +8,15 @@
 	<div class="result-display">등록된 게시물이 없습니다.</div>
 </c:if>
 
+<div class="wrap">
+   <div class="search">
+      <form action="boardList.do" id="noticePage_src" method="get">
+      <input type="text" id="keyword" name="keyword" placeholder="제목으로만 검색이 가능합니다">
+      <button type="submit" id="boardList-srcBtn">검색</button>
+      </form>
+   </div>
+</div>
+
 <c:if test="${count > 0 }">
 	<table class="boardList-table">
 		<tr>
