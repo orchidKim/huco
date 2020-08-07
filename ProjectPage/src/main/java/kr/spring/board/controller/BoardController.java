@@ -102,7 +102,12 @@ public class BoardController {
 	String keyfield, @RequestParam(value="keyword",defaultValue="")
 	String keyword) {
 		Map<String,Object>map = new HashMap<String,Object>();
-		map.put("keyfield", keyfield);
+		if(!keyword.equals("")) {
+			//제목에서만 검색하기 때문에 n_title로 기본 셋팅함
+			map.put("keyfield", "n_title");
+		}else{
+			map.put("keyfield", keyfield);
+		}
 		map.put("keyword", keyword);
 
 		//게시판의 총 레코드 수 또는 레코드 수 반환
