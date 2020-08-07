@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class MainCheckInterceptor extends HandlerInterceptorAdapter{
-
+  
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Override
