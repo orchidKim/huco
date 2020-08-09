@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-main-style">
 	<h2>Q&A</h2>
-	<div class="align-right" id="qna-list-div">	
+	<div class="align-right" id="qna-list-div">
 		<c:if test="${!empty user_id}">
 			<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'" >
 		</c:if>
@@ -19,6 +19,7 @@
 				<th>작성자</th>
 				<th>답변여부</th>
 				<th>작성일</th>
+				<th>조회수</th>
 			</tr>
 			<c:forEach var="qna" items="${list}">
 				<tr>
@@ -34,9 +35,25 @@
 						</c:otherwise>
 					</c:choose>
 					<td>${qna.q_reg_date}</td>
+					<td>${qna.q_hit}</td>
 				</tr>
 			</c:forEach>
 			</table>
+			<div class="align-center pagenum">
+		<form id="search_form" action="questAnswerList.do" method="get">
+			<ul>
+				<li>
+					<select name="keyfield" >
+						<option value="q_title">제목</option>
+						<option value="question">내용</option>
+						<option value="id">id</option>
+					</select>
+					<input type="search" size="15" name="keyword" id="keyword">	
+					<input type="submit" value="찾기">
+				<li>
+			</ul>			
+		</form>
+		</div>
 			<div class="align-center pagenum">${pagingHtml}</div>
 		</c:if>
 </div>

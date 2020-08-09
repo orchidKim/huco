@@ -24,6 +24,10 @@
                <td>${questAnswerVO.q_modify_date}</td>
             </tr>
             <tr>
+            	<th>조회수</th>
+            	<td>${questAnswerVO.q_hit}</td>
+            </tr>
+            <tr>
                <th>작성자</th>
                <td>${questAnswerVO.id}</td>
             </tr>

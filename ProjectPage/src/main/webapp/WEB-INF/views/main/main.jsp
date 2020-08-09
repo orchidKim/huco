@@ -848,6 +848,7 @@
 					<th>작성자</th>
 					<th>답변여부</th>
 					<th>작성일</th>
+					<th>조회수</th>
 				</tr>
 				<c:forEach var="qna" items="${qnaList}">
 					<tr>
@@ -864,6 +865,7 @@
 							</c:otherwise>
 						</c:choose>
 						<td>${qna.q_reg_date}</td>
+						<td>${qna.q_hit}</td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -63,5 +63,10 @@ public class QuestAnswerServiceImpl implements QuestAnswerService{
 		// TODO Auto-generated method stub
 		return questAnswerMapper.selectRowCountMember(mem_num);
 	}
+	@Override
+	public void updateHit(Integer num) {
+		questAnswerMapper.updateHit(num);
+		
+	}
 	
 }

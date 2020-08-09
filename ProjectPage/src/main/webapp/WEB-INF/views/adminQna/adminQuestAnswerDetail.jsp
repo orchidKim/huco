@@ -17,6 +17,7 @@
       <li>작성자 : ${questAnswerVO.id}</li>
       <li>작성일 : ${questAnswerVO.q_reg_date}</li>
       <li>최근 수정일 : ${questAnswerVO.q_modify_date}</li>
+      <li>조회수 : ${questAnswerVO.q_hit}</li>
    </ul>
    <!-- size=두께 -->
    <hr size="1" width="100%">

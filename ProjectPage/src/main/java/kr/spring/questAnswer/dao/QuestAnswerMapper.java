@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.questAnswer.domain.QuestAnswerVO;
 
@@ -15,6 +16,9 @@ public interface QuestAnswerMapper {
 	public int selectRowCount(Map<String,Object> map);
 	//Q&A 전체 문의 구하기
 	public List<QuestAnswerVO> selectList(Map<String,Object> map);
+	//조회수증가
+	@Update("UPDATE qna SET q_hit=q_hit+1 WHERE q_num=#{q_num}")
+	public void updateHit(Integer num);
 	
 	//나의 문의내역 개수 구하기
 	@Select("SELECT COUNT(*) FROM qna q JOIN member m ON q.mem_num = m.mem_num WHERE m.mem_num = #{mem_num}")

@@ -12,6 +12,19 @@
 
 <div class="page-main-style">
    <h2>Q&amp;A</h2>
+   <form id="search_form" action="adminQuestAnswerList.do" method="get">
+			<ul>
+				<li>
+					<select name="keyfield" >
+						<option value="q_title">제목</option>
+						<option value="question">내용</option>
+						<option value="id">id</option>
+					</select>
+					<input type="search" size="15" name="keyword" id="keyword">	
+					<input type="submit" value="찾기">
+				<li>
+			</ul>			
+		</form>
    <form:form action="delete.do" commandName="questAnswerVO" id="delete_form">
       <c:if test="${count == 0}">
          <div class="result-display">등록된 문의가 없습니다.</div>
@@ -24,6 +37,7 @@
                <th>작성자</th>
                <th>답변여부</th>
                <th>작성일</th>
+               <th>조회수</th>
                <th><input type="checkbox" id="allchecked" style="width:20px;height:20px;"></th>
             </tr>
             <c:forEach var="qna" items="${list}">
@@ -40,6 +54,7 @@
                      </c:otherwise>
                   </c:choose>
                   <td>${qna.q_reg_date}</td>
+                  <td>${qna.q_hit}</td>
                   <td><input type="checkbox" style="width:20px;height:20px;" class="checkbox" name="q_num" value="${qna.q_num}"></td>
                </tr>
             </c:forEach>

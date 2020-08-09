@@ -48,7 +48,7 @@
 		}
 		  
 	});
-		//함수 
+
 		document.getElementById('qna-write-question').onkeyup=function(){
 		//입력한 글자 수
 						//this = textarea , value : 입력한 값, length : 입력한 글자 수

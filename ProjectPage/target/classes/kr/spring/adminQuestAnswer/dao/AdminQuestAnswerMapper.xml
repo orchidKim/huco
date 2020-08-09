@@ -5,13 +5,36 @@
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 	 		SELECT COUNT(*) FROM qna q JOIN member m 
 	 		ON q.mem_num = m.mem_num
+	 		<where>
+				<if test="keyword != '' and keyfield == 'q_title'">
+					q.q_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyword != '' and keyfield == 'id'">
+					m.id LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyword != '' and keyfield == 'question'">
+					q.question LIKE '%' || #{keyword} || '%'
+				</if>
+		</where>
 	</select>
 
 	<select id="selectList" parameterType="map" resultType="questAnswerVO">
 	SELECT * FROM (
 	 			SELECT a.*, rownum rnum FROM(
 	 				SELECT * FROM qna q JOIN member m 
-	 					ON q.mem_num = m.mem_num ORDER BY q.q_num DESC)a)
+	 					ON q.mem_num = m.mem_num 
+	 					<where>
+							<if test="keyword != '' and keyfield == 'q_title'">
+								q.q_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyword != '' and keyfield == 'id'">
+								m.id LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyword != '' and keyfield == 'question'">
+								q.question LIKE '%' || #{keyword} || '%'
+							</if>
+						</where>
+	 					ORDER BY q.q_num DESC)a)
 	 					<![CDATA[
 	                    WHERE rnum >= #{start} AND rnum <= #{end}
 	                    ]]>

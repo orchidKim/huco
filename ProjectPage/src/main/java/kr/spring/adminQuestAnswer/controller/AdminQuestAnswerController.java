@@ -37,10 +37,13 @@ public class AdminQuestAnswerController {
 
 	//목록
 	@RequestMapping("/adminQna/adminQuestAnswerList.do")
-	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1")int currentpage) {
+	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1")int currentpage,
+								@RequestParam(value="keyfield",defaultValue="") String keyfield,
+								@RequestParam(value="keyword",defaultValue="") String keyword) {
 
 		Map<String,Object> map = new HashMap<String,Object>();
-
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		//게시판의 총 레코드수 또는 검색 레코드수 반환
 		int count = adminQuestAnswerService.selectRowCount(map);
 
@@ -82,6 +85,8 @@ public class AdminQuestAnswerController {
 					log.debug("<<updateinsert>> : " + questAnswerVO);
 					log.debug("<<name>> : " + name);
 				}
+	
+				
 				if(name=="updateInsert") {
 					adminQuestAnswerService.updateInsert(questAnswerVO);
 					return "redirect:/adminQna/adminQuestAnswerDetail.do?num="+questAnswerVO.getQ_num();

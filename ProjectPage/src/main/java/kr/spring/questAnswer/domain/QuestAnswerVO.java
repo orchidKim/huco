@@ -13,10 +13,14 @@ public class QuestAnswerVO {
 	private	String	question	;
 	private	String	answer	;
 	private String id ;
+	private int		q_hit	;
+
+
 	private	Date	q_reg_date	;
 	private	Date	q_modify_date	;
 	private	Date	a_reg_date	;
 	private	Date	a_modify_date	;
+	
 	
 	@Override
 	public String toString() {
@@ -31,6 +35,13 @@ public class QuestAnswerVO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	public int getQ_hit() {
+		return q_hit;
+	}
+
+	public void setQ_hit(int q_hit) {
+		this.q_hit = q_hit;
 	}
 	public int getMem_num() {
 		return mem_num;

@@ -41,9 +41,13 @@ public class QuestAnswerController {
 	
 	//목록
 	@RequestMapping("/qna/questAnswerList.do")
-	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1")int currentpage) {
+	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentpage,
+								@RequestParam(value="keyfield",defaultValue="") String keyfield,
+								@RequestParam(value="keyword",defaultValue="") String keyword) {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		
 		//게시판의 총 레코드수 또는 검색 레코드수 반환
 		int count = questAnswerService.selectRowCount(map);
@@ -109,6 +113,9 @@ public class QuestAnswerController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<num>>" + num);
 		}
+		
+		//조회수 증가
+		questAnswerService.updateHit(num);
 		
 		QuestAnswerVO questAnswerVO = questAnswerService.selectQuest(num);
 		questAnswerVO.setQuestion(StringUtil.useBrNoHtml(questAnswerVO.getQuestion()));
