@@ -38,9 +38,9 @@
    
    <!-- size=두께 -->
    <hr size="1" width="100%">
-   <p id="qna-question">
+   <textarea id="qna-question">
       ${questAnswerVO.question}
-   </p>
+   </textarea>
    <hr size="1" width="100%">
    
    <div class="align-right">
@@ -59,7 +59,7 @@
       <table border="1" class="qna-detail-subTable">
          <tr>
             <th>작성자</th>
-            <th>답변 내용</th>
+            <th class="answer_area">답변 내용</th>
             <th>작성일</th>
             <th>수정일</th>
          </tr>

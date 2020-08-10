@@ -26,6 +26,7 @@ import kr.spring.forest.service.ForestService;
 import kr.spring.pickPlace.domain.PickPlaceVO;
 import kr.spring.pickPlace.service.PickPlaceService;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class ForestController {
@@ -121,6 +122,7 @@ public class ForestController {
       if(commentCnt > 0) {
          for(CommentVO commentVO : commentList) {
             commentVO.setId(commentService.findId(commentVO.getMem_num()));
+            commentVO.setComments(StringUtil.useBrNoHtml(commentVO.getComments()));
          }
       }
       

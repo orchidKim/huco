@@ -7,10 +7,10 @@
 <div class="page-main-style">
 <h2>공지사항</h2>
 	<table border="1" class="boardView-table">
-				<colgroup>
+				<%-- <colgroup>
        		   	  <col width="15%" class=""/>
            	      <col width="85%" />
-				</colgroup>
+				</colgroup> --%>
 				<tr>
 					<th>번호</th>
 					<td>${board.n_num}</td>
