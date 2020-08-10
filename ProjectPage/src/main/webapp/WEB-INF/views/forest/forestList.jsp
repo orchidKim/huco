@@ -29,7 +29,7 @@
 
 <form:form action="forestList.do" commandName="location" method="get" id="selectLocForm">
 	<div class="selectBox">
-	<select name="location" name="keyword" id="keyword">
+	<select name="location"> <!-- name="keyword" id="keyword" -->
 		<option selected>지역을 선택하세요</option>
 		<option value="서울">서울</option>
 		<option value="경기도">경기도</option>
