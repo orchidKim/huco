@@ -112,7 +112,7 @@
       <input type="hidden" name="mem_num" value="${mem_num}">
       <input type="hidden" name="p_num" value="${forest.p_num}">
       <input type="hidden" name="p_name" value="${forest.p_name}">
-      <p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
+      <p><input type="month" min="2020-08" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
       <p><input type="submit" value="예약하기" style="width:100%;height:50px;"></p>
       <%-- <p><input type="button" value="찜하기" style="width:100%;height:50px;" onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p> --%>
    </form>
@@ -152,7 +152,7 @@
       <input type="hidden" name="mem_num" value="${mem_num}">
       <input type="hidden" name="p_num" value="${forest.p_num}">
       <input type="hidden" name="p_name" value="${forest.p_name}">
-      <p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
+      <p><input type="month" min="2020-08" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
       <p><input type="submit" value="예약하기" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p>
       <!-- <p><input type="button" value="찜하기" id="buttonShowAlert" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p> --> 
    </form>
