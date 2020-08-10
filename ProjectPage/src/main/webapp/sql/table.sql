@@ -111,7 +111,7 @@ create table qna(
     q_title varchar2(100) not null, --질문제목
     question clob not null, --질문내용
     answer clob default 'no answer' not null, --답변내용
-    
+    ㅂ_hit number  default 0 not null,
     q_reg_date date default sysdate not null, --질문등록일
     q_modify_date date default sysdate not null, --질문수정일
     a_reg_date date default '20/01/01' not null, --답변등록일
