@@ -21,7 +21,7 @@ public class MainCheckInterceptor extends HandlerInterceptorAdapter{
 		//메인으로 접근시, 로그인 여부 체크x 
 		//관리자로 로그인한 경우(회원x)
 		if(session.getAttribute("mem_num") != null && (Integer)session.getAttribute("user_auth")==3){
-			System.out.println((Integer)session.getAttribute("user_auth"));
+			//System.out.println((Integer)session.getAttribute("user_auth"));
 			response.sendRedirect(
 					request.getContextPath()+"/admin/adminList.do");
 			return false;

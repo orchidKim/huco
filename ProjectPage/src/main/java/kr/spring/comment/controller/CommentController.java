@@ -58,14 +58,14 @@ public class CommentController {
 		
 		//아이디 필드로 검색한 경우 해당 아이디를 회원고유번호로 변경 후 검색처리
 		if(keyfield.equals("mem_num")) {
-			System.out.println("검색단어(아이디) : "+keyword);
+			//System.out.println("검색단어(아이디) : "+keyword);
 			//검색 아이디에 해당하는 객체 출력
 			MemberVO memberVO = memberService.selectCheckMember(keyword); 
 			
 			//검색한 아이디의 객체가 존재하면 해당 아이디의 고유번호를 출력
 			if(memberVO != null) {
 				keyword = Integer.toString(memberVO.getMem_num());
-				System.out.println("검색단어(회원고유번호) : "+keyword);
+				//System.out.println("검색단어(회원고유번호) : "+keyword);
 			}else {
 				keyword ="";
 			}

@@ -95,7 +95,7 @@ public class QuestAnswerController {
 			log.debug("<<QuestAnswer>>" + questAnswerVO);
 		}
 		if(session.getAttribute("mem_num")!=null) {
-		System.out.println((Integer)session.getAttribute("mem_num"));
+		//System.out.println((Integer)session.getAttribute("mem_num"));
 		}
 		questAnswerVO.setMem_num((Integer)session.getAttribute("mem_num"));
 		//글 등록
