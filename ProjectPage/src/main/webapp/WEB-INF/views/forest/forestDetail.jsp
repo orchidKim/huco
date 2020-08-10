@@ -88,9 +88,20 @@
       });
    
    });
-   
-   //찜취소일때 alert
+   //찜할때 alert
    function pdelete_check(){
+	   
+	   var ctext = ''; 
+	   ctext = document.getElementById('iph-text').innerText;
+	   
+	   if(ctext == '이 휴양림 취소 하기'){
+		  /*  return confirm("회원페이지에서 찜취소"); */
+		  alert("찜 하시겠습니까?");
+		  location.href='${pageContext.request.contextPath}/pickPlace/myPickList.do';
+	   }   
+   }
+   //찜취소일때 alert
+   function pdelete_check(/* p_num */){
 	   
 	   var ctext = ''; 
 	   ctext = document.getElementById('iph-text').innerText;
@@ -99,7 +110,9 @@
 		  /*  return confirm("회원페이지에서 찜취소"); */
 		  alert("찜 삭제하려면 회원페이지로 이동합니다.");
 		  location.href='${pageContext.request.contextPath}/pickPlace/myPickList.do';
-	   }   
+	   }/* else if(ctext == '이 휴양림 찜 하기'){
+		  location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num='+p_num;
+	   }  */
    }
    
 </script>
@@ -126,7 +139,7 @@
    
    <!-- 찜버튼 수정 -->
       <div id="iaposition">
-      <a href="${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}" target="_blank" id="loginPick" onClick="return pdelete_check(this)">
+      <a href="${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}" id="loginPick" onClick="return pdelete_check(this)">
   	  
  	  
  	  <!-- 찜목록에 있으면 취소출력 -->
