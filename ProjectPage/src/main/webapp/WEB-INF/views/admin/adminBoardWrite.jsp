@@ -13,12 +13,12 @@
 	<ul>
 		<li>
 			<label for="n_title">공지사항 제목</label>
-			<form:input path="n_title"/>
+			<form:input path="n_title" id="title"/>
 			<form:errors path="n_title" cssClass="error-color"/>
 		</li>
 		<li>
 			<label for="notice">공지사항 내용</label>
-			<form:textarea path="notice" cols="50" rows="20"/>
+			<form:textarea path="notice" cols="50" rows="20" id="notice"/>
 			<form:errors path="notice" cssClass="error-color"/>
 		</li>
 		
@@ -28,3 +28,14 @@
 		</div>
 	</form:form>
 </div>
+
+<!-- 게시글 작성 전 글자 수 체크 -->
+<script type="text/javascript">
+    $('#boardWrite_form').submit(function(){
+    	if($('#title').val().length > 30){
+            alert('제목은 최대 30자까지 입력해주세요.');  
+			return false;
+         }
+    	
+    });
+</script>
