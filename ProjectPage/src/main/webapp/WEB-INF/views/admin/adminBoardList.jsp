@@ -2,17 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
-<div class="page-main-style">
-	<script type="text/javascript">
-	$(function(){
-		$('.delete-btn').click(function(){
-			var delete1 = confirm("삭제 하시겠습니까?");
-			 if(delete1){
-				 location.href='${pageContext.request.contextPath}/admin/adminBoardDelete.do?num='+$(this).attr('data-num');
-			 }
-		});
-	});
-	</script>
 	<%-- 
 	<input type="button" value="회원관리" onclick="location.href='${pageContext.request.contextPath}/admin/memberList.do'">
 	<input type="button" value="공지사항 관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardList.do'">
@@ -44,21 +33,17 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
-			<th></th>
-			<th></th>
+			<th><input type="checkbox" id="allchecked" style="width:20px;height:20px;"></th>
 		</tr>
 		
 		<c:forEach var="notice" items="${list}">
 		<tr>
 			<td>${notice.n_num}</td>
-			<td>${notice.n_title}</td>
+			<td><a href="${pageContext.request.contextPath}/admin/adminBoardModify.do?n_num=${notice.n_num}">${notice.n_title}</a></td>
 			<td>${notice.id}</td>
 			<td>${notice.reg_date}</td>
 			<td>${notice.n_hit}</td>
-			<td>
-				<input type="button" value="수정" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardModify.do?n_num=${notice.n_num}'">
-			</td>
-			<td><input type="button" value="삭제" class="delete-btn" data-num="${notice.n_num}"></td>
+			<td><input type="checkbox" style="width:20px;height:20px;" class="checkbox" name="n_num" value="${notice.n_num}"></td>
 		</tr>
 		</c:forEach>
 		
@@ -66,8 +51,60 @@
 		</c:if>
 		<div class="align-center">
 			<input type="button" value="공지사항 등록" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardWrite.do'">
+			<input type="button" value="삭제" id="delete-btn" class="delete-btn" data-num="">
 		</div>
 		<br>
 		<div class="align-center pagenum">${pagingHtml}</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+   $('#delete-btn').hide();
+   $('#allchecked').focus();
+   
+   /* 선택되면 삭제버튼 나오게 하기  */
+   $('.checkbox').click(function(){
+      if($(this).prop("checked")){
+         $('#delete-btn').show();
+      }
+   });
+   /* 전체선택  */
+   $('#allchecked').click(function(){
+       if($(this).prop('checked')){
+          $('.checkbox').prop('checked',true);
+          $('#delete-btn').show();
+      }else{
+          $('.checkbox').prop('checked',false); 
+          $('#delete-btn').hide();
+      } 
+   });
+   
+   /* 체크박스 값 배열로 저장 */
+	/*
+	var total_cnt : 배열의 index 
+	var checkArray : 다중체크박스 배열
+	체크박스를 여러개 선택하면 배열로 저장한 뒤에  data-num 속성에 배열을 넣어주고 
+	controller에서 반복문을 이용해서 num 값을 하나씩 빼서 삭제함. 
+	*/
+	$('.delete-btn').click(function() {
+		var total_cnt = 0;
+		var checkArray = new Array();
+		
+		$('.checkbox').each(function() {
+			if (this.checked) {
+				checkArray[total_cnt] = this.value;	
+				total_cnt++;
+			}
+		});
+		
+		document.getElementById('delete-btn').setAttribute('data-num', checkArray);
+		
+		if (checkArray == ''  && checkArray == 0) {
+			alert('최소한 1개는 선택해야합니다.');
+		} 
+		if(checkArray != ''  && checkArray != 0){
+			var delete1 = confirm("삭제 하시겠습니까?");
+			location.href='${pageContext.request.contextPath}/admin/adminBoardDelete.do?num='+$(this).attr('data-num');
+		}
+		});
+</script>

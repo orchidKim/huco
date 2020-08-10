@@ -200,10 +200,18 @@ public class BoardController {
 
 	//글 삭제
 	@RequestMapping("/admin/adminBoardDelete.do")
-	public String submit(@RequestParam("num") int num) {
+	public String submit(@RequestParam("num") Integer[] num) {
+		//로그 표시
+		if(log.isDebugEnabled()) {
+			log.debug("<<deletenum>> : " + num);
+		}
 		//글 삭제
-		noticeService.delete(num);
-
+		if(num.length>0) {
+			for(int i=0;i<num.length;i++) {
+			noticeService.delete(num[i]);
+			}
+			return "redirect:/admin/adminBoardList.do";
+		}else
 		return "redirect:/admin/adminBoardList.do";
 	}
 }
