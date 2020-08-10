@@ -90,13 +90,15 @@
    });
    
    //찜취소일때 alert
-   function pdelete_check(p_num){
+   function pdelete_check(){
 	   
 	   var ctext = ''; 
 	   ctext = document.getElementById('iph-text').innerText;
 	   
 	   if(ctext == '이 휴양림 취소 하기'){
-		   return confirm("회원페이지에서 찜취소");
+		  /*  return confirm("회원페이지에서 찜취소"); */
+		  alert("찜 삭제하려면 회원페이지로 이동합니다.");
+		  location.href='${pageContext.request.contextPath}/pickPlace/myPickList.do';
 	   }   
    }
    
