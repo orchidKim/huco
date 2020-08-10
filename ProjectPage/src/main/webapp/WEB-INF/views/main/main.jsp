@@ -898,7 +898,7 @@
 							href="${pageContext.request.contextPath}/board/boardView.do?n_num=${board.n_num}">${board.n_title}</a></td>
 						<td>${board.id}</td>
 						<td>${board.reg_date}</td>
-						<td>${board.n_hit}</td>
+						<td>${board.n_hit}</td> 
 					</tr>
 				</c:forEach>
 			</table>
