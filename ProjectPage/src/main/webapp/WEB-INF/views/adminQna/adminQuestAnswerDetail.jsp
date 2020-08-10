@@ -21,7 +21,7 @@
    </ul>
    <!-- size=두께 -->
    <hr size="1" width="100%">
-   <p>
+   <p id="adminQna_quest">
       ${questAnswerVO.question}
    </p>
    <hr size="1" width="100%">

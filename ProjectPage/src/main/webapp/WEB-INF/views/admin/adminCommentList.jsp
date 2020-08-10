@@ -32,10 +32,10 @@
 
 	<!-- 작성된 댓글이 존재하는 경우 -->	
 	<c:if test="${count > 0}">
-	<table>
+	<table id="comment_table">
 		<tr>
 			<th>아이디</th>
-			<th>댓글내용</th>
+			<th class="comment_content">댓글내용</th>
 			<th>작성일</th>
 			<th>처리</th>
 		</tr>

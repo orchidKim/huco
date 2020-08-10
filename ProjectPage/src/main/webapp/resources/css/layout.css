@@ -124,6 +124,14 @@ div#main_body .boardView-table tr th{
 	font-size: 14px;
 }
 
+/*관리자 댓글관리 테이블*/
+div.page-main-style #comment_table{
+	table-layout: fixed;
+    word-wrap: break-word;
+}
+div.page-main-style #comment_table .comment_content{
+	width:650px;
+}
 
 
 
@@ -402,6 +410,22 @@ div.page-main-style p.qna-p label{
 }
 
 /*---------------------- Q&A modify end ----------------------*/
+
+
+
+
+/*---------------------- admin Q&A start ----------------------*/
+#adminQna_quest{
+	word-wrap: break-word;
+}
+
+
+
+/*---------------------- admin Q&A end ----------------------*/
+
+
+
+
 
 /*---------------------- Q&A end---------------------*/
 
