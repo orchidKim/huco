@@ -90,7 +90,7 @@
 	   var ctext = document.getElementById('iph-text').innerText; 
 	   
 	   if(ctext == '찜 취소'){
-		  alert("[${forest.p_name}] 찜을  취소했습니다."+"\n"+"나의 찜 리스트로 이동합니다.");
+		  alert("[${forest.p_name}] 찜을 취소하기 위해 나의 찜 리스트로 이동합니다.");
 		  location.href='${pageContext.request.contextPath}/pickPlace/myPickList.do';
 	   }
 	   
