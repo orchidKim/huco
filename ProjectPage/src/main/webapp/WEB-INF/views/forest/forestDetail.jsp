@@ -9,9 +9,7 @@
 
 <h2>[${forest.p_name}]휴양림 상세</h2>
 
-<div>
 <table class="forestDetail-table" >
-   
    <colgroup>
       <col width="30%" />
       <col width="25%" />
@@ -22,13 +20,12 @@
       <c:if test="${empty forest.p_img}">
          <td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:150px"></td>
       </c:if>
-
       <!-- 해당 휴양림의 이미지 존재, 출력 -->
       <c:if test="${!empty forest.p_img}">
          <td><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:150px"></td>
       </c:if>
 
-      <th id="forestDetail-table-th">
+     <th id="forestDetail-table-th">
          시도명<hr>
          구분<hr>
          면적<hr>
@@ -56,7 +53,8 @@
       </td>
    </tr>
    
-</table>
+</table><!-- forestDetail-table end -->
+
 <p/>
 
 <!-- 폼에서 날짜(년,월) 선택 없이 예약버튼을 눌렀을 때 -->
@@ -73,47 +71,34 @@
          //return false;
       });
       
+      //예약 회원제 서비스 체크
       $('#showAlert').submit(function() {
-         /* if($('#v_day').val()==''){
-            alert('날짜를 선택하세요');
-            return false;
-         }
-         result = '['+$('#v_day').val()+'] 날짜의 예약 현황을 확인합니다.'; */
-         alert('회원제 서비스입니다.');
+         alert('방문예약 기능은 회원제 서비스입니다.');
          return false;
       });
       
-      $('#logoutPick').click(function() {//2020.08.06 logoutShowAlert->logoutPick
-         alert('회원제 서비스입니다');
+      //찜버튼 회원제 서비스 체크
+      $('#logoutPick').click(function() { 
+         alert('찜 기능은 회원제 서비스입니다');
       });
    
    });
-   //찜할때 alert
+   
+   //선택 휴양림 찜 또는 찜 취소 전 체크, alert 이후 나의 찜 리스트로 이동
    function pdelete_check(){
+	   //찜 버튼의 텍스트 값에 따른 처리
+	   var ctext = document.getElementById('iph-text').innerText; 
 	   
-	   var ctext = ''; 
-	   ctext = document.getElementById('iph-text').innerText;
-	   
-	   if(ctext == '이 휴양림 취소 하기'){
-		  /*  return confirm("회원페이지에서 찜취소"); */
-		  alert("찜 하시겠습니까?");
+	   if(ctext == '찜 취소'){
+		  alert("[${forest.p_name}] 찜을  취소했습니다."+"\n"+"나의 찜 리스트로 이동합니다.");
 		  location.href='${pageContext.request.contextPath}/pickPlace/myPickList.do';
-	   }   
-   }
-   //찜취소일때 alert
-   function pdelete_check(/* p_num */){
+	   }
 	   
-	   var ctext = ''; 
-	   ctext = document.getElementById('iph-text').innerText;
-	   
-	   if(ctext == '이 휴양림 취소 하기'){
-		  /*  return confirm("회원페이지에서 찜취소"); */
-		  alert("찜 삭제하려면 회원페이지로 이동합니다.");
+	   if(ctext == '찜 하기'){
+		  alert("[${forest.p_name}]을 찜했습니다."+"\n"+"나의 찜 리스트로 이동합니다.");
 		  location.href='${pageContext.request.contextPath}/pickPlace/myPickList.do';
-	   }/* else if(ctext == '이 휴양림 찜 하기'){
-		  location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num='+p_num;
-	   }  */
-   }
+		}  
+   }//pdelete_check
    
 </script>
 
@@ -130,51 +115,40 @@
       <p><input type="month" name="v_day" id="v_day" style="width:100%;height:50px;text-align:center;padding-left:0;"></p>
       <p><input type="submit" value="예약하기" style="width:100%;height:50px;"></p>
       <%-- <p><input type="button" value="찜하기" style="width:100%;height:50px;" onclick="location.href='${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}'"></p> --%>
-   
-   	  
-   
-   	  
-   
    </form>
-   
-   <!-- 찜버튼 수정 -->
-      <div id="iaposition">
-      <a href="${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}" id="loginPick" onClick="return pdelete_check(this)">
-  	  
- 	  
- 	  <!-- 찜목록에 있으면 취소출력 -->
-   	  <c:if test="${checkForestPick==true}">
-   	  	<span class="iplike">CANCEL</span>
- 	    <span class="ipfb">C</span>
-   	  	<span class="iptext">이 휴양림 취소 하기</span>
-   	  	<span id="iph-text">이 휴양림 취소 하기</span>
-   	  </c:if>
-   	  
-   	  <!-- 찜목록에 있으면 찜출력 -->
-  	  <c:if test="${checkForestPick==false}">
-  	  
-  	  	<span class="iplike">PICK</span>
- 	    <span class="ipfb">P</span>
-     	<span class="iptext">이 휴양림 찜 하기</span>
-     	<span id="iph-text">이 휴양림 찜 하기</span>
-     	
-  	  </c:if>
+	   
+	<!-- 로그인 상태에만 보이는 찜버튼 출력 시작, 선택 휴양림을 찜한 이력에 따라 다르게 출력되는 문자열 -->    	
+	<div id="iaposition">
+		<a href="${pageContext.request.contextPath}/pickPlace/pickPlace.do?p_num=${forest.p_num}" id="loginPick" onClick="return pdelete_check(this)">
+			<!-- 찜목록에 있으면 '찜 취소'출력 -->
+			<c:if test="${checkForestPick==true}">
+				<span class="iplike">CANCEL</span>
+				<span class="ipfb">C</span>
+				<span class="iptext">찜 취소</span>
+				<span id="iph-text">찜 취소</span>
+			</c:if>
+			
+			<!-- 찜목록에 없으면 '찜 하기'출력 -->
+			<c:if test="${checkForestPick==false}">
+				<span class="iplike">PICK</span>
+				<span class="ipfb">P</span>
+				<span class="iptext">찜 하기</span>
+				<span id="iph-text">찜 하기</span>
+			</c:if>
+		</a>
+	</div>
+	<!-- 로그인 상태에만 보이는 찜버튼 출력 끝, 선택 휴양림을 찜한 이력에 따라 다르게 출력되는 문자열 -->
 
- 	  
-	  </a>
-	  </div>
-	  <!-- 찜버튼 수정 -->
-	  
 </c:if>
 </div>
 
-<!-- 비로그인시 보이는 예약,찜 버튼 -->
+
+<!-- 비로그인시 보이는 예약,찜 버튼 코드 시작 -->
 <div class="forestDetail-sub">
 <div class="forestDetail-book">
  <c:if test="${empty mem_num}">
    <form action="${pageContext.request.contextPath}/visit/bookVisitDay.do" method="post" id="showAlert">
       <a style="color:blue;font-size:16px;font-weight:bold;">선택한 날짜의 [${forest.p_name}] 방문예정 현황을 볼 수 있습니다.</a><br><br>
-      <!-- 회원고유번호 프로젝트 통합시 수정 -->
       <input type="hidden" name="mem_num" value="${mem_num}">
       <input type="hidden" name="p_num" value="${forest.p_num}">
       <input type="hidden" name="p_name" value="${forest.p_name}">
@@ -183,24 +157,21 @@
       <!-- <p><input type="button" value="찜하기" id="buttonShowAlert" style="width:100%;height:50px;color:white;font-weight:bold;background:#4d540e;"></p> --> 
    </form>
    
-   <!-- 찜버튼 수정 -->
-      <div id="oaposition">
-      <a href="#" target="_blank" id="logoutPick">
-  	  <span class="oplike">PICK</span>
- 	  <span class="opfb">p</span>
- 	  <span class="optext">이 휴양림 찜 하기</span>
- 	  <span id="oph-text">이 휴양림 찜 하기</span>
- 	  
- 	  <!-- <span class="iplike">PICK</span>
- 	    <span class="ipfb">P</span>
-     	<span class="iptext">이 휴양림 찜 하기</span>
-     	<span id="iph-text">이 휴양림 찜 하기</span> -->
-	  </a>
-	  </div>
-   <!-- 찜버튼 수정 -->
+   	<!-- 비로그인시 보이는 찜 버튼, 클릭시 회원제서비스 alert 출력 -->
+	<div id="oaposition">
+	<a href="#" id="logoutPick">
+	<span class="oplike">PICK</span>
+	<span class="opfb">p</span>
+	<span class="optext">찜 하기</span>
+	<span id="oph-text">찜 하기</span>
+	</a>
+	</div>
    
 </c:if>
 </div>
+<!-- 비로그인시 보이는 예약,찜 버튼 코드 끝 -->
+
+
 
 <!-- 카카오맵 연동 코드 시작, z-index:2; 상단 헤더보다 아래에 배치-->
 <div id="map"></div>
@@ -213,11 +184,12 @@
       center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
       level: 5 //지도의 레벨(확대, 축소 정도)
    };
-   
    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 </script>
 </div>
 <!-- 카카오맵 연동 코드 끝 -->
+
+
 
 <script type="text/javascript">
    function delete_check(c_num,p_num){
