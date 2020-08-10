@@ -18,6 +18,7 @@ import kr.spring.comment.service.CommentService;
 import kr.spring.member.domain.MemberVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class CommentController {
@@ -91,6 +92,7 @@ public class CommentController {
 		//회원번호를 통한 아이디 세팅
 		if(count > 0) {
 			for(CommentVO commentVO : commentList) {
+				commentVO.setComments(StringUtil.useBrNoHtml(commentVO.getComments()));
 				commentVO.setId(commentService.findId(commentVO.getMem_num()));
 			}
 		}
