@@ -61,11 +61,12 @@ public class ForestController {
       Map<String,Object>map = new HashMap<String,Object>();
 
       if(location!=null) {
-         keyfield = "p_load";
-      }
+          keyfield = "p_load";
+          keyword = location;
+       }
 
-      map.put("keyfield", keyfield);
-      map.put("keyword", location);
+       map.put("keyfield", keyfield);
+       map.put("keyword", keyword);
 
       int count = forestService.selectRowCount(map);
 
