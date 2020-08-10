@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.board.domain.BoardVO;
 import kr.spring.board.service.BoardService;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class BoardController {
@@ -88,6 +89,7 @@ public class BoardController {
 		noticeService.updateHit(n_num);
 
 		BoardVO boardVO = noticeService.selectBoard(n_num);
+		boardVO.setNotice(StringUtil.useBrNoHtml(boardVO.getNotice()));
 
 		return new ModelAndView("boardView","board",boardVO);
 	}
@@ -168,6 +170,7 @@ public class BoardController {
 		noticeService.updateHit(num);
 
 		BoardVO notice = noticeService.selectBoard(num);
+		
 
 		//		                                       뷰 이름       		속성명	 속성값
 		return new ModelAndView("adminBoardView" , "notice" ,notice);
