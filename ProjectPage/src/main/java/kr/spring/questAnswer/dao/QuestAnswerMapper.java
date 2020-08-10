@@ -12,7 +12,7 @@ import kr.spring.questAnswer.domain.QuestAnswerVO;
 
 public interface QuestAnswerMapper {
 	
-	//Q&A 전체 개수 구하기 
+	//Q&A 전체 개수 구하기
 	public int selectRowCount(Map<String,Object> map);
 	//Q&A 전체 문의 구하기
 	public List<QuestAnswerVO> selectList(Map<String,Object> map);
@@ -26,7 +26,7 @@ public interface QuestAnswerMapper {
 	//나의 문의내역
 	public List<QuestAnswerVO> selectListMember(Map<String,Object> map);
 	
-	//문의 등록하기
+	//문의 등록하기요
 	@Insert("INSERT INTO qna(q_num,q_title,question,mem_num) VALUES (qna_seq.nextval,#{q_title},#{question},#{mem_num})")
 	public void insert(QuestAnswerVO questAnswerVO);
 	//문의 상세내역
