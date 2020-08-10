@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td id="table-notice">${board.notice}</td>
+					<td id="table-notice" align="left">${board.notice}</td>
 				</tr>
 	</table>
 	<div class="align-right">
