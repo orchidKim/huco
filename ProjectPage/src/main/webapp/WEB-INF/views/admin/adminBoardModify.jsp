@@ -21,7 +21,7 @@
 		</li>
 		<li>
 			<label for="notice">공지사항 내용</label>
-			<form:textarea path="notice" cols="50" rows="20"/>
+			<form:textarea path="notice" cols="50" rows="20" />
 			<form:errors path="notice" cssClass="error-color"/>
 		</li>
 		
