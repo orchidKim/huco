@@ -113,7 +113,7 @@ public class AdminQuestAnswerController {
 	
 	
 	//체크박스 글 삭제
-	@RequestMapping("/adminQna/delete.do")
+	@RequestMapping(value="/adminQna/delete.do", method=RequestMethod.GET)
 	public String submit(@RequestParam(value="q_num", defaultValue="") Integer[] num) {
 
 		//로그 표시
