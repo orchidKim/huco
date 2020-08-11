@@ -297,17 +297,30 @@ public class MemberController {
 
 
 	//회원 권한 변경 (관리자) : 2(일반회원) -> 1(정지회원)
-	@RequestMapping("/admin/authToOne.do")
-	public String authToOne(@RequestParam("mem_num") int mem_num) {
-		memberService.authToOne(mem_num);
-		return "redirect:/admin/memberList.do";
+	@RequestMapping(value="/admin/authToOne.do", method=RequestMethod.GET)
+	public String authToOne(@RequestParam("mem_num") Integer[] mem_num) {
+		if(mem_num.length>0) {
+				for(int i=0;i<mem_num.length;i++) {
+					memberService.authToOne(mem_num[i]);
+				}
+			return "redirect:/admin/memberList.do";
+		}else {
+			return "redirect:/admin/memberList.do";
+		}
 	}
 
 	//회원 권한 변경 (관리자) : 1(정지회원) -> 2(일반회원)
-	@RequestMapping("/admin/authToTwo.do")
-	public String authToTwo(@RequestParam("mem_num") int mem_num) {
-		memberService.authToTwo(mem_num);
-		return "redirect:/admin/memberList.do";
+	@RequestMapping(value="/admin/authToTwo.do", method=RequestMethod.GET)
+	public String authToTwo(@RequestParam("mem_num") Integer[] mem_num) {
+		
+		if(mem_num.length>0) {
+			for(int i=0;i<mem_num.length;i++) {
+				memberService.authToTwo(mem_num[i]);
+			}
+			return "redirect:/admin/memberList.do";
+		}else {		
+			return "redirect:/admin/memberList.do";
+		}
 	}
 
 }
