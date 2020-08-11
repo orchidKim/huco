@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
    function delete_check(p_num){
-      if(confirm('해당 휴양림을 찜목록에서 삭제하시겠습니까?') == true){
+      if(confirm('해당 방문예약을 취소하시겠습니까?') == true){
          location.href='myPickListDelete.do?p_num='+p_num;
       }else{
          return;

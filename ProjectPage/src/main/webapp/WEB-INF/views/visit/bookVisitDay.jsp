@@ -12,7 +12,7 @@
 	<input type="hidden" name="mem_num" value="${mem_num}">
 	<input type="hidden" name="p_num" value="${visit.p_num}">
 	<input type="hidden" name="v_day" id="v_day">
-	<span>방문인원</span> <input type="number" name="v_cnt" id="v_cnt" placeholder="방문인원 수 입력">
+	<span>방문인원</span> <input type="number" min="0" name="v_cnt" id="v_cnt" placeholder="방문인원 수 입력">
 	<span>방문일자</span> <input type="number" max="31" name="date" id="date" placeholder="방문일 숫자 입력"><p>
 	<input type="submit" value="예약하기" id="submit-btn">
 </form>
