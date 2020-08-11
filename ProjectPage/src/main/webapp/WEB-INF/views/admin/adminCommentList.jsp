@@ -47,7 +47,7 @@
 
 		</table>
 		<div class="align-right">
-			<input type="button" value="삭제" id="delete-btn" class="delete-btn"
+			<input style="float:right;margin-top:30px;"  type="button" value="삭제" id="delete-btn" class="delete-btn"
 				data-num="">
 		</div>
 		<br>

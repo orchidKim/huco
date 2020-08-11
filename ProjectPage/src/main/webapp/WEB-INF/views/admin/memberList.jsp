@@ -26,47 +26,60 @@
          <li><input type="submit" value="검색"></li>
       </ul>
    </form>
-   
+
    <c:if test="${count==0}">
       <div class="result-display">가입되어 있는 회원이 없습니다.</div>
    </c:if>
    <c:if test="${count>0}">
       <table>
          <tr>
+            <th><input type="checkbox" id="allchecked" style="width: 20px; height: 20px;"></th>
             <th>회원번호</th>
             <th>회원아이디</th>
             <th>회원상태</th>
             <th>전환버튼</th>
-            <th><input type="checkbox" id="allchecked" style="width:20px;height:20px;"></th>
          </tr>
          <c:forEach var="member" items="${list}">
+            <!-- 체크박스열 -->
             <tr>
+               <c:if test="${member.auth==1}">
+                  <td><input type="checkbox" style="width: 20px; height: 20px;"
+                     class="checkbox" name="n_num" value="${member.mem_num}"></td>
+               </c:if>
+               <c:if test="${member.auth==2}">
+                  <td><input type="checkbox" style="width: 20px; height: 20px;"
+                     class="checkbox" name="n_num" value="${member.mem_num}"></td>
+               </c:if>
+               <c:if test="${member.auth==3}">
+                  <td></td>
+               </c:if>
+               <c:if test="${member.auth==0}">
+                  <td></td>
+               </c:if>
+               <!-- 체크박스종료 -->
+
                <td>${member.mem_num}</td>
-               <td>${member.id}</td>   
-                  <c:if test="${member.auth==0}">
-                     <td>탈퇴회원 (0)</td>
-                     <td></td>
-                     <td></td>
-                  </c:if> 
-                  <c:if test="${member.auth==1}">
-                     <td>정지회원 (1)</td>         
-                     <td><input type="button" value="일반회원 전환" onclick="location.href='authToTwo.do?mem_num=${member.mem_num}'" /></td>
-                     <td><input type="checkbox" style="width:20px;height:20px;" class="checkbox" name="n_num" value="${member.mem_num}"></td>
-                  </c:if> 
-                  <c:if test="${member.auth==2}">
-                     <td>일반회원 (2)</td>
-                     <td><input type="button" value="회원정지" onclick="location.href='authToOne.do?mem_num=${member.mem_num}'" /></td>
-                     <td><input type="checkbox" style="width:20px;height:20px;" class="checkbox" name="n_num" value="${member.mem_num}"></td> 
-                  </c:if> 
-                  <c:if test="${member.auth==3}">
-                     <td>관리자(3)</td>
-                     <td></td>
-                     <td></td>
-                  </c:if>
+               <td>${member.id}</td>
+               <c:if test="${member.auth==0}">
+                  <td>탈퇴회원 (0)</td>
+                  <td></td>
+               </c:if>
+               <c:if test="${member.auth==1}">
+                  <td>정지회원 (1)</td>
+                  <td><input type="button" value="일반회원 전환" onclick="location.href='authToTwo.do?mem_num=${member.mem_num}'" /></td>
+               </c:if>
+               <c:if test="${member.auth==2}">
+                  <td>일반회원 (2)</td>
+                  <td><input type="button" value="회원정지" onclick="location.href='authToOne.do?mem_num=${member.mem_num}'" /></td>
+               </c:if>
+               <c:if test="${member.auth==3}">
+                  <td>관리자(3)</td>
+                  <td></td>
+               </c:if>
             </tr>
          </c:forEach>
       </table>
-         <div class="align-right">
+      <div class="align-right">
          <select id="authBox" onChange="selectChange()" style="vertical-align: middle; text-align-last:center;">
                <option selected >일괄전환</option>
                <option  id="authToTwo" >일반회원 전환</option>

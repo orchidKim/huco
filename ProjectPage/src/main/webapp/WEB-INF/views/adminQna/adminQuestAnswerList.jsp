@@ -74,7 +74,7 @@
          </table>
          <div class="align-right" style="margin: 5px 0px;">
          <c:if test="${!empty user_id}">
-            <input type="button" value="삭제" id="delete-btn" class="delete-btn" data-num="">
+            <input type="button"  style="float:right;margin-top:30px;" value="삭제" id="delete-btn" class="delete-btn" data-num="">
          </c:if>
       </div>
          <div class="align-center pagenum">${pagingHtml}</div>

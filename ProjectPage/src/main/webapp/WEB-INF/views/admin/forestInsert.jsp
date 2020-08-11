@@ -51,7 +51,7 @@
    <form:form action="forestInsert.do" enctype="multipart/form-data" commandName="forestVO" method="post" id="insertForestForm">
       <ul>
          <li>
-            휴양림명<input type="text" name="p_name" id="p_name" value="tmp 휴양림">
+           <label>휴양림명</label><input type="text" name="p_name" id="p_name" value="tmp 휴양림">
          </li>
          <li>
             <!-- 시도명 --><input type="hidden" name="p_city" id="p_city" value="시도명">
@@ -63,35 +63,35 @@
             <!-- 면적 --><input type="hidden" name="p_size" id="p_size"value="100">
          </li>
          <li>
-            수용가능인원<input type="number" name="p_count" id="p_count" value="100">
+             <label>수용가능인원</label><input type="number" name="p_count" id="p_count" value="100">
          </li>
          <li>
-            입장료<input type="text" name="p_cost" id="p_cost" value="성인 : 1,000원">
+             <label>입장료</label><input type="text" name="p_cost" id="p_cost" value="성인 : 1,000원">
          </li>
          <li>
-            숙박가능여부[Y/N]<input type="text" name="p_stay" id="p_stay" value="Y">
+             <label>숙박가능여부[Y/N]</label><input type="text" name="p_stay" id="p_stay" value="Y">
          </li>
          <li>
-            주요시설<input type="text" name="p_facility" id="p_facility" value="tmp 주요시설">
+             <label>주요시설</label><input type="text" name="p_facility" id="p_facility" value="tmp 주요시설">
          </li>
          <li>
-            소재지<input type="text" name="p_load" id="p_load" value="tmp 소재지도로명주소">
+             <label>소재지</label><input type="text" name="p_load" id="p_load" value="tmp 소재지도로명주소">
             <input type="button" value="주소검색" id="findAdress">
          </li>
          <li>
             <!-- 관리기관명 --><input type="hidden" name="p_pubnum" id="p_pubnum" value="관리기관명">
          </li>
          <li>
-            전화번호<input type="text" name="p_phone" id="p_phone" value="010-1111-1111"> 
+             <label>전화번호</label><input type="text" name="p_phone" id="p_phone" value="010-1111-1111"> 
          </li>
          <li>
-            홈페이지 주소<input type="text" name="p_web" id="p_web" value="tmp.com">
+             <label>홈페이지 주소</label><input type="text" name="p_web" id="p_web" value="tmp.com">
          </li>
          <li>
-            위도<input type="number" name="p_latitude" id="p_latitude" value="1000">
+             <label>위도</label><input type="number" name="p_latitude" id="p_latitude" value="1000">
          </li>
          <li>
-            경도<input type="number" name="p_longitude" id="p_longitude" value="1000">
+             <label>경도</label><input type="number" name="p_longitude" id="p_longitude" value="1000">
          </li>
          <li>
             <!-- 데이터 기준일자 --><input type="hidden" name="p_regdate" id="p_regdate" value="20/08/01">
@@ -103,10 +103,10 @@
             <!-- 제공기관명 --><input type="hidden" name="p_pubname" id="p_pubname" value="제공기관명">
          </li>
          <li>
-            휴양림 이미지<input type="file" name="img_path">
+             <label>휴양림 이미지</label><input type="file" name="img_path">
          </li>
       </ul>
-         <input type="submit" value="등록">
+         <input type="submit" value="등록" style="margin:0 auto;display:block;">
    </form:form>
    </div>
    
