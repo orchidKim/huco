@@ -2,17 +2,34 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-main-style">
-	<h2>Q&A</h2>
-		<div class="align-right" id="qna-list-div">	
-		<c:if test="${!empty user_id}">
-			<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'">
-		</c:if>
-		</div>
+	<h2>Q&amp;A</h2>
+	
+	<form id="search_form" action="questAnswerList.do" method="get">
+			<ul>
+				<li>
+					<select name="keyfield" >
+						<option value="q_title">제목</option>
+						<option value="question">내용</option>
+						<option value="id">id</option>
+					</select>
+				</li>
+				<li>
+					<input type="search" size="15" name="keyword" id="keyword">	
+				</li>
+				<li>	
+					<input type="submit" value="찾기">
+				</li>
+			</ul>			
+	</form>	
+	
+	
+		
 	<c:if test="${count == 0}">
 		<div class="result-display">등록된 문의글이 없습니다.</div>
 	</c:if>
+	
 	<c:if test="${count > 0}">
-			<table class="qna-table">
+		<table class="qna-table">
 			<tr>
 				<th>번호</th>
 				<th width="500">제목</th>
@@ -38,21 +55,15 @@
 					<td>${qna.q_hit }</td>
 				</tr>
 			</c:forEach>
-			</table>
+		</table>
 			
-			<form id="search_form" action="questAnswerList.do" method="get">
-			<ul>
-				<li>
-					<select name="keyfield" >
-						<option value="q_title">제목</option>
-						<option value="question">내용</option>
-						<option value="id">id</option>
-					</select>
-					<input type="search" size="15" name="keyword" id="keyword">	
-					<input type="submit" value="찾기">
-				<li>
-			</ul>			
-		</form>	
-			<div class="align-center">${pagingHtml}</div>
-		</c:if>
+		<div class="align-right" id="qna-list-div" style="margin-top:30px;">	
+			<c:if test="${!empty user_id}">
+				<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'">
+			</c:if>
+		</div>
+			
+		<div class="align-center pagenum">${pagingHtml}</div>
+		
+	</c:if>
 </div>

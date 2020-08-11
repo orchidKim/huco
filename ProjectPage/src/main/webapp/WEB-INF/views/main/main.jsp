@@ -274,11 +274,11 @@
 			var defaultLocColor = "white";
 			//"rgba(255,0,0,0.2)";
 			//최초의 로드시 지역의 테두리색
-			var defaultLocStrockColor = "black";
+			var defaultLocStrockColor = "#111";
 			//마우스 오버된 지역의 배경색
-			var mouseOverLocColor = "#b4e6ff";
+			var mouseOverLocColor = "#ccc";
 			//마우스 오버된 지역의 테두리색
-			var mouseOverLocStrockColor = "blue";
+			var mouseOverLocStrockColor = "#111";
 
 			var R = Raphael("location_map", 320, 400);
 			var attr = {

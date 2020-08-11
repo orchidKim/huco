@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-main-style">
 	<h2>Q&amp;A</h2>
+	
 	<form id="search_form" action="questAnswerList.do" method="get">
 			<ul>
 				<li>
@@ -20,11 +21,7 @@
 				</li>
 			</ul>			
 		</form>
-	<div class="align-right" id="qna-list-div">
-		<c:if test="${!empty user_id}">
-			<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'" >
-		</c:if>
-	</div>
+	
 	<c:if test="${count == 0}">
 		<!-- <div class="result-display">등록된 문의글이 없습니다.</div> -->
 		<table>
@@ -36,14 +33,12 @@
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>	
-			
-			<tr>
-				<td colspan="6">작성된 Q&A 글이 없습니다.</td>
-			</tr>
+			<tr><td colspan="6">작성된 Q&amp;A 글이 없습니다.</td></tr>
 		</table>
 	</c:if>
+	
 	<c:if test="${count > 0}">
-			<table class="qna-table">
+		<table class="qna-table">
 			<tr>
 				<th>번호</th>
 				<th width="500">제목</th>
@@ -69,9 +64,13 @@
 					<td>${qna.q_hit}</td>
 				</tr>
 			</c:forEach>
-			</table>
-			<div class="align-center pagenum">
+		</table>
+		<div class="align-right" style="float:right;margin-top:30px;" id="qna-list-div">
+			<c:if test="${!empty user_id}">
+				<input type="button" value="등록" onclick="location.href='questAnswerWrite.do'" />
+			</c:if>
 		</div>
-			<div class="align-center pagenum">${pagingHtml}</div>
-		</c:if>
+		<div class="align-center pagenum">${pagingHtml}</div>
+	</c:if>
+	
 </div>

@@ -81,11 +81,8 @@
 </div>
 
 
-
+<input type="button" value="새 휴양림 등록" style="float:right;margin-top:30px;" onclick="location.href='forestInsert.do'" style="float:right; margin-top:30px;">
 <div class="align-center pagenum">${pagingHtml}</div>
-
-<input type="button" value="새 휴양림 등록" style="float:right;" onclick="location.href='forestInsert.do'" style="float:right; margin-top:30px;">
-
 </div>
 
 

@@ -248,9 +248,9 @@ div.page-main-style .forestDetail-comments-table #comment_delete:hover{
 }
 
 .memberView-table{
-	width: 80%;
-	margin: 0 auto;
-	border: 2px solid gray;
+	width: 100%;
+/* 	margin: 0 auto; */
+	/* border: 2px solid gray; */
 	border-left: none;
 	border-right: none;
 }
@@ -268,19 +268,19 @@ div.page-main-style .forestDetail-comments-table #comment_delete:hover{
 }
 
 .memberView-btn{
-	text-align: center;
-
+	text-align: center; 
+	margin:30px auto 0 auto;
 }
 
 .memberView-btn input{
-	padding: 10 20 10 20;
-	color: white;
-	font-weight: bold;
-	background: #4d540e;
+	/* padding: 10 20 10 20; */
+	/* color: white; */
+	/* font-weight: bold; */
+	/* background: #4d540e; */
 }
 
 #memberView-btn1{
-	margin-right: 40px;
+	/* margin-right: 40px; */
 }
 
 /*---------------------- memberView end---------------------*/
@@ -300,13 +300,19 @@ div.page-main-style .forestDetail-comments-table #comment_delete:hover{
 	height:50px;
 }
 
+.myPickList-table tr td a{
+	height:36px;
+	display:inline-block;line-height:36px;
+}
 #myPick-btn{
+	/* float:right; *//* margin-right:20px; */
 	width:100px;
+	margin:0 auto;
 	/* height:30px; */
-	margin-left:100px;
-	background:#4d540e;
-	color:white;
-	font-weight:bold;
+	/* margin-left:30px; */
+	/* background:#4d540e;
+	color:white; */
+	/* font-weight:bold; */
 }
 
 
@@ -409,8 +415,11 @@ div#main_body .qna-table tr:nth-child(even) {
 	text-align:right;
 	font-size:12px;
 }
-div.page-main-style #qna-list-div {
+/* div.page-main-style #qna-list-div {
 		margin: 0 0 5px 0;
+} */
+div.page-main-style #qna-list-div {
+	float:right;margin:0 auto;
 }
 /*---------------------- Q&A write end---------------------*/
 

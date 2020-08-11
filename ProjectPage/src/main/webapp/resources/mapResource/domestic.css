@@ -7,7 +7,7 @@
 }
 
 #domestic>div {
-	border:1px solid #CCC;
+	border:1px solid #bbb;
 	min-width:70px;
 	position: absolute;
 	padding: 5px;
@@ -16,7 +16,7 @@
 	color:rgb(107, 107, 107);
 	text-align: center;
 	/*  ������ ���� */
-	background: white;
+	background:#f4f4f4;
 	display: none;
 }
 

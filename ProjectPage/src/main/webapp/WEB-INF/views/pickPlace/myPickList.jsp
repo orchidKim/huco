@@ -12,13 +12,15 @@
       }
    }//function delete_check
 </script>
+
 <div class="page-main-style">
 
 <h2 id="myPickList-title">나의 찜 리스트</h2>
 
+
 <table border="1" class="myPickList-table">
 	<tr>
-		<th>휴양림명</th>
+		<th colspan="2">휴양림명</th>
 	</tr>
 
 	<c:if test="${!empty list}">	
@@ -26,10 +28,11 @@
 		<c:forEach var="myPick" items="${list}">
 		
 			<tr>
-				<td>
+				<td width="70%">
 				
 					<a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${myPick.p_num}">${myPick.p_name}</a>
-					
+				</td>	
+				<td width="30%">
 					<input type="button" value="찜 삭제" id="myPick-btn" onclick="delete_check(${myPick.p_num})">
 					
 				</td>
