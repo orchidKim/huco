@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 
- <%--   <input type="button" value="회원관리" onclick="location.href='${pageContext.request.contextPath}/admin/memberList.do'">
+<%--    <input type="button" value="회원관리" onclick="location.href='${pageContext.request.contextPath}/admin/memberList.do'">
    <input type="button" value="공지사항 관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardList.do'">
    <input type="button" value="Q&A관리" onclick="location.href='${pageContext.request.contextPath}/adminQna/adminQuestAnswerList.do'">
    <input type="button" value="댓글관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminCommentList.do'">
@@ -20,11 +20,13 @@
                <option value="mem_id">회원아이디</option>
                <option value="mem_auth">회원상태</option>
          </select></li>
+         
          <li><input type="search" size="16" name="keyword" id="keyword">
          </li>
          <li><input type="submit" value="검색"></li>
       </ul>
    </form>
+   
    <c:if test="${count==0}">
       <div class="result-display">가입되어 있는 회원이 없습니다.</div>
    </c:if>
@@ -66,7 +68,7 @@
       </table>
          <div class="align-right">
          <select id="authBox" onChange="selectChange()" style="vertical-align: middle; text-align-last:center;">
-               <option selected >==회원상태 변경==</option>
+               <option selected >일괄전환</option>
                <option  id="authToTwo" >일반회원 전환</option>
                <option  id="authToOne" >정지회원 전환</option>
          </select>

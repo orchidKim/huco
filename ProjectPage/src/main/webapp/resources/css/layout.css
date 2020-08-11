@@ -219,7 +219,26 @@ div.page-main-style .forestDetail-comments-table #comment_delete:hover{
 
 
 /*---------------------- memberView start---------------------*/
-
+/*---------------------- admin member start ----------------------*/
+#authBox{
+	width:10%;
+    background-color: #4d540e;
+    border: none;
+    color:#fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+    animation:changecolor 5s infinite;
+	 }
+	 
+#authBox:hover{
+	background:#3a3f09
+}
+	
+/*----------------------admin member end----------------------*/
 .memberView-title{
 	height: 70px;
 	font-size: 24px;
