@@ -11,18 +11,18 @@
 <div class="page-main-style">
    <h2>Q&amp;A</h2>
    <form id="search_form" action="adminQuestAnswerList.do" method="get">
-			<ul>
-				<li>
-					<select name="keyfield" >
-						<option value="q_title">제목</option>
-						<option value="question">내용</option>
-						<option value="id">id</option>
-					</select>
-					<input type="search" size="15" name="keyword" id="keyword">	
-					<input type="submit" value="검색">
-				<li>
-			</ul>			
-		</form>
+         <ul>
+            <li>
+               <select name="keyfield" >
+                  <option value="q_title">제목</option>
+                  <option value="question">내용</option>
+                  <option value="id">id</option>
+               </select>
+               <input type="search" size="15" name="keyword" id="keyword">   
+               <input type="submit" value="검색">
+            <li>
+         </ul>         
+      </form>
       <c:if test="${count == 0}">
          <div class="result-display">등록된 문의가 없습니다.</div>
       </c:if>
@@ -88,31 +88,35 @@ $('#allchecked').click(function(){
 });
 
 /* 체크박스 값 배열로 저장 */
-	/*
-	var total_cnt : 배열의 index 
-	var checkArray : 다중체크박스 배열
-	체크박스를 여러개 선택하면 배열로 저장한 뒤에  data-num 속성에 배열을 넣어주고 
-	controller에서 반복문을 이용해서 num 값을 하나씩 빼서 삭제함. 
-	*/
-	$('.delete-btn').click(function() {
-		var total_cnt = 0;
-		var checkArray = new Array();
-		
-		$('.checkbox').each(function() {
-			if (this.checked) {
-				checkArray[total_cnt] = this.value;	
-				total_cnt++;
-			}
-		});
-		
-		document.getElementById('delete-btn').setAttribute('data-num', checkArray);
-		
-		if (checkArray == ''  && checkArray == 0) {
-			alert('최소한 1개는 선택해야합니다.');
-		} 
-		if(checkArray != ''  && checkArray != 0){
-			var delete1 = confirm("삭제 하시겠습니까?");
-			location.href='${pageContext.request.contextPath}/adminQna/delete.do?q_num='+$(this).attr('data-num');
-		}
-		});
+   /*
+   var total_cnt : 배열의 index 
+   var checkArray : 다중체크박스 배열
+   체크박스를 여러개 선택하면 배열로 저장한 뒤에  data-num 속성에 배열을 넣어주고 
+   controller에서 반복문을 이용해서 num 값을 하나씩 빼서 삭제함. 
+   */
+   $('.delete-btn').click(function() {
+      var total_cnt = 0;
+      var checkArray = new Array();
+      
+      $('.checkbox').each(function() {
+         if (this.checked) {
+            checkArray[total_cnt] = this.value;   
+            total_cnt++;
+         }
+      });
+      
+      document.getElementById('delete-btn').setAttribute('data-num', checkArray);
+      
+      if(checkArray == ''  && checkArray == 0) {
+         alert('최소한 1개는 선택해야합니다.');
+         return false;
+      }else if(checkArray != ''  && checkArray != 0){
+         var delete1 = confirm("삭제 하시겠습니까?");
+         if(delete1 == false){
+            return false;
+         }else{
+         location.href='${pageContext.request.contextPath}/adminQna/delete.do?q_num='+$(this).attr('data-num');
+         }
+      }
+   });
 </script>
