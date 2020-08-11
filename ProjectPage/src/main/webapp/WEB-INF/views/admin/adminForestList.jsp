@@ -36,7 +36,7 @@
 	
 	
 	
-<input type="button" value="새 휴양림 등록" onclick="location.href='forestInsert.do'">
+
 
 <div style="height:100%; overflow:auto">
 <c:if test="${count>0}">
@@ -75,16 +75,16 @@
 	            <td><input type="button" value="삭제" onclick="delete_check(${forest.p_num});"></td>
 	         </tr>
 	      </c:forEach>
-	   </table>
-   
-   <div class="align-center pagenum">${pagingHtml}</div>
+	   </table>  
 </c:if>
+<c:if test="${count==0}">검색한 내용의 휴양림이 존재하지 않습니다.</c:if>
 </div>
 
 
-<c:if test="${count==0}">
- 검색한 내용의 휴양림이 존재하지 않습니다.
-</c:if>
+
+<div class="align-center pagenum">${pagingHtml}</div>
+
+<input type="button" value="새 휴양림 등록" style="float:right;" onclick="location.href='forestInsert.do'">
 
 </div>
 

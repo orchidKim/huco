@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="page-main-style">
-	<h2>Q&A</h2>
+	<h2>Q&amp;A</h2>
 	<form id="search_form" action="questAnswerList.do" method="get">
 			<ul>
 				<li>
@@ -11,9 +11,13 @@
 						<option value="question">내용</option>
 						<option value="id">id</option>
 					</select>
-					<input type="search" size="15" name="keyword" id="keyword">	
-					<input type="submit" value="검색">
+				</li>
 				<li>
+					<input type="search" size="15" name="keyword" id="keyword">	
+				</li>
+				<li>
+					<input type="submit" value="검색">
+				</li>
 			</ul>			
 		</form>
 	<div class="align-right" id="qna-list-div">

@@ -341,7 +341,10 @@ div#main_body .qna-table th,div#main_body .qna-table th td{
 div#main_body .qna-table tr:nth-child(even) {
   background-color: #ffffff;
 }
-
+/* div#main_body #search_form_qna{
+	input{float:left;}
+	select{float:left;}
+} */
 /*---------------------- Q&A detail start ---------------------*/
 
 .qna-detail-mainTable tr{

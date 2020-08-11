@@ -50,7 +50,7 @@
             <input type="hidden" name="p_num" value="${forest.p_num}">
          </li>
          <li>
-            휴양림명<input type="text" name="p_name" id="p_name" value="${forest.p_name}">
+            <label>휴양림명</label><input type="text" name="p_name" id="p_name" value="${forest.p_name}">
          </li>
          <li>
             <!-- 시도명 --><input type="hidden" name="p_city" id="p_city" value="${forest.p_city}">
@@ -62,35 +62,35 @@
             <!-- 면적 --><input type="hidden" name="p_size" id="p_size" value="${forest.p_size}">
          </li>
          <li>
-            수용가능인원<input type="number" name="p_count" id="p_count" value="${forest.p_count}">
+            <label>수용가능인원</label><input type="number" name="p_count" id="p_count" value="${forest.p_count}">
          </li>
          <li>
-            입장료<input type="text" name="p_cost" id="p_cost" value="${forest.p_cost}">
+            <label>입장료</label><input type="text" name="p_cost" id="p_cost" value="${forest.p_cost}">
          </li>
          <li>
-            숙박가능여부[Y/N]<input type="text" name="p_stay" id="p_stay" value="${forest.p_stay}">
+            <label>숙박가능여부[Y/N]</label><input type="text" name="p_stay" id="p_stay" value="${forest.p_stay}">
          </li>
          <li>
-            주요시설<input type="text" name="p_facility" id="p_facility" value="${forest.p_facility}">
+            <label>주요시설</label><input type="text" name="p_facility" id="p_facility" value="${forest.p_facility}">
          </li>
          <li>
-            소재지<input type="text" name="p_load" id="p_load" value="${forest.p_load}">
+            <label>소재지</label><input type="text" name="p_load" id="p_load" value="${forest.p_load}">
             <input type="button" value="주소검색" id="findAdress">
          </li>
          <li>
             <!-- 관리기관명 --><input type="hidden" name="p_pubnum" id="p_pubnum" value="${forest.p_pubnum}">
          </li>
          <li>
-            전화번호<input type="text" name="p_phone" id="p_phone" value="${forest.p_phone}"> 
+            <label>전화번호</label><input type="text" name="p_phone" id="p_phone" value="${forest.p_phone}"> 
          </li>
          <li>
-            홈페이지 주소<input type="text" name="p_web" id="p_web" value="${forest.p_web}">
+            <label>홈페이지 주소</label><input type="text" name="p_web" id="p_web" value="${forest.p_web}">
          </li>
          <li>
-            위도<input type="number" name="p_latitude" id="p_latitude" value="${forest.p_latitude}">
+            <label>위도</label><input type="number" name="p_latitude" id="p_latitude" value="${forest.p_latitude}">
          </li>
          <li>
-            경도<input type="number" name="p_longitude" id="p_longitude" value="${forest.p_longitude}">
+            <label>경도</label><input type="number" name="p_longitude" id="p_longitude" value="${forest.p_longitude}">
          </li>
          <li>
             <!-- 데이터 기준일자 --><input type="hidden" name="p_regdate" id="p_regdate" value="${forest.p_regdate}">
@@ -102,10 +102,10 @@
             <!-- 제공기관명 --><input type="hidden" name="p_pubname" id="p_pubname" value="${forest.p_pubname}">
          </li>
          <li>
-            휴양림 이미지<input type="file" name="img_path">
+            <label>휴양림 이미지</label><input type="file" name="img_path">
          </li>
       </ul>
-         <input type="submit" value="수정">
+         <input style="margin:0 auto;display:block;" type="submit" value="수정">
    </form:form> 
 </div>
 

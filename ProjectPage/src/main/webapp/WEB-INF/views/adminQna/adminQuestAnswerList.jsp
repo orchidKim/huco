@@ -18,9 +18,11 @@
                   <option value="question">내용</option>
                   <option value="id">id</option>
                </select>
-               <input type="search" size="15" name="keyword" id="keyword">   
-               <input type="submit" value="검색">
+            </li>
             <li>
+               <input type="search" size="15" name="keyword" id="keyword">  
+            </li> 
+            <li><input type="submit" value="검색"></li>       
          </ul>         
       </form>
       <c:if test="${count == 0}">

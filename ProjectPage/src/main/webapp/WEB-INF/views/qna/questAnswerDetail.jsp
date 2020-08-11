@@ -38,9 +38,9 @@
    
    <!-- size=두께 -->
    <hr size="1" width="100%">
-   <textarea id="qna-question">
+   <p id="qna-question">
       ${questAnswerVO.question}
-   </textarea>
+   </p>
    <hr size="1" width="100%">
    
    <div class="align-right">

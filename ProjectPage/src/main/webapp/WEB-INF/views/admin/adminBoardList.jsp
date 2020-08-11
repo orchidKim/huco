@@ -13,6 +13,13 @@
 
 	<h2>공지사항</h2>
 
+	 <div class="search">
+      <form action="adminBoardList.do" id="noticePage_src" method="get">
+      <input type="text" id="keyword" name="keyword" placeholder="제목으로만 검색이 가능합니다">
+      <button type="submit" id="boardList-srcBtn">검색</button>
+      </form>
+   </div>
+
 	<c:if test="${count == 0 }">
 		<!-- <div class="result-display">등록된 공지사항이 없습니다.</div> -->
 		<table>
@@ -31,12 +38,7 @@
 	</c:if>
 	
 	<div class="wrap">
-   <div class="search">
-      <form action="adminBoardList.do" id="noticePage_src" method="get">
-      <input type="text" id="keyword" name="keyword" placeholder="제목으로만 검색이 가능합니다">
-      <button type="submit" id="boardList-srcBtn">검색</button>
-      </form>
-   </div>
+  
 		
 	<c:if test="${count > 0 }">
 	<table>
