@@ -929,7 +929,23 @@
 				</c:forEach>
 			</table>
 		</c:if>
-		<c:if test="${empty boarList}">현재 공지사항에 글이 존재하지 않습니다.</c:if>
+		<%-- <c:if test="${empty boarList}">현재 공지사항에 글이 존재하지 않습니다.</c:if> --%>
+		<c:if test="${empty boardList}">
+	<table class="noticeAreaTable">
+		<tr>
+			<th>번호</th>
+			<th width="500">제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		
+		<tr>
+			<td colspan="5">작성된 게시글이 없습니다.</td>
+		</tr>
+		
+	</table>
+</c:if>
 		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do"><span>더보기</span></a>
 	</div>
 	<!-- //공지사항 -->
