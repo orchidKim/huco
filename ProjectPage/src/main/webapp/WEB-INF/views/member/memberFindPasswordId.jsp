@@ -27,20 +27,20 @@
 				success:function(data){
 					$('#loading').hide();//로딩 이미지 감추기
 					if(data.result=='idNotFound'){//중복되지않음
-						$('#message_id').css('color','red').text('해당 ID가 존재하지 않습니다.');
+						$('#message_id').css('color','red').text('해당 아이디가 존재하지 않습니다.');
 						checkId=0;
 					}else if(data.result=='idDuplicated'){//중복됨
-						$('#message_id').css('color','#000').text('등록되어 있는 ID입니다.');
+						$('#message_id').css('color','#000').text('등록되어 있는 아이디입니다.');
 						checkId=1;
 					}else{
-						alert('ID검색 오류');
+						alert('아이디 검색 오류');
 						checkId=0;
 					}
 				},
 				error:function(){
 					checkId=0;
 					$('#loading').hide();//로딩 이미지 감추기
-					alert('ID검색 실패');
+					alert('아이디 검색 실패');
 	
 				}
 			});
@@ -55,7 +55,7 @@
 		//submit이벤트 발생시 아이디 중복 체크 여부 확인
 		$('#idSearch_form').submit(function(){
 			if(checkId==0){
-				$('#message_id').css('color','red').text('ID 체크 필수');
+				$('#message_id').css('color','red').text('아이디 체크 필수');
 				if($('#id').val()==''){
 					$('#id').focus();
 				}
@@ -71,9 +71,9 @@
 	<form:form action="findPasswordId.do" commandName="memberVO" id="idSearch_form">
 		<ul>
 			<li>
-				<label for="id">ID</label>
+				<label for="id">아이디</label>
 				<form:input path="id" placeholder="아이디를 입력하세요"/>
-				<input type="button" id="confirmId" value="ID체크">
+				<input type="button" id="confirmId" value="아이디 체크">
 				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" id="loading" width="16" height="16" style="display:none;">
 				<p id="message_id"></p>
 				<form:errors path="id" cssClass="error-color"/>

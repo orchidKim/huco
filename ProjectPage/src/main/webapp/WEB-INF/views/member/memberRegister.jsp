@@ -104,9 +104,9 @@
 	<form:form action="register.do" commandName="memberVO" id="register_form">
 		<ul>
 			<li>
-				<label for="id">ID</label>
+				<label for="id">아이디</label>
 				<form:input path="id" placeholder="아이디를 입력하세요"/>
-				<input type="button" id="confirmId" value="ID중복체크">
+				<input type="button" id="confirmId" value="아이디 중복체크">
 				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif" id="loading" width="16" height="16" style="display:none;">
 				<span id="message_id"></span>
 				<form:errors path="id" cssClass="error-color"/>

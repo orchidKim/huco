@@ -55,7 +55,7 @@
 	<form:form action="" commandName="memberVO" id="passwordFindForm">
 		<ul>
 			<li>
-				<label for="id">id</label>
+				<label for="id">아이디</label>
 				<p id="memberId">${memberVO.getId()}</p>
 			</li>
 			<li>
