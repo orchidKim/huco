@@ -38,57 +38,55 @@
 	
 <input type="button" value="새 휴양림 등록" onclick="location.href='forestInsert.do'">
 
+<div style="height:100%; overflow:auto">
 <c:if test="${count>0}">
-   <table>
-      <tr>
-         <th>이미지</th>
-         <th>휴양림명</th>
-         <!-- <th>시도명</th> -->
-         <!-- <th>구분</th> -->
-         <!-- <th>면적</th> test -->
-         <th>수용가능인원</th>
-         <th>입장료</th>
-         <th>숙박가능여부</th>
-         <th>주요시설</th>
-         <th>소재지도로명주소</th>
-         <!-- <th>관리기관명</th> -->
-         <th>전화번호</th>
-         <th>홈페이지 주소</th>
-         <th>수정</th>
-         <th>삭제</th>
-      </tr>
-      <c:forEach var="forest" items="${forestList}">
-         <tr>
-            <c:if test="${forest.p_img == null}">
-               <td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:200px"></td>
-            </c:if>
-
-            <c:if test="${forest.p_img != null}">
-               <td><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:200px"></td>
-            </c:if>
-            <td>${forest.p_name}</td>
-            <%-- <td>${forest.p_city}</td> --%>
-            <%-- <td>${forest.p_div}</td> --%>
-            <%-- <td>${forest.p_size}</td> --%>
-            <td>${forest.p_count}</td>
-            <td>${forest.p_cost}</td>
-            <td>${forest.p_stay}</td>
-            <td>${forest.p_facility}</td>
-            <td>${forest.p_load}</td>
-            <%-- <td>${forest.p_pubnum}</td> --%>
-            <td>${forest.p_phone}</td>
-            <td><a href="${forest.p_web}">${forest.p_web}</a></td>
-            <td><input type="button" value="수정" onclick="location.href='forestUpdate.do?p_num=${forest.p_num}'"></td>
-            <td><input type="button" value="삭제" onclick="delete_check(${forest.p_num});"></td>
-         </tr>
-      </c:forEach>
-   </table>
+	   <table>
+	      <tr>
+	         <th>이미지</th>
+	         <th>휴양림명</th>
+	         <th>수용가능인원</th>
+	         <th>입장료</th>
+	         <th>숙박가능여부</th>
+	         <th>주요시설</th>
+	         <th>소재지</th>
+	         <th>전화번호</th>
+	         <th>홈페이지 주소</th>
+	         <th>수정</th>
+	         <th>삭제</th>
+	      </tr>
+	      <c:forEach var="forest" items="${forestList}">
+	         <tr>
+	            <c:if test="${forest.p_img == null}">
+	               <td><img src="${pageContext.request.contextPath}/upload/sample.PNG" style="max-width:200px"></td>
+	            </c:if>
+	
+	            <c:if test="${forest.p_img != null}">
+	               <td><img src="${pageContext.request.contextPath}/upload/${forest.p_img}" style="max-width:200px"></td>
+	            </c:if>
+	            <td>${forest.p_name}</td>
+	            <td>${forest.p_count}</td>
+	            <td>${forest.p_cost}</td>
+	            <td>${forest.p_stay}</td>
+	            <td>${forest.p_facility}</td>
+	            <td>${forest.p_load}</td>
+	            <td>${forest.p_phone}</td>
+	            <td><a href="${forest.p_web}"><img src="../resources/images/home.png" style="height:20px; width:20px;border:none;"><%-- ${forest.p_web} --%></a></td>
+	            <td><input type="button" value="수정" onclick="location.href='forestUpdate.do?p_num=${forest.p_num}'"></td>
+	            <td><input type="button" value="삭제" onclick="delete_check(${forest.p_num});"></td>
+	         </tr>
+	      </c:forEach>
+	   </table>
+   
    <div class="align-center pagenum">${pagingHtml}</div>
 </c:if>
+</div>
+
 
 <c:if test="${count==0}">
  검색한 내용의 휴양림이 존재하지 않습니다.
 </c:if>
 
-
 </div>
+
+
+

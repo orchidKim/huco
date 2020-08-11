@@ -5,41 +5,28 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 
-<!-- 등록 데이터 입력 여부 확인 -->
+<!-- 등록 데이터 입력 여부 및 길이 확인 시작 -->
 <script type="text/javascript">
  $(document).ready(function(){
     $('#insertForestForm').submit(function(){
-       //17개의 데이터 확인
-       if($('#p_name').val()==''){
-            alert('휴양림명을 입력하세요');   $('#p_name').focus();return false;
+    	if($('#p_name').val()=='' || $('#p_name').val().length > 10){
+            alert('10자 이내로 휴양림명을 입력하세요');   $('#p_name').focus();return false;
          }
-       /* if($('#p_city').val()==''){
-            alert('시도명을 입력하세요');$('#p_city').focus();   return false;
-         } */
-       /* if($('#p_size').val()==''){
-          alert('면적을 입력하세요');$('#p_size').focus();return false;
-         } */
        if($('#p_count').val()==''){
             alert('수용가능인원을 입력하세요');$('#p_count').focus();return false;
          }
-       if($('#p_cost').val()==''){
-            alert('입장료를 입력하세요');$('#p_cost').focus();   return false;
+       if($('#p_cost').val()=='' || $('#p_cost').val().length > 50){
+            alert('50자 이내로 입장료를 입력하세요');$('#p_cost').focus();   return false;
          }
-       if($('#p_stay').val()==''){
-            alert('숙박가능여부 입력하세요');$('#p_stay').focus();return false;
+       if($('#p_stay').val()=='' || ($('#p_stay').val() != 'Y' && $('#p_stay').val() != 'N')){
+            alert('[Y/N]로 숙박가능여부 입력하세요');$('#p_stay').focus();return false;
          }
-       if($('#p_facility').val()==''){
-            alert('주요시설을 입력하세요');   $('#p_facility').focus();return false;
+       if($('#p_facility').val()=='' || $('#p_facility').val().length > 30){
+            alert('30자 이내로 주요시설을 입력하세요');   $('#p_facility').focus();return false;
          }
        if($('#p_load').val()==''){
-            alert('소재지 도로명을 입력하세요');$('#p_load').focus();return false;
+            alert('소재지를 입력하세요');$('#p_load').focus();return false;
          }
-       /* if($('#p_pubnum').val()==''){
-            alert('관리기관명을 입력하세요');$('#p_pubnum').focus();return false;
-         } */
-       /* if($('#p_div').val()==''){
-            alert('구분을 입력하세요');$('#p_div').focus();return false;
-         } */
        if($('#p_phone').val()==''){
             alert('전화번호를 입력하세요');   $('#p_phone').focus();return false;
          }
@@ -52,18 +39,12 @@
        if($('#p_longitude').val()==''){
             alert('경도를 입력하세요');$('#p_longitude').focus();   return false;
          }
-       /* if($('#p_regdate').val()==''){
-            alert('데이터 기준일자를 입력하세요');$('#p_regdate').focus();return false;
-         }
-       if($('#p_code').val()==''){
-            alert('제공기관 코드를 입력하세요');$('#p_code').focus();return false;
-         }
-       if($('#p_pubname').val()==''){
-            alert('제공기관명을 입력하세요');$('#p_pubname').focus();return false;
-         } */
     });// $('#insertForestForm').submit
  });//$(document).ready
 </script>
+<!-- 등록 데이터 입력 여부 및 길이 확인 끝-->
+
+
 <div class="page-main-style">
 
 <h2>새 휴양림 등록</h2>
@@ -94,7 +75,8 @@
             주요시설<input type="text" name="p_facility" id="p_facility" value="tmp 주요시설">
          </li>
          <li>
-            소재지도로명주소<input type="text" name="p_load" id="p_load" value="tmp 소재지도로명주소">
+            소재지<input type="text" name="p_load" id="p_load" value="tmp 소재지도로명주소">
+            <input type="button" value="주소검색" id="findAdress">
          </li>
          <li>
             <!-- 관리기관명 --><input type="hidden" name="p_pubnum" id="p_pubnum" value="관리기관명">
@@ -126,5 +108,32 @@
       </ul>
          <input type="submit" value="등록">
    </form:form>
-   
    </div>
+   
+   
+
+<!-- 다음 주소검색 팝업창 코드 시작 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	/* 주소 입력창이 공백이 아닐 때 */
+	$('#p_load').focus(function(){
+		new daum.Postcode({
+	        oncomplete: function(data) {
+	            document.getElementById('p_load').value = data.address;
+	        }
+	    }).open();
+		$('#p_load').blur();
+	});
+	
+	
+	/* 주소검색 버튼을 클릭했을 떄 */
+	$('#findAdress').click(function(){
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	            document.getElementById('p_load').value = data.address;
+	        }
+	    }).open();
+	});
+	
+</script>
+<!-- 다음 주소검색 팝업창 코드 끝 -->   
