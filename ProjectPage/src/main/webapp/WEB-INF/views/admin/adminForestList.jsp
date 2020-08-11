@@ -30,7 +30,7 @@
 				</select>
 			</li>
 			<li><input type="search" size="16" name="keyword" id="keyword"></li>
-			<li><input type="submit" value="찾기"></li>
+			<li><input type="submit" value="검색"></li>
 		</ul>
 	</form>  
 	

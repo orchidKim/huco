@@ -12,7 +12,7 @@
 						<option value="id">id</option>
 					</select>
 					<input type="search" size="15" name="keyword" id="keyword">	
-					<input type="submit" value="찾기">
+					<input type="submit" value="검색">
 				<li>
 			</ul>			
 		</form>
