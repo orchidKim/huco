@@ -475,8 +475,8 @@ div.page-main-style  .admin_main p{
   height: 1em;
   line-height: 1em;
   transform: translateY(-50%);
-  color: #6495ed;
-  background: #f0f0f0;
+  color: white;
+  background: #4d540e;
   font-size: 1.5em;
   padding: .6em;
   padding-left: 8em;
@@ -509,8 +509,8 @@ div.page-main-style  .admin_main p{
 
 .oplike {
   position: absolute;
-  background: #6495ed;
-  color: #f0f0f0;
+  background: white;
+  color: #4d540e;
   padding: .2em .2em .1em;
   font-size: .5em;
   border-radius: .4em;
@@ -522,7 +522,7 @@ div.page-main-style  .admin_main p{
   content: "";
   width: 25%;
   height: 30%;
-  background: #6495ed;
+  background: #4d540e;
   border-radius: .2em .2em 0 0;
   position: absolute;
   left: 0;
