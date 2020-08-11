@@ -24,7 +24,21 @@
          </ul>         
       </form>
       <c:if test="${count == 0}">
-         <div class="result-display">등록된 문의가 없습니다.</div>
+         <!-- <div class="result-display">등록된 문의가 없습니다.</div> -->
+         <table>
+         	<tr>
+               <th>번호</th>
+               <th width="200">제목</th>
+               <th>작성자</th>
+               <th>답변여부</th>
+               <th>작성일</th>
+               <th>조회수</th>
+            </tr>
+            <tr>
+            	<td colspan="6">작성된 Q&A 글이 없습니다.</td>
+            </tr>
+         
+         </table>
       </c:if>
       <c:if test="${count > 0}">
          <table>

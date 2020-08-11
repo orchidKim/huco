@@ -14,7 +14,20 @@
 	<h2>공지사항</h2>
 
 	<c:if test="${count == 0 }">
-		<div class="result-display">등록된 공지사항이 없습니다.</div>
+		<!-- <div class="result-display">등록된 공지사항이 없습니다.</div> -->
+		<table>
+		<tr>
+			<th>번호</th>
+			<th width="300">제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<tr>
+			<td colspan="5">작성된 공지사항이 없습니다.</td>
+		</tr>
+		
+		</table>
 	</c:if>
 	
 	<div class="wrap">

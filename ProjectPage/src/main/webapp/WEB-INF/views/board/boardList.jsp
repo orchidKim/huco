@@ -4,9 +4,7 @@
 
 <div class="page-main-style">
 <h2>공지사항</h2>
-<c:if test="${count == 0 }">
-	<div class="result-display">등록된 게시물이 없습니다.</div>
-</c:if>
+
 
 <div class="wrap">
    <div class="search">
@@ -39,4 +37,22 @@
 	<div class="align-center pagenum">${pagingHtml}</div>
 </c:if>
 
+
+<c:if test="${count == 0 }">
+	<!-- <div class="result-display">등록된 게시물이 없습니다.</div> -->
+	<table class="boardList-table">
+		<tr>
+			<th>번호</th>
+			<th width="500">제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		
+		<tr>
+			<td colspan="5">작성된 게시글이 없습니다.</td>
+		</tr>
+		
+	</table>
+</c:if>
 </div>

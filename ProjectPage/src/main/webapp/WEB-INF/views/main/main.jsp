@@ -424,6 +424,8 @@
 				}
 
 				locArray[state].color = Raphael.getColor();
+				
+				//document.getElementById(state).style.display = "block";
 
 				(function(st, state) {
 					//마우스를 특정 지역에 올리면 손가락 모양으로 변경

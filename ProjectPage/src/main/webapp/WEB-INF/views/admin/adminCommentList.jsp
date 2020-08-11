@@ -8,20 +8,7 @@
 
 <div class="page-main-style">
 	<h2>댓글관리</h2>
-	<!-- 작성된 댓글이 존재하지 않는 경우 -->
-	<c:if test="${count == 0}">
-		<table>
-			<tr>
-				<th>아이디</th>
-				<th>댓글내용</th>
-				<th>작성일</th>
-				<th>처리</th>
-			</tr>
-			<tr>
-				<td colspan="4">작성된 댓글이 없습니다.</td>
-			</tr>
-		</table>
-	</c:if>
+	
 	<form id="search_form" action="adminCommentList.do" method="get">
 		<ul class="search">
 			<li><select name="keyfield">
@@ -67,7 +54,20 @@
 		<div class="align-center pagenum">${pagingHtml}</div>
 	</c:if>
 
-
+<!-- 작성된 댓글이 존재하지 않는 경우 -->
+	<c:if test="${count == 0}">
+		<table>
+			<tr>
+				<th>아이디</th>
+				<th>댓글내용</th>
+				<th>작성일</th>
+				<th>처리</th>
+			</tr>
+			<tr>
+				<td colspan="4">작성된 댓글이 없습니다.</td>
+			</tr>
+		</table>
+	</c:if>
 
 
 </div>
