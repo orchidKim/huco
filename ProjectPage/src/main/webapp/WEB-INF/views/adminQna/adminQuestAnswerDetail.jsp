@@ -35,7 +35,8 @@
       <form:hidden path="question"/>
          <tr>
          <td>답변 작성</td>
-         <td><form:textarea path="answer" id="answer" cols="30" rows="10" style="resize: none;"/></td>
+         <td><form:textarea path="answer" id="answer" cols="30" rows="5" style="resize:none;width:100%;" maxlength="4000"/>
+         <div class="qna-align-right">(<span id="checkChar">0</span>/4000)</div></td>
          <td>${questAnswerVO.a_reg_date}</td>
          <td>${questAnswerVO.a_modify_date}</td>
       </tr>
@@ -67,5 +68,17 @@
             $('#answer').focus();
             return false;
          }
-      });      
+      });   
+      
+      document.getElementById('answer').onkeyup=function(){
+  		//입력한 글자 수
+  						//this = textarea , value : 입력한 값, length : 입력한 글자 수
+  		var inputLength = this.value.length;
+  		//남은 글자 수를 구함
+  		var remain = inputLength;
+  			
+  		//문서 객체에 반영
+  		var letter = document.getElementById('checkChar');
+  		letter.innerHTML = remain;
+  		};
 </script>
