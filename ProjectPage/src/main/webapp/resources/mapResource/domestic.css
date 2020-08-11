@@ -7,101 +7,103 @@
 }
 
 #domestic>div {
+	border:1px solid #CCC;
+	min-width:70px;
 	position: absolute;
-	padding: 0 5px;
-	font-size: 12px;
-	/* Áö¿ª¸í ±ÛÀÚ»ö */
-	color: black;
+	padding: 5px;
+	font-size: 14px;
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú»ï¿½ */
+	color:rgb(107, 107, 107);
 	text-align: center;
-	/*  Áö¿ª¸í ¹è°æ»ö */
-	background: lightgray;
+	/*  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+	background: white;
 	display: none;
 }
 
-/* ¸¶¿ì½º ¿À¹ö½Ã ¼±ÅÃµÈ Áö¿ª¸í ¹®ÀÚ¿­ ¼Ó¼º */
+/* ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½Ó¼ï¿½ */
 #domestic>div h2 {
 	margin: 0;
-	font-size: 12px;
+	font-size: 13px;
 }
 
-/* ¸¶¿ì½º ¿À¹ö½Ã ¼±ÅÃµÈ Áö¿ª¸í  ¹®ÀÚ¿­À§Ä¡ */
+/* ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½Ä¡ */
 #seoul {
-	top: 80px;
-	left: 75px;
+	top: 180px;
+	left: 60px;
 }
 
 #gygg {
-	top: 80px;
-	left: 45px;
+	top: 115px;
+	left: 35px;
 }
 
 #incheon {
-	top: 80px;
-	left: 75px;
+	top: 205px;
+	left: 50px;
 }
 
 #gangwon {
-	top: 45px;
-	left: 150px;
+	top: 115px;
+	left: 305px;
 }
 
 #chungbuk {
-	top: 120px;
-	left: 145px;
+	top: 250px;
+	left: 120px;
 }
 
 #chungnam {
-	top: 165px;
-	left: 60px;
+	top: 270px;
+	left: 0px;
 }
 
 #daejeon {
-	top: 165px;
-	left: 80px;
+	top: 350px;
+	left: 98px;
 }
 
 #sejong {
-	top: 145px;
-	left: 70px;
+	top: 305px;
+	left: 98px;
 }
 
 #gwangju {
-	top: 260px;
-	left: 60px;
+	top: 500px;
+	left: 35px;
 }
 
 #jeonbuk {
-	top: 205px;
-	left: 60px;
+	top: 375px;
+	left: 35px;
 }
 
 #jeonnam {
-	top: 260px;
-	left: 60px;
+	top: 470px;
+	left: 10px;
 }
 
 #gyeongbuk {
-	top: 160px;
-	left: 180px;
+	top: 350px;
+	left: 380px;
 }
 
 #gyeongnam {
-	top: 240px;
-	left: 130px;
+	top: 565px;
+	left: 250px;
 }
 
 #daegu {
-	top: 210px;
-	left: 170px;
+	top: 370px;
+	left: 325px;
 }
 
 #busan {
-	top: 250px;
-	left: 190px;
+	top: 530px;
+	left: 380px;
 }
 
 #ulsan {
-	top: 225px;
-	left: 200px;
+	top: 420px;
+	left: 400px;
 }
-#jeju {top:330px; left:80px;}
+#jeju {top:620px; left:80px;}
