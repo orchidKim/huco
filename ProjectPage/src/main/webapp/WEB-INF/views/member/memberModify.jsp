@@ -7,7 +7,7 @@
 		<form:hidden path="mem_num"/>
 		<ul>
 			<li>
-				<label for="id">id</label>
+				<label for="id">아이디</label>
 				<p>${user_id}</p>
 			</li>
 			<li>

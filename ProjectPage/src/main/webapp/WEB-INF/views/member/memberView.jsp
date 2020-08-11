@@ -11,7 +11,7 @@
           <col width="30%" />
 		</colgroup>
 		<tr>
-			<th>ID</th>
+			<th>아이디</th>
 			<td>${member.id}</td>
 			<th>이름</th>
 			<td>${member.name}</td>
