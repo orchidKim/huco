@@ -930,7 +930,9 @@
 			</table>
 		</c:if>
 		<%-- <c:if test="${empty boarList}">현재 공지사항에 글이 존재하지 않습니다.</c:if> --%>
-		<c:if test="${empty boardList}">
+		
+		
+	<c:if test="${empty boarList}">
 	<table class="noticeAreaTable">
 		<tr>
 			<th>번호</th>
@@ -939,7 +941,6 @@
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
-		
 		<tr>
 			<td colspan="5">작성된 게시글이 없습니다.</td>
 		</tr>
