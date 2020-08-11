@@ -49,7 +49,7 @@
 		
 		</table>
 		</c:if>
-		<div class="align-center">
+		<div class="align-right">
 			<input type="button" value="공지사항 등록" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardWrite.do'">
 			<input type="button" value="삭제" id="delete-btn" class="delete-btn" data-num="">
 		</div>

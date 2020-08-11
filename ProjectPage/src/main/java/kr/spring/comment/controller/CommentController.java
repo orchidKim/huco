@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import kr.spring.util.StringUtil;
 
 @Controller
 public class CommentController {
+	private Logger log = Logger.getLogger(this.getClass());
 	@Resource
 	private CommentService commentService;
 	
@@ -109,10 +111,19 @@ public class CommentController {
 
 	//관리자의 댓글 삭제 처리, 삭제 후 관리자 댓글 리스트로 이동
 	@RequestMapping(value="/admin/commentDeleteAdmin.do",method=RequestMethod.GET)
-	public String commentDeleteAdmin(@RequestParam("c_num") int c_num) {
+	public String commentDeleteAdmin(@RequestParam(value="c_num",defaultValue="") int[] c_num) {
 
-		commentService.deleteComment(c_num);
-
+		//로그 표시
+		if(log.isDebugEnabled()) {
+		log.debug("<<delete_c_num>> : " + c_num);
+		}
+		//글 삭제
+		if(c_num.length>0) {
+			for(int i=0;i<c_num.length;i++) {
+				commentService.deleteComment(c_num[i]);
+			}
+			return "redirect:/admin/adminCommentList.do";
+		}else
 		return "redirect:/admin/adminCommentList.do";
 	}
 
