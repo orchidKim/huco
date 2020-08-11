@@ -20,18 +20,21 @@
 
 	$(function(){
 
-	<!-- 헤더 숨기고 드러내는 기능 -->
+	<!-- 헤더랑 topBtn 숨기고 드러내는 기능 -->
 		$("#main_header").hide();
+		$("#topToBtn").hide();
 		$(window).on("scroll", function() { 
 			if($(window).scrollTop() > window.innerHeight-200) {
 				$("#main_header").show();
+				$("#topToBtn").show();
 			} else {
 				$("#main_header").hide();
+				$("#topToBtn").hide();
 			}
 		});	
-		$(".headerArea").on("mouseover", function() { 
+		/* $(".headerArea").on("mouseover", function() { 
 			$("#main_header").show();
-		});	
+		});	 */
 	
 		<!-- 메인비주얼 전체보기 -->
 		function funcThisSize() {
@@ -45,6 +48,12 @@
 	    $(".main_bottomBtn").on("click", function() {	
 	        $('html, body').animate({scrollTop :window.innerHeight-85}, 250);
 	    });  
+	    
+	    <!--버튼 누르면 맨 위로 이동하게-->
+	    $("#topToBtn").on("click", function() {	
+	        $('html, body').animate({scrollTop :0}, 250);
+	    });  
+	    
 	    
 	    <!--헤더 유저정보-->
 	   /*  $(".user_info .infoList").hide(); 
@@ -69,7 +78,10 @@
 	
 </script>
 
-
+<!-- 맨 위로 이동하는 버튼 -->
+<p id="topToBtn">
+	<img src="${pageContext.request.contextPath}/resources/images/main_topBtn.png" alt="맨 위로 이동"/>
+</p>
 
 
 <!-- 메인 배경 (숲) -->
@@ -883,7 +895,7 @@
 			</table>
 		</c:if>
 		<c:if test="${empty qnaList}">현재 QnA게시판에 글이 존재하지 않습니다.</c:if>
-		<a class="moreBtn" href="${pageContext.request.contextPath}/qna/questAnswerList.do">더보기</a>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/qna/questAnswerList.do"><span>더보기</span></a>
 	</div>
 	<!-- //Q&A -->
 	
@@ -916,7 +928,7 @@
 			</table>
 		</c:if>
 		<c:if test="${empty boarList}">현재 공지사항에 글이 존재하지 않습니다.</c:if>
-		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do">더보기</a>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do"><span>더보기</span></a>
 	</div>
 	<!-- //공지사항 -->
 
