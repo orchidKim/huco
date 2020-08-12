@@ -35,8 +35,6 @@
 	<span>선택하신 휴양림의 방문예약 인원이 없습니다.</span>
 	</c:if>
 	<span style="float:right;">
-	<%-- <img src="${pageContext.request.contextPath}/resources/images/green_c.png" style="width:10px;">&nbsp;평균이하
-	&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/resources/images/red_c.png" style="width:10px;">&nbsp;평균이상 --%>
 	<span style="width:10px; height:10px; border-radius: 50%; display: inline-block; background: red;"></span>&nbsp;평균 이상
 	&nbsp;&nbsp;&nbsp;<span style="width:10px; height:10px; border-radius: 50%; display: inline-block; background: blue;"></span>&nbsp;평균 이하
 	</span>
@@ -50,7 +48,7 @@
 	
 	<c:if test="${empty visitCountList}">
 		<tr>
-			<td colspan="1">해당 휴양림의 방문예약 내역이 없습니다.</td>
+			<td>해당 휴양림의 방문예약 내역이 없습니다.</td>
 		</tr>
 	</c:if>
 	
@@ -59,21 +57,19 @@
 			<tr style="text-align: left;">
 				<td>
 				<p style="padding-left:300px;">
-				<c:if test="${avg > visitCount.sum_cnt}">
-					<%-- <img src="${pageContext.request.contextPath}/resources/images/green_c.png" style="width:10px;">&nbsp; --%>
+				<c:if test="${avg >= visitCount.sum_cnt}">
 					<span style="position:relative; top:-4px; width:10px; height:10px; border-radius: 50%; display: inline-block; background: blue;"></span>&nbsp;
 				</c:if>
 				<c:if test="${avg < visitCount.sum_cnt}">
-					<%-- <img src="${pageContext.request.contextPath}/resources/images/red_c.png" style="width:10px;">&nbsp; --%>
 					<span style="position:relative; top:-4px; width:10px; height:10px; border-radius: 50%; display: inline-block; background: red;"></span>&nbsp;
 				</c:if>
 				
 				<span style="font-size:13pt;
+					<c:if test="${avg >= visitCount.sum_cnt}">
+					color:blue;
+					</c:if>
 					<c:if test="${avg < visitCount.sum_cnt}">
 					color:#990000;
-					</c:if>
-					<c:if test="${avg > visitCount.sum_cnt}">
-					color:blue;
 					</c:if>
 				">
 					${visitCount.v_day}
@@ -83,8 +79,6 @@
 				</span>
 				</p>
 				</td>
-				
-				
 			</tr>
 		</c:forEach>
 	</c:if>
