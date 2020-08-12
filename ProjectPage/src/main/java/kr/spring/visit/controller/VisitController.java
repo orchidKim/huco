@@ -49,6 +49,18 @@ public class VisitController {
 
 		List<VisitCount> visitCountList = null;
 		visitCountList = visitService.findVisitCount(visitVO.getP_num(), start, end);
+		
+		int avg = 0;
+		int sum = 0;
+		
+		//선택 휴양림의 예약내역이 존재하는 경우, 평균 예약인원 계산
+		if(visitCountList.size() != 0) {
+			for(VisitCount vc : visitCountList) {
+				sum += vc.getSum_cnt();
+			}
+			avg = sum/visitCountList.size();
+		}
+		
 
 		String year = visitVO.getV_day().toString().split("/")[0];
 		String month = visitVO.getV_day().toString().split("/")[1];
@@ -59,6 +71,7 @@ public class VisitController {
 		mav.addObject("visit",visitVO);
 		mav.addObject("year",year);
 		mav.addObject("month",month);
+		mav.addObject("avg",avg);
 		mav.addObject("visitCountList",visitCountList);
 
 		return mav;
