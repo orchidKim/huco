@@ -20,7 +20,7 @@ public interface VisitMapper {
 	public String findForestName(int p_num);
 	
 	//선택 월의 1-31까지, 특정 휴양림 방문예약 현황 출력  map(날짜,인원) 반환
-	@Select("select v_day, sum(v_cnt) sum_cnt from (select v_day, v_cnt from visit_place where p_num=#{p_num} and v_day between to_date(#{start}) and to_date(#{end})) group by v_day")
+	@Select("select v_day, sum(v_cnt) sum_cnt from (select v_day, v_cnt from visit_place where p_num=#{p_num} and v_day between to_date(#{start}) and to_date(#{end})) group by v_day order by v_day")
 	public List<VisitCount> findVisitCount(@Param(value = "p_num") int p_num, @Param(value = "start") String start, @Param(value = "end") String end);
 	
 	@Insert("insert into visit_place (v_num,mem_num,p_num,v_day,v_cnt) values (visit_seq.nextval,#{mem_num},#{p_num},#{v_day},#{v_cnt})")
