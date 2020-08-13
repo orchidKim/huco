@@ -11,6 +11,12 @@
 		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
     </definition>
+    <definition name="mobileMain" template="/WEB-INF/views/mobile_template/layout.jsp">
+		<put-attribute name="title" value="코상휴가"/>
+		<put-attribute name="body" value="/WEB-INF/views/mobileMain/mobileMain.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+    </definition>
 </tiles-definitions>
 
 
