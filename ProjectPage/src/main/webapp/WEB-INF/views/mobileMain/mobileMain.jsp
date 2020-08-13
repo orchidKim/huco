@@ -6,9 +6,9 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.Map.Entry"%>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/main.css">
+	href="${pageContext.request.contextPath}/resources/css/mobileMain.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/layout.css">
+	href="${pageContext.request.contextPath}/resources/css/mobileLayout.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/mapResource/domestic.css">
 <script type="text/javascript"
