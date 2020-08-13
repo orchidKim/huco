@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=0.3, shrink-to-fit=no">
 <title><tiles:getAsString name="title"/></title>
 <link rel="stylesheet" 
    href="${pageContext.request.contextPath}/resources/css/main.css">
