@@ -66,18 +66,9 @@
 			$(".infoList").slideUp("fast");  
 		}); */
 		
-		
-		
-	});
-	
-	
-	 			
-	
-	
-	
-	
+	   
+	});			
 </script>
-
 <!-- 맨 위로 이동하는 버튼 -->
 <p id="topToBtn">
 	<img src="${pageContext.request.contextPath}/resources/images/main_topBtn.png" alt="맨 위로 이동"/>
