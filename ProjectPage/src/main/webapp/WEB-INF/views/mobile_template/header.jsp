@@ -11,10 +11,13 @@
 	
 	
 	<div>
-		<!-- 로그인, 비로그인 상관없이 항상 존재하는 상단바 메뉴, 관리자 페이지에서는 노출x -->
+	
+		<img src="${pageContext.request.contextPath}/resources/images/mobile_menu.png"/>
+		
+		<%-- <!-- 로그인, 비로그인 상관없이 항상 존재하는 상단바 메뉴, 관리자 페이지에서는 노출x -->
 		<c:if test="${user_auth != 3}">
 			<span><a href="${pageContext.request.contextPath}/board/boardList.do">공지사항</a></span>
-			<span><a href="${pageContext.request.contextPath}/qna/questAnswerList.do">Q&A</a></span>
+			<span><a href="${pageContext.request.contextPath}/qna/questAnswerList.do">Q&amp;A</a></span>
 			<span><a href="${pageContext.request.contextPath}/forest/forestList.do">전국 휴양림</a></span>
 		</c:if>
 	
@@ -33,23 +36,23 @@
 			    <option value="${pageContext.request.contextPath}/visit/myBookList.do">나의 예약</option>
 			</select> 
 			
-			<%-- <span class="user_info">
+			<span class="user_info">
 				<!-- <a href="#">메뉴</a> -->
 				<ul class="infoList">
 					<li><a href="${pageContext.request.contextPath}/member/detail.do">회원정보</a></li>
 					<li><a href="${pageContext.request.contextPath}/pickPlace/myPickList.do">나의 찜</a></li>
 					<li><a href="${pageContext.request.contextPath}/visit/myBookList.do">나의 예약</a></li>
 				</ul>
-			</span> --%>
+			</span>
 			
 		</c:if>
 		
-		<%-- 
+		
 		<input type="button" value="회원관리" onclick="location.href='${pageContext.request.contextPath}/admin/memberList.do'">
 			<input type="button" value="공지사항 관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminBoardList.do'">
 			<input type="button" value="Q&A관리" onclick="location.href='${pageContext.request.contextPath}/adminQna/adminQuestAnswerList.do'">
 			<input type="button" value="댓글관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminCommentList.do'">
-			<input type="button" value="휴양림 관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminForestList.do'"> --%>
+			<input type="button" value="휴양림 관리" onclick="location.href='${pageContext.request.contextPath}/admin/adminForestList.do'">
 
 		<!-- 로그인한 상태고, 관리자유저라면 -->
 		<c:if test="${user_auth == 3}">
@@ -70,7 +73,7 @@
 		<c:if test="${empty user_id}">
 			<a href="${pageContext.request.contextPath}/member/register.do">회원가입</a>
 			<a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
-		</c:if>	
+		</c:if>	 --%>
 	</div>
 	
 </div>

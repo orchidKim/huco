@@ -7,22 +7,23 @@
 <%@ page import="java.util.Map.Entry"%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/mobileMain.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/mobileLayout.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/mapResource/domestic.css">
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/mobileLayout.css"> --%>
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/mapResource/domestic.css"> --%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/mapResource/raphael_min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 
+
 <script type="text/javascript">
 
 	$(function(){
 
-	<!-- 헤더랑 topBtn 숨기고 드러내는 기능 -->
+	/*  헤더랑 topBtn 숨기고 드러내는 기능  */
 		$("#main_header").hide();
-		$("#topToBtn").hide();
+		//$("#topToBtn").hide();
 		$(window).on("scroll", function() { 
 			if($(window).scrollTop() > window.innerHeight-200) {
 				$("#main_header").show();
@@ -31,12 +32,13 @@
 				$("#main_header").hide();
 				$("#topToBtn").hide();
 			}
-		});	
+		});	 
+		
 		/* $(".headerArea").on("mouseover", function() { 
 			$("#main_header").show();
 		});	 */
 	
-		<!-- 메인비주얼 전체보기 -->
+	/* 	메인비주얼 전체보기  */
 		function funcThisSize() {
 		   $(".main_visual").css( "height",window.innerHeight);   
 		}	
@@ -44,18 +46,18 @@
 	    $(window).resize( funcThisSize );
 	    funcThisSize();
 	    
-	    <!--메인비주얼 하단 버튼 누르면 아래로 이동하게-->
+	   /*  <!--메인비주얼 하단 버튼 누르면 아래로 이동하게--> */
 	    $(".main_bottomBtn").on("click", function() {	
 	        $('html, body').animate({scrollTop :window.innerHeight-85}, 250);
 	    });  
-	    
-	    <!--버튼 누르면 맨 위로 이동하게-->
+	  /*   
+	    <!--버튼 누르면 맨 위로 이동하게--> */
 	    $("#topToBtn").on("click", function() {	
 	        $('html, body').animate({scrollTop :0}, 250);
 	    });  
 	    
 	    
-	    <!--헤더 유저정보-->
+	    /* <!--헤더 유저정보--> */
 	   /*  $(".user_info .infoList").hide(); 
 	    
 		$(".user_info").hover(function () { 
@@ -70,31 +72,31 @@
 	});			
 </script>
 <!-- 맨 위로 이동하는 버튼 -->
-<p id="topToBtn">
+<%-- <p id="topToBtn">
 	<img src="${pageContext.request.contextPath}/resources/images/main_topBtn.png" alt="맨 위로 이동"/>
-</p>
+</p> --%>
 
 
 <!-- 메인 배경 (숲) -->
 <div class="main_visual">
 	<div class="main_visual_shadow">
 		<c:if test="${empty user_id}">
-			<div class="main_btn">
+			<%-- <div class="main_btn">
 				<ul>
 					<li><a
 						href="${pageContext.request.contextPath}/member/login.do">로그인</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/member/register.do">회원가입</a></li>
 				</ul>
-			</div>
+			</div> --%>
 		</c:if>
 		<div class="title">
 			<p class="tit">
-				<b>코로나</b>로_상처받은<br> 사람은_<b>휴양림</b>으로_가자<span>코상휴가</span>
+				<b>코로나</b>로_상처받은 사람은_<b>휴양림</b>으로_가자<span>코상휴가</span>
 			</p>
 			<hr style="border: solid 2px #fff;">
 			<p class="txt">
-				코상휴가란? 실시간으로 전국의 코로나 확진자 수를 알려드리고,<br> 가장 확진자 수가 적은 지역의 휴양림을
+				코상휴가란? 실시간으로 전국의 코로나 확진자 수를 알려드리고, 가장 확진자 수가 적은 지역의 휴양림을
 				추천해드리는 사이트입니다.
 			</p>
 		</div>
@@ -113,7 +115,12 @@
 <!-- 메인 컨텐츠(지도랑, 확진자적은 지역 순위)-->
 <div class="main_body_bg">
 <div class="main_content">
+
+
 	<div class="mapRankArea">
+
+
+
 		<script type="text/javascript">
 			window.onload = function() {
 			<%String urlPath = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
@@ -262,7 +269,7 @@
 			request.setAttribute("loc10", covMapCntList.get(9).toString().split("=")[0]);%>
 			//위치텍스트 색상 (색깔명 또는 색상코드 입력, 검정색의 색상코드는 #000000)
 			//최초의 로드시 지역의 배경색
-			var defaultLocColor = "white";
+			var defaultLocColor = "#f4f4f4";
 			//"rgba(255,0,0,0.2)";
 			//최초의 로드시 지역의 테두리색
 			var defaultLocStrockColor = "#111";
@@ -648,6 +655,78 @@
 				}
 			};
 		</script>
+		
+
+	
+		<!-- 확진자 지역 순위 부분 -->
+		<div id="main_topArea">
+			<h2>확진자 적은 지역 <span>TOP 10</span></h2>
+			<h3 class="top">
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc1}"><span class="num">1</span>
+					${loc1}</a>
+			</h3>
+			<h3 class="top">
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc2}"><span class="num">2</span>
+					${loc2}</a>
+			</h3>
+			<h3 class="top">
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc3}"><span class="num">3</span>
+					${loc3}</a>
+			</h3>
+			<h3 class="top">
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc4}"><span class="num">4</span>
+					${loc4}</a>
+			</h3>
+			<h3 class="second">
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc5}"><span class="num">5</span>
+					${loc5}</a>
+			</h3>
+			<h3 class="second">
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc6}"><span class="num">6</span>
+					${loc6}</a>
+			</h3>
+			<span class="others">
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc7}"><span class="num">7</span>
+					${loc7}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc8}"><span class="num">8</span>
+					${loc8}</a>
+			</h3>
+			</span>
+			<span class="others">
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc9}"><span class="num">9</span>
+					${loc9}</a>
+			</h3>
+			<h3>
+				<a
+					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc10}"><span class="num">10</span>
+					${loc10}</a>
+			</h3>
+			</span>
+		</div>
+		<!-- //확진자 지역 순위 부분 -->
+		
+		
+		
+
+
+
+
+
+	
+		
 
 	
 	
@@ -720,76 +799,15 @@
 
 
 
-		<!-- 확진자 지역 순위 부분 -->
-		<div id="main_topArea">
-			<h2>확진자 적은 지역 <span>TOP 10</span></h2>
-			<h3 class="top">
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc1}"><span class="num">1</span>
-					${loc1}</a>
-			</h3>
-			<h3 class="top">
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc2}"><span class="num">2</span>
-					${loc2}</a>
-			</h3>
-			<h3 class="top">
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc3}"><span class="num">3</span>
-					${loc3}</a>
-			</h3>
-			<h3 class="second">
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc4}"><span class="num">4</span>
-					${loc4}</a>
-			</h3>
-			<h3 class="second">
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc5}"><span class="num">5</span>
-					${loc5}</a>
-			</h3>
-			<h3 class="second">
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc6}"><span class="num">6</span>
-					${loc6}</a>
-			</h3>
-			<span class="others">
-			<h3>
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc7}"><span class="num">7</span>
-					${loc7}</a>
-			</h3>
-			<h3>
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc8}"><span class="num">8</span>
-					${loc8}</a>
-			</h3>
-			</span>
-			<span class="others">
-			<h3>
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc9}"><span class="num">9</span>
-					${loc9}</a>
-			</h3>
-			<h3>
-				<a
-					href="${pageContext.request.contextPath}/forest/forestList.do?location=${loc10}"><span class="num">10</span>
-					${loc10}</a>
-			</h3>
-			</span>
-		</div>
 	</div>
-	<!-- //확진자 지역 순위 부분 -->
 	
 	
 	
 	
 	
-	<iframe width="1280" height="720" style="margin:0 auto" src="https://www.youtube.com/embed/QWb9yhqag9Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	
-	
-	
-	
+	<div class="videoArea">
+		<iframe src="https://www.youtube.com/embed/QWb9yhqag9Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
 	
 	
 	
@@ -803,28 +821,56 @@
 		<c:if test="${!empty pickRankList}">
 			<table>
 				<tr>
-					<c:forEach var="rank" items="${pickRankList}" begin="0" end="3">
+					<c:forEach var="rank" items="${pickRankList}" begin="0" end="1">
 						<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
 						<c:if test="${empty rank.p_img}">
-							<td><img
-								src="${pageContext.request.contextPath}/upload/sample.PNG"
-								style="max-width: 200px"></td>
+							<td>
+								<img src="${pageContext.request.contextPath}/upload/sample.PNG">
+							</td>
 						</c:if>
 						<!-- 해당 휴양림의 이미지 존재, 출력 -->
 						<c:if test="${!empty rank.p_img}">
-							<td><img
-								src="${pageContext.request.contextPath}/upload/${rank.p_img}"
-								style="max-width: 200px"></td>
+							<td>
+								<img src="${pageContext.request.contextPath}/upload/${rank.p_img}">
+							</td>
 						</c:if>
 					</c:forEach>
 				</tr>
 				<tr>
-					<c:forEach var="rank" items="${pickRankList}" begin="0" end="3">
-						<td><a
-							href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">${rank.p_name}</a></td>
+					<c:forEach var="rank" items="${pickRankList}" begin="0" end="1">
+						<td>
+							<a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">
+								${rank.p_name}
+							</a>
+						</td>
 					</c:forEach>
 				</tr>
 				<tr>
+					<c:forEach var="rank" items="${pickRankList}" begin="0" end="1">
+						<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
+						<c:if test="${empty rank.p_img}">
+							<td>
+								<img src="${pageContext.request.contextPath}/upload/sample.PNG">
+							</td>
+						</c:if>
+						<!-- 해당 휴양림의 이미지 존재, 출력 -->
+						<c:if test="${!empty rank.p_img}">
+							<td>
+								<img src="${pageContext.request.contextPath}/upload/${rank.p_img}">
+							</td>
+						</c:if>
+					</c:forEach>
+				</tr>
+				<tr>
+					<c:forEach var="rank" items="${pickRankList}" begin="0" end="1">
+						<td>
+							<a href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">
+								${rank.p_name}
+							</a>
+						</td>
+					</c:forEach>
+				</tr>
+<%-- 				<tr>
 					<c:forEach var="rank" items="${pickRankList}" begin="4">
 						<!-- 해당 휴양림의 이미지가 존재x, 샘플 이미지로 출력 -->
 						<c:if test="${rank.p_img == null}">
@@ -845,7 +891,7 @@
 						<td><a
 							href="${pageContext.request.contextPath}/forest/forestDetail.do?p_num=${rank.p_num}">${rank.p_name}</a></td>
 					</c:forEach>
-				</tr>
+				</tr> --%>
 			</table>
 		</c:if>
 		<c:if test="${empty pickRankList}">아직 인기휴양림이 존재하지 않습니다.</c:if>
@@ -860,35 +906,36 @@
 		<c:if test="${!empty qnaList}">
 			<table class="qnaAreaTable">
 				<tr>
-					<th>번호</th>
-					<th style="width:500px;">제목</th>
+					<!-- <th>번호</th> -->
+					<th>제목</th>
 					<th>작성자</th>
-					<th>답변여부</th>
-					<th>작성일</th>
-					<th>조회수</th>
+					<!-- <th>답변여부</th> -->
+					<!-- <th>작성일</th> -->
+				<!-- 	<th>조회수</th> -->
 				</tr>
 				<c:forEach var="qna" items="${qnaList}">
 					<tr>
-						<td>${qna.q_num}</td>
-						<td><a
-							href="${pageContext.request.contextPath}/qna/questAnswerDetail.do?num=${qna.q_num}">${qna.q_title}</a></td>
-						<td>${qna.id}</td>
-						<c:choose>
+						<%-- <td>${qna.q_num}</td> --%>
+						<td>
+							<a href="${pageContext.request.contextPath}/qna/questAnswerDetail.do?num=${qna.q_num}">${qna.q_title}</a>
+						</td>
+						<td class="qna_id">${qna.id}</td>
+						<%-- <c:choose>
 							<c:when test="${qna.answer eq 'no answer'}">
 								<td>처리중</td>
 							</c:when>
 							<c:otherwise>
 								<td>처리완료</td>
 							</c:otherwise>
-						</c:choose>
-						<td>${qna.q_reg_date}</td>
-						<td>${qna.q_hit}</td>
+						</c:choose> --%>
+						<%-- <td>${qna.q_reg_date}</td> --%>
+						<%-- <td>${qna.q_hit}</td> --%>
 					</tr>
 				</c:forEach>
 			</table>
 		</c:if>
 		<c:if test="${empty qnaList}">현재 QnA게시판에 글이 존재하지 않습니다.</c:if>
-		<a class="moreBtn" href="${pageContext.request.contextPath}/qna/questAnswerList.do"><span>더보기</span></a>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/qna/questAnswerList.do"><!-- <span>더보기</span> --></a>
 	</div>
 	<!-- //Q&A -->
 	
@@ -902,20 +949,20 @@
 		<c:if test="${!empty boarList}">
 			<table class="noticeAreaTable">
 				<tr>
-					<th>번호</th>
+					<!-- <th>번호</th> -->
 					<th>제목</th>
-					<th>작성자</th>
+					<!-- <th>작성자</th> -->
 					<th>작성일</th>
-					<th>조회수</th>
+					<!-- <th>조회수</th> -->
 				</tr>
 				<c:forEach var="board" items="${boarList}" begin="0" end="4">
 					<tr>
-						<td>${board.n_num}</td>
+						<%-- <td>${board.n_num}</td> --%>
 						<td><a
 							href="${pageContext.request.contextPath}/board/boardView.do?n_num=${board.n_num}">${board.n_title}</a></td>
-						<td>${board.id}</td>
-						<td>${board.reg_date}</td>
-						<td>${board.n_hit}</td> 
+						<%-- <td>${board.id}</td> --%>
+						<td class="date">${board.reg_date}</td>
+						<%-- <td>${board.n_hit}</td>  --%>
 					</tr>
 				</c:forEach>
 			</table>
@@ -926,11 +973,11 @@
 	<c:if test="${empty boarList}">
 	<table class="noticeAreaTable">
 		<tr>
-			<th>번호</th>
-			<th width="500">제목</th>
-			<th>작성자</th>
+			<!-- <th>번호</th> -->
+			<th>제목</th>
+			<!-- <th>작성자</th> -->
 			<th>작성일</th>
-			<th>조회수</th>
+			<!-- <th>조회수</th> -->
 		</tr>
 		<tr>
 			<td colspan="5">작성된 게시글이 없습니다.</td>
@@ -938,7 +985,7 @@
 		
 	</table>
 </c:if>
-		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do"><span>더보기</span></a>
+		<a class="moreBtn" href="${pageContext.request.contextPath}/board/boardList.do"><!-- <span>더보기</span> --></a>
 	</div>
 	<!-- //공지사항 -->
 
